@@ -62,8 +62,38 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
         }
 
         elseif ($action == 'viewAddEquipment'){
+
             $category = $data->{'category'};
+
             include_once ('../View/AddEquipment.php');
+        }
+
+        elseif ($action == 'viewHistory'){
+
+            include_once('../Model/EquipmentModel.php');
+
+            $equipment =  new EquipmentModel();
+
+            $category = $data->{'category'};
+
+            $id = $data->{'id'};
+
+            $title = "Historial de Mantenimiento";
+
+            $equipmentList = $equipment->GetEquipmentHistory($id);
+
+            $num_filas = mysqli_num_rows($equipmentList);
+
+            include_once ('../View/Historial_mantenimiento.php');
+        }
+
+        elseif($action == 'viewAddHistory'){
+
+            $id = $data->{'id'};
+
+            $category = $data->{'category'};
+
+            include_once ('../View/AddHistoryRecord.php');
         }
     }
 }

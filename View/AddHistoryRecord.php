@@ -108,73 +108,22 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        var msg = {
-            tipo: '',
-            action: '',
-            param: '',
-            filter: ''
-        }
 
-        $("#btnRegresar").click(function(){
+        const msg = {
+          category: '',
+          id: ''
+        };
 
-            msg.action = 'Historial';
-            msg.param = '<?=$GLOBALS['idEquipment']?>';
+        $('#btnRegresar').click(function () {
+            msg.id = '<?=$GLOBALS['id']?>';
+            msg.category = '<?=$GLOBALS['category']?>';
+
             $.ajax({
-                type:'POST',
-                url: 'Controller/EquipmentController.php',
-                data: msg,
+                type:'GET',
+                url: 'Controller/EquipoController.php',
+                data: {data:JSON.stringify(msg), action:'viewHistory'},
                 success: function(response){
                     $('#content').html(response);
-                }
-            });
-        });
-
-        var historial = {
-            idEquipo: '',
-            ultMant: '',
-            ingreso: '',
-            prob: '',
-            sol:'',
-            obs:'',
-            rep:'',
-            disp:'',
-            tec:'',
-            email:''
-        }
-
-        $("#btnSaveHistory").click(function () {
-
-            historial.idEquipo = '<?=$GLOBALS['idEquipment']?>';
-            historial.ultMant = $('#dpUltMant').val();
-            historial.ingreso = $('#dpIngreso').val();
-            historial.prob = $('#txtProblema').val();
-            historial.sol = $('#txtSolucion').val();
-            historial.obs = $('#txtObservacion').val();
-
-            if($('#rbDispSi').is(':checked')){
-                historial.disp = $('#rbDispSi').val();
-            }
-            if($('#rbDispNo').is(':checked')){
-                historial.disp = $('#rbDispNo').val();
-            }
-
-            if($('#rbRepSi').is(':checked')){
-                historial.rep = $('#rbRepSi').val();
-            }
-            if($('#rbRepNo').is(':checked')){
-                historial.rep = $('#rbRepNo').val();
-            }
-
-            historial.tec = $('#txtTecnico').val();
-            historial.email = $('#txtCorreo').val();
-
-            $.ajax({
-                type: 'POST',
-                dataType:'text',
-                url: 'Controller/EquipmentController.php',
-                data: { historyRecord: JSON.stringify( historial ) },
-                success: function(response) {
-                    $("#content").html(response);
                 }
             });
         });

@@ -116,7 +116,8 @@
 <script type="text/javascript">
   $(document).ready(function(){
       const msg = {
-          category: ''
+          category: '',
+          id: ''
       };
 
       $('#btnAddEquipment').click(function () {
@@ -125,6 +126,22 @@
               type:'GET',
               url: 'Controller/EquipoController.php',
               data: {data: JSON.stringify(msg), action:'viewAddEquipment'},
+              success: function(response){
+                  $('#content').html(response);
+              }
+          });
+      });
+
+      $('#tblEquipos').on('click','#btnHistorial', function(){
+          const row =  $(this).closest('tr');
+          msg.id= row.find("td.idEquipo").text();
+
+          msg.category = '<?=$GLOBALS['category']?>';
+
+          $.ajax({
+              type:'GET',
+              url: 'Controller/EquipoController.php',
+              data: {data: JSON.stringify(msg), action:'viewHistory'},
               success: function(response){
                   $('#content').html(response);
               }

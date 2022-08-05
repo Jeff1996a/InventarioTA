@@ -44,7 +44,7 @@
             ?>
             <tr>
                 <td class="idHistorial"><?php echo $row["id_hist_mant"]; ?> </td>
-                <td><?php echo $GLOBALS['idEquipment']; ?> </td>
+                <td><?php echo $GLOBALS['id']; ?> </td>
                 <td><?php echo $row["marca"]; ?> </td>
                 <td><?php echo $row["modelo"]; ?> </td>
                 <td><?php echo $row["descripcion"]; ?> </td>
@@ -71,21 +71,18 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        var msg = {
-            tipo: '',
-            action: '',
-            param: '',
-            filter: ''
-        }
+        const msg = {
+            category: '',
+            id: ''
+        };
 
         $("#btnRegresar").click(function(){
-            msg.tipo = '<?=$GLOBALS['tipo_equipo']?>';
-            msg.action = 'Lista';
+            msg.category = '<?=$GLOBALS['category']?>';
 
             $.ajax({
-                type:'POST',
-                url: 'Controller/EquipmentController.php',
-                data: msg,
+                type:'GET',
+                url: 'Controller/EquipoController.php',
+                data: {data: JSON.stringify(msg), action:'listarEquipos'},
                 success: function(response){
                     $('#content').html(response);
                 }
@@ -93,13 +90,12 @@
         });
 
         $("#btnAddHistory").click(function(){
-            msg.param = '<?=$GLOBALS['idEquipment']?>';
-            msg.action = 'add history';
-
+            msg.id = '<?=$GLOBALS['id']?>';
+            msg.category = '<?=$GLOBALS['category']?>';
             $.ajax({
-                type:'POST',
-                url: 'Controller/EquipmentController.php',
-                data: msg,
+                type:'GET',
+                url: 'Controller/EquipoController.php',
+                data: {data:JSON.stringify(msg), action:'viewAddHistory'},
                 success: function(response){
                     $('#content').html(response);
                 }
