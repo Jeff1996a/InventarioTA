@@ -258,5 +258,9 @@ function validateFilter($filterType, $resultado, $filter, $category){
         $busqueda = $resultado->GetEquipmentByEst($filter, $category);
     }
 
+    if($filterType == 'empty'){
+        $busqueda = $resultado->GetEquimentByType($category);
+    }
+    
     return $busqueda;
 }
