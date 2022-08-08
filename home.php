@@ -116,7 +116,7 @@ die;
             $.ajax({
                 type:'POST',
                 url: 'Controller/TransmisionController.php',
-                data: {data: JSON.stringify(msg), action:'listarEquipos'},
+                data: {data: JSON.stringify(msg), action:'listarTransmisiones'},
                 success: function(response){
                     $('#content').html(response);
                 }

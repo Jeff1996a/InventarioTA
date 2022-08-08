@@ -43,7 +43,7 @@ class EquipmentModel
         mysqli_query($this->dbConn ,"SET @Observacion='".$obj->observacion."'");
 
 
-        mysqli_multi_query ($this->dbConn, "CALL uspInsertarEquipo(@Marca,@Modelo,@Descripcion,@Codigo_ta,@Num_serie,@Fecha_inst,@Proveedor,,@Responsable,@Ubicacion,@Id_estado,@Id_tipo_equi,@Disponibilidad,@Observacion)") OR DIE (mysqli_error($this->dbConn));
+        mysqli_multi_query ($this->dbConn, "CALL uspCrearEquipo(@Marca,@Modelo,@Descripcion,@Codigo_ta,@Num_serie,@Fecha_inst,@Proveedor,@Id_estado,@Id_tipo_equi, @Id_responsable, @Id_departamento, @Disponibilidad,@Observacion)") OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
 

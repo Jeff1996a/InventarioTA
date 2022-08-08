@@ -6,7 +6,7 @@
             </svg>
         </div>
         <h1><?=$GLOBALS['title']?></h1>
-        <div id="btnAddAccesorio" role="button">
+        <div id="btnAddAccesories" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#fa983a " class="bi bi-plus-circle-fill float-end" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
             </svg>
@@ -30,7 +30,7 @@
         </thead>
 
         <?php
-        while ($row = mysqli_fetch_assoc($GLOBALS['equipmentAccesories'])) {
+        while ($row = mysqli_fetch_assoc($GLOBALS['accesories'])) {
 
             ?>
             <tr>
@@ -52,38 +52,40 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-        var msg = {
-            tipo: '',
-            action: '',
-            param: '',
-            filter: ''
-        }
+        const msg = {
+            category: '',
+            id: ''
+        };
 
         $("#btnRegresar").click(function(){
-            msg.tipo = '<?=$GLOBALS['tipo_equipo']?>';
-            msg.action = 'Lista';
+            msg.category = '<?=$GLOBALS['category']?>';
 
             $.ajax({
-                type:'POST',
-                url: 'Controller/EquipmentController.php',
-                data: msg,
+                type:'GET',
+                url: 'Controller/EquipoController.php',
+                data: {data: JSON.stringify(msg), action:'listarEquipos'},
                 success: function(response){
                     $('#content').html(response);
                 }
             });
         });
 
-        $("#btnAddAccesorio").click(function(){
-            msg.param = '<?=$GLOBALS['idEquipment']?>';
-            msg.action = 'add accesories';
-
+        $("#btnAddAccesories").click(function(){
+            msg.id = '<?=$GLOBALS['id']?>';
+            msg.category = '<?=$GLOBALS['category']?>';
             $.ajax({
-                type:'POST',
-                url: 'Controller/EquipmentController.php',
-                data: msg,
+                type:'GET',
+                url: 'Controller/EquipoController.php',
+                data: {data:JSON.stringify(msg), action:'viewAddAccesories'},
                 success: function(response){
                     $('#content').html(response);
                 }
             });
         });
+
+
+
+
+
     })
+</script>

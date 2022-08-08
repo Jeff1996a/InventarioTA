@@ -14,33 +14,33 @@
     <hr/>
 
     <div class="container-fluid">
-        <h3>Filtar por:</h3>
+        <h3>Buscar por:</h3>
 
         <div class="row g-3 form-inline d-flex align-items-center justify-content-between">
 
             <div class="col-auto">
                 <label for="txtEquipo">Equipo:</label>
-                <input type="text" class="form-control" id="txtEquipo" placeholder="Ejm: CÁMARA">
+                <input type="text" class="form-control" id="txtEquipo" placeholder="Ejm: CÁMARA" style="text-transform:uppercase">
             </div>
 
             <div class="col-auto">
                 <label for="txtMarca">Marca:</label>
-                <input type="text" class="form-control" id="txtMarca" placeholder="Ejm: DELL">
+                <input type="text" class="form-control" id="txtMarca" placeholder="Ejm: DELL" style="text-transform:uppercase">
             </div>
 
             <div class="col-auto">
                 <label for="txtFiltroSerie">Número de serie:</label>
-                <input type="text" class="form-control" id="txtFiltroSerie" placeholder="Ejm: 222214AA">
+                <input type="text" class="form-control" id="txtFiltroSerie" placeholder="Ejm: 222214AA" style="text-transform:uppercase">
             </div>
 
             <div class="col-auto">
                 <label for="txtDepartamento">Departamento:</label>
-                <input type="text" class="form-control" id="txtDepartamento" placeholder="Ejm: PRODUCCIÓN">
+                <input type="text" class="form-control" id="txtDepartamento" placeholder="Ejm: PRODUCCIÓN" style="text-transform:uppercase">
             </div>
 
             <div class="col-auto">
                 <label for="cbEstado">Estado:</label>
-                <select id="cbEstado" class="form-select btn-outline-success" aria-label="Default select example">
+                <select id="cbEstado" class="form-select btn-outline-success" aria-label="Default select example" >
                     <option selected>Seleccione un estado</option>
                     <option value="1">Almacenado</option>
                     <option value="2">Averiado</option>
@@ -50,7 +50,7 @@
             </div>
 
             <div class="col-auto">
-                <button type="submit" id="btnFiltrar" class="btn btn-outline-success" style="margin-top: 25px;" >Consultar</button>
+                <button type="submit" id="btnBuscar" class="btn btn-outline-success" style="margin-top: 25px;" >Buscar</button>
             </div>
         </div>
     </div>
@@ -76,6 +76,7 @@
                 <td><strong>Tipo</strong></td>
                 <td></td>
                 <td></td>
+                <td></td>
 
             </tr>
             </thead>
@@ -99,7 +100,8 @@
                     <td><?php echo $row["estado"]; ?> </td>
                     <td><?php echo $row["tipo"]; ?> </td>
                     <td><a id="btnHistorial" href="#">Historial</a></td>
-                    <td><a id="btnAccesorioEqu" href="#">Accesorios</a></td>
+                    <td><a id="btnAccesorios" href="#">Accesorios</a></td>
+                    <td><a id="btnEliminar" href="#">Eliminar</a></td>
                 </tr>
                 <?php
             }
@@ -117,7 +119,9 @@
   $(document).ready(function(){
       const msg = {
           category: '',
-          id: ''
+          id: '',
+          filter: '',
+          filterType: ''
       };
 
       $('#btnAddEquipment').click(function () {
@@ -142,6 +146,199 @@
               type:'GET',
               url: 'Controller/EquipoController.php',
               data: {data: JSON.stringify(msg), action:'viewHistory'},
+              success: function(response){
+                  $('#content').html(response);
+              }
+          });
+      });
+
+      $('#tblEquipos').on('click','#btnAccesorios', function(){
+          const row =  $(this).closest('tr');
+          msg.id= row.find("td.idEquipo").text();
+
+          msg.category = '<?=$GLOBALS['category']?>';
+
+          $.ajax({
+              type:'GET',
+              url: 'Controller/EquipoController.php',
+              data: {data: JSON.stringify(msg), action:'viewAccesories'},
+              success: function(response){
+                  $('#content').html(response);
+              }
+          });
+      });
+
+      //Filtrar por marca
+      $("#txtMarca").on('keydown', function (e) {
+
+          const keycode = e.keyCode || e.which;
+
+          if (keycode == 13) {
+
+              const filter = $('#txtMarca').val();
+
+              msg.category = '<?=$GLOBALS['category']?>';
+
+              if(filter != ''){
+                  msg.filter = filter;
+                  msg.filterType = 'marca';
+              }
+
+              $.ajax({
+                  type:'POST',
+                  url: 'Controller/EquipoController.php',
+                  data: {data: JSON.stringify(msg), action: 'filter'},
+                  success: function(response){
+                      $('#content').html(response);
+                  }
+              });
+          }
+      });
+
+      //Filtrar por serie
+      $("#txtFiltroSerie").on('keydown', function (e) {
+
+          const  keycode = e.keyCode || e.which;
+
+          if (keycode == 13) {
+
+              const filter = $('#txtFiltroSerie').val();
+
+              msg.category = '<?=$GLOBALS['category']?>';
+
+              if(filter != ''){
+                  msg.filter = filter;
+                  msg.filterType = 'serie';
+              }
+
+              $.ajax({
+                  type:'POST',
+                  url: 'Controller/EquipoController.php',
+                  data: {data: JSON.stringify(msg), action: 'filter'},
+                  success: function(response){
+                      $('#content').html(response);
+                  }
+              });
+
+          }
+      });
+
+      //Filtro por equipo
+      $("#txtEquipo").on('keydown', function (e) {
+          const keycode = e.keyCode || e.which;
+
+          if (keycode == 13) {
+              const filter = $('#txtEquipo').val();
+
+              msg.category = '<?=$GLOBALS['category']?>';
+
+              if(filter != ''){
+                  msg.filter = filter;
+                  msg.filterType = 'descripcion';
+              }
+
+              $.ajax({
+                  type:'POST',
+                  url: 'Controller/EquipoController.php',
+                  data: {data: JSON.stringify(msg), action: 'filter'},
+                  success: function(response){
+                      $('#content').html(response);
+                  }
+              });
+          }
+      });
+
+      $("#txtDepartamento").on('keydown', function (e) {
+          const keycode = e.keyCode || e.which;
+
+          if (keycode == 13) {
+              const filter = $('#txtDepartamento').val();
+
+              msg.category = '<?=$GLOBALS['category']?>';
+
+              if(filter != ''){
+                  msg.filter = filter;
+                  msg.filterType = 'departamento';
+              }
+
+              $.ajax({
+                  type:'POST',
+                  url: 'Controller/EquipoController.php',
+                  data: {data: JSON.stringify(msg), action: 'filter'},
+                  success: function(response){
+                      $('#content').html(response);
+                  }
+              });
+          }
+      });
+
+      $("#cbEstado").on('change', function (e) {
+
+          const filter = $('#cbEstado option:selected').text();
+
+          msg.category = '<?=$GLOBALS['category']?>';
+
+          if(filter != ''){
+              msg.filter = filter;
+              msg.filterType = 'estado';
+          }
+
+          $.ajax({
+              type:'POST',
+              url: 'Controller/EquipoController.php',
+              data: {data: JSON.stringify(msg), action: 'filter'},
+              success: function(response){
+                  $('#content').html(response);
+              }
+          });
+      });
+
+      //Permite filtrar cada lista mediante un conjunto de opciones
+      $('#btnBuscar').click(function (e) {
+
+          const filter_equi = $('#txtEquipo').val();
+          const filter_marca = $('#txtMarca').val();
+          const filter_serie = $('#txtFiltroSerie').val();
+          const filter_dep = $('#txtDepartamento').val();
+          const filter_state = $('#cbEstado option:selected').text();
+
+          msg.category = '<?=$GLOBALS['category']?>';
+
+
+          if(filter_equi != '' && filter_marca == '' && filter_dep == '' && filter_state=='Seleccione un estado' && filter_serie == ''){
+              msg.filter = filter_equi;
+              msg.filterType = 'descripcion';
+
+          }
+
+          if(filter_equi == '' && filter_marca != '' && filter_dep == '' && filter_state=='Seleccione un estado' && filter_serie == ''){
+              msg.filter = filter_marca;
+              msg.filterType = 'marca';
+          }
+
+          if(filter_equi == '' && filter_marca == '' && filter_dep == '' && filter_state=='Seleccione un estado' && filter_serie != ''){
+              msg.filter = filter_serie;
+              msg.filterType = 'serie';
+          }
+
+          if(filter_equi == '' && filter_marca == '' && filter_dep != '' && filter_state=='Seleccione un estado' && filter_serie == ''){
+              msg.filter = filter_dep;
+              msg.filterType = 'departamento';
+          }
+
+          if(filter_equi == '' && filter_marca == '' && filter_dep == '' && filter_state !='Seleccione un estado' && filter_serie == ''){
+              msg.filter = filter_state;
+              msg.filterType = 'estado';
+          }
+
+          if(filter_equi == '' && filter_marca == '' && filter_dep == '' && filter_state =='Seleccione un estado' && filter_serie == ''){
+              msg.filterType = 'empty';
+          }
+
+          $.ajax({
+              type:'POST',
+              url: 'Controller/EquipoController.php',
+              data: {data:JSON.stringify(msg), action: 'filter'},
               success: function(response){
                   $('#content').html(response);
               }

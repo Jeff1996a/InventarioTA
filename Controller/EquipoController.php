@@ -1,6 +1,8 @@
 <?php
 $action = '';
+
 $data = '';
+
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
     if(isset($_GET['action']) && isset($_GET['data'])){
@@ -65,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $category = $data->{'category'};
 
-            include_once ('../View/AddEquipment.php');
+            include_once('../View/AddEquipment.php');
         }
 
         elseif ($action == 'viewHistory'){
@@ -95,6 +97,34 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             include_once ('../View/AddHistoryRecord.php');
         }
+
+        elseif($action == "viewAccesories"){
+
+            include_once('../Model/EquipmentModel.php');
+
+            $equipment =  new EquipmentModel();
+
+            $id = $data->{'id'};
+
+            $category = $data->{'category'};
+
+            $title = "Accesorios del equipo";
+
+            $accesories= $equipment->GetEquipmentAccesories($id);
+
+            $num_filas = mysqli_num_rows($accesories);
+
+            include_once "../View/AccesoriosEquipo.php";
+        }
+
+        elseif($action == 'viewAddAccesories'){
+
+            $id = $data->{'id'};
+
+            $category = $data->{'category'};
+
+            include_once ('../View/AddAccesoriesEquipment.php');
+        }
     }
 }
 
@@ -122,8 +152,111 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             $equipment->observacion = $data->{'observacion'};
             $equipment->ubicacion = $data->{'ubicacion'};
 
-            $equipment->insertEquipment($equipment);
+            if($equipment->createEquipment($equipment)){
+                echo '<script language="JavaScript">';
+                echo 'alert("Registro exitoso");';
+                echo '</script>';
+            }
+
+            else{
+                echo '<script language="JavaScript">';
+                echo 'alert("No se pudo realizar el registro");';
+                echo '</script>';
+
+                include_once ('../View/AddHistoryRecord.php');
+            }
         }
+
+        elseif($action == "filter"){
+
+            include_once ('../Model/EquipmentModel.php');
+
+            $equipment = new EquipmentModel();
+
+            $category = $data->{'category'};
+
+            $filter = $data->{'filter'};
+
+            $filterType = $data->{'filterType'};
+
+            switch($category){
+
+                case "accesorio":
+                    $title = "Accesorios";
+                    $list = validateFilter($filterType, $equipment, $filter, $category);
+                    $num_filas = mysqli_num_rows($list);
+                    break;
+
+                case "audio":
+                    $title = "Equipos de audio";
+                    $list = validateFilter($filterType, $equipment, $filter, $category);
+                    $num_filas = mysqli_num_rows($list);
+                    break;
+
+                case "cables":
+                    $title = "Cables";
+                    $list = validateFilter($filterType, $equipment, $filter, $category);
+                    $num_filas = mysqli_num_rows($list);
+                    break;
+
+                case "edicion":
+                    $title = "Equipos de edición";
+                    $list = validateFilter($filterType, $equipment, $filter, $category);
+                    $num_filas = mysqli_num_rows($list);
+                    break;
+
+                case "video":
+                    $title = "Equipos de video";
+                    $list = validateFilter($filterType, $equipment, $filter, $category);
+                    $num_filas = mysqli_num_rows($list);
+                    break;
+
+                case "red":
+                    $title = "Equipos de red";
+                    $list = validateFilter($filterType, $equipment, $filter, $category);
+                    $num_filas = mysqli_num_rows($list);
+                    break;
+
+                case "electrico":
+                    $title = "Equipos eléctricos";
+                    $list = validateFilter($filterType, $equipment, $filter, $category);
+                    $num_filas = mysqli_num_rows($list);
+                    break;
+
+
+                default:
+                    $title = "No se pudo cargar la lista";
+                    break;
+            }
+            include_once ("../View/ListaEquipos.php");
+        }
+
+
     }
 }
 
+//Funcion para validar los datos ingresados al filtro
+function validateFilter($filterType, $resultado, $filter, $category){
+
+    if($filterType == 'descripcion'){
+        $busqueda = $resultado->GetEquipmentByDesc($filter, $category);
+    }
+
+    if($filterType == 'marca'){
+        $busqueda = $resultado->GetEquipmentByMarca($filter, $category);
+    }
+
+    if($filterType == 'serie'){
+        $busqueda = $resultado->GetEquipmentBySerie($filter, $category);
+    }
+
+    if($filterType == 'departamento'){
+        $busqueda = $resultado->GetEquipmentByDep($filter, $category);
+    }
+
+    if($filterType == 'estado'){
+        $busqueda = $resultado->GetEquipmentByEst($filter, $category);
+    }
+
+    return $busqueda;
+}

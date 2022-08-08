@@ -67,61 +67,23 @@
     </div>
 </form>
 <script type="text/javascript">
-    $(document).ready(function () {
-        var msg = {
-            tipo: '',
-            action: '',
-            param: '',
-            filter: ''
-        }
+    $(document).ready(function(){
 
-        $("#btnRegresar").click(function(){
+        const msg = {
+            category: '',
+            id: ''
+        };
 
-            msg.action = 'Accesorio Equ';
-            msg.param = '<?=$GLOBALS['idEquipment']?>';
+        $('#btnRegresar').click(function () {
+            msg.id = '<?=$GLOBALS['id']?>';
+            msg.category = '<?=$GLOBALS['category']?>';
+
             $.ajax({
-                type:'POST',
-                url: 'Controller/EquipmentController.php',
-                data: msg,
+                type:'GET',
+                url: 'Controller/EquipoController.php',
+                data: {data:JSON.stringify(msg), action:'viewAccesories'},
                 success: function(response){
                     $('#content').html(response);
-                }
-            });
-        });
-
-        var accesorio = {
-            idEquipo: '',
-            descripcion: '',
-            disponibilidad: '',
-            serie: '',
-            serieTA: ''
-        }
-
-        $("#form").on("submit", function (e) {
-            e.preventDefault();
-
-            accesorio.idEquipo = '<?=$GLOBALS['idEquipment']?>';
-            accesorio.descripcion = $('#txtDescripcion').val();
-            accesorio.serie = $('#txtSerie').val();
-            accesorio.serieTA = $('#txtSerieTA').val();
-
-            if($('#rbDispSi').is(':checked')){
-                accesorio.disponibilidad = $('#rbDispSi').val();
-            }
-            if($('#rbDispNo').is(':checked')){
-                accesorio.disponibilidad = $('#rbDispNo').val();
-            }
-
-            $.ajax({
-                type: 'POST',
-                dataType:'text',
-                url: '../uploadFile.php',
-                data:  new FormData(this),
-                contentType: false,
-                cache: false,
-                processData:false,
-                success: function(response) {
-                    $("#content").html(response);
                 }
             });
         });
