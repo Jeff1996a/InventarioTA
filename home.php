@@ -21,6 +21,7 @@ die;
 
 </head>
 <body>
+
     <header>
         <div id="header-info">
             <h4 class="text-success"> <?php $us = isset($_SESSION['nickuser']) ? ($_SESSION['nickuser']) : '';
@@ -111,12 +112,11 @@ die;
         }
 
         $("#btnTransmisiones").click(function(){
-            msg.category = 'Transmision'
-
+            msg.category = 'transmision';
             $.ajax({
-                type:'POST',
+                type:'GET',
                 url: 'Controller/TransmisionController.php',
-                data: {data: JSON.stringify(msg), action:'listarTransmisiones'},
+                data: { data : JSON.stringify(msg), action:'listarTransmisiones'},
                 success: function(response){
                     $('#content').html(response);
                 }
@@ -199,13 +199,11 @@ die;
         });
 
         $("#btnIncidencias").click(function(){
-            msg.tipo = 'Incidencias';
-            msg.action = 'Lista';
-
+            msg.category = 'incidencias';
             $.ajax({
-                type:'POST',
+                type:'GET',
                 url: 'Controller/IncidenciasController.php',
-                data: msg,
+                data: {data:JSON.stringify(msg), action: 'listarIncidencias'},
                 success: function(response){
                     $('#content').html(response);
                 }

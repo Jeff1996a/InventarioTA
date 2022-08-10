@@ -1,18 +1,70 @@
 <?php
-
-$transmision = '';
-
-$transmisionList = '';
-
-$title = '';
-
-$num_filas = '';
-
 $action = '';
 
-$tipo = '';
+$data = '';
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+//Metodos get para obtener vistas de transmisiones
+if($_SERVER['REQUEST_METHOD'] == 'GET'){
+
+    if(isset($_GET['action']) && isset($_GET['data'])){
+
+        $action = $_GET['action'];
+
+        $data = json_decode($_GET['data']);
+
+        //Listado de transmisiones
+        if($action == 'listarTransmisiones'){
+
+            include_once ('../Model/TransmisionModel.php');
+
+            $transmision = new TransmisionModel();
+
+            $title = "Transmisiones";
+
+            $list = $transmision->GetTransmisionList();
+
+            $num_filas = mysqli_num_rows($list);
+
+            include_once ("../View/ListaTransmisiones.php");
+        }
+
+        //Formulario para crear una nueva transmision
+        elseif($action == 'viewAddTransmision'){
+
+            include_once "../View/AddTransmission.php";
+        }
+
+        //Formulario para crear una nueva transmision
+        elseif($action == 'viewAddEquipo'){
+
+            $id = $data->{'id'};
+
+            include_once "../View/AddEquipoATransmision.php";
+        }
+
+        //Lista de equipos utilizados en transmisiones
+        elseif($action == "listarAccesorios"){
+
+            include_once ('../Model/TransmisionModel.php');
+
+            $transmision = new TransmisionModel();
+
+            $id = $data->{'id'};
+
+            $title = "Lista de equipos";
+
+            $list = $transmision->GetEquipmentListByTransmision($id);
+
+            $num_filas = mysqli_num_rows($list);
+
+            include_once "../View/ListaEquiposTransmision.php";
+        }
+    }
+
+
+}
+
+elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
     include_once("../Model/TransmisionModel.php");
 
@@ -31,31 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo 'alert("Registro exitoso!!");';
             echo '</script>';
         }
-
     }
-
-
-    if($action == 'Lista' && $tipo == 'Transmision'){
-        $title = "Transmisiones";
-        $transmisionList = $transmision->GetTransmisionList();
-        $num_filas = mysqli_num_rows($transmisionList);
-
-        include_once ("../View/ListaTransmisiones.php");
-    }
-
-    elseif($action == 'add transmission'){
-        include_once "../View/AddTransmission.php";
-    }
-
-    elseif($action == "ListaEqu"){
-        $title = "Lista de equipos";
-
-        $equipmentList = $transmision->GetEquipmentListByTransmision($parametro);
-        $num_filas = mysqli_num_rows($equipmentList);
-        $idTransmision = $parametro;
-        include_once "../View/ListaEquiposTransmision.php";
-    }
-
 }
 
 

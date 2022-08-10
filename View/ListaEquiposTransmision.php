@@ -1,10 +1,17 @@
 <div class="container-fluid">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-11">
+            <div class="col-lg-1">
+                <div id="btnRegresar" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#fa983a " class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="col-lg-10">
                 <h1><?=$GLOBALS['title']?></h1>
             </div>
-            <div class="col-lg-1" role="button" id="btnAddTransmission">
+            <div class="col-lg-1" role="button" id="btnAddEquipo">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#ff9000" class="bi bi-plus-circle-fill float-end" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                 </svg>
@@ -43,7 +50,7 @@
             </thead>
 
             <?php
-            while ($row = mysqli_fetch_assoc($GLOBALS['equipmentList'])) {
+            while ($row = mysqli_fetch_assoc($GLOBALS['list'])) {
 
                 ?>
                 <tr>
@@ -63,3 +70,33 @@
         </table>
     </div>
 </div>
+<script type="text/javascript">
+   $(document).ready(function () {
+       const msg = {
+           id:''
+       }
+       $('#btnAddEquipo').click(function(){
+           msg.id = '<?=$GLOBALS['id']?>';
+           $.ajax({
+               type:'GET',
+               url: 'Controller/TransmisionController.php',
+               data: { data:JSON.stringify(msg), action:'viewAddEquipo'},
+               success: function(response){
+                   $('#content').html(response);
+               }
+           });
+
+       });
+
+       $('#btnRegresar').click(function(){
+           $.ajax({
+               type:'GET',
+               url: 'Controller/TransmisionController.php',
+               data: { data:JSON.stringify(''), action:'listarTransmisiones'},
+               success: function(response){
+                   $('#content').html(response);
+               }
+           });
+       });
+   })
+</script>

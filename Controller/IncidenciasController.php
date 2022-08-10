@@ -1,18 +1,36 @@
 <?php
-
-$incidencias = '';
-
-$incidenciasList = '';
-
-$title = '';
-
-$num_filas = '';
-
 $action = '';
 
-$tipo = '';
+$data = '';
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if($_SERVER['REQUEST_METHOD'] == 'GET'){
+    if(isset($_GET['action']) && isset($_GET['data']) ){
+
+        $action = $_GET['action'];
+
+        if($action == 'listarIncidencias' ){
+
+            include_once ('../Model/IncidenciasModel.php');
+
+            $incidencias = new IncidenciasModel();
+
+            $title = "Incidencias";
+
+            $list = $incidencias->GetIncidenciasList();
+
+            $num_filas = mysqli_num_rows($list);
+
+            include_once ("../View/ListaIncidencias.php");
+        }
+
+        elseif($action == 'viewAddIncidencias'){
+
+            include_once "../View/AddIncidencia.php";
+
+        }
+    }
+}
+elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
     include_once("../Model/IncidenciasModel.php");
 
@@ -27,11 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $incidenciasList = $incidencias->GetIncidenciasList();
         $num_filas = mysqli_num_rows($incidenciasList);
 
-        include_once ("../View/ListaIncidencias.php");
-    }
 
-    elseif($action == 'add incidencia'){
-        include_once "../View/AddIncidencia.php";
     }
 
 }

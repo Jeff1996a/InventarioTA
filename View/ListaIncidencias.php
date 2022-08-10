@@ -49,7 +49,7 @@
             </thead>
 
             <?php
-            while ($row = mysqli_fetch_assoc($GLOBALS['incidenciasList'])) {
+            while ($row = mysqli_fetch_assoc($GLOBALS['list'])) {
 
                 ?>
                 <tr>
@@ -84,7 +84,6 @@
         }
 
         $("#btnAddIncidencia").click(function () {
-            msg.action = 'add incidencia';
 
             $.ajax({
                 type:'POST',
