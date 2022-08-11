@@ -1,4 +1,4 @@
-<form action="/Controller/EquipoController.php" method="post" id="addEquipmentForm" enctype="multipart/form-data">
+<form action="" method="post" id="addEquipmentForm" enctype="multipart/form-data">
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="add-equipment-header">
@@ -15,7 +15,7 @@
             <div class="mb-2 col">
                 <label for="txtMarca" class="col-sm-2 col-form-label">Marca:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="txtMarca" name="marca" placeholder="Ejm: DELL">
+                    <input type="text" class="form-control" id="txtMarca" name="marca" placeholder="Ejm: DELL" required>
                 </div>
             </div>
             <div class="mb-2 col">
@@ -126,6 +126,20 @@
         const msg = {
             category: ''
         };
+
+        //Validaciones
+        $("#addEquipmentForm").validate({
+            rules:{
+                marca: {
+                    required: true
+                }
+            },
+            messages:{
+                marca: {
+                    required: "Ingrese la marca del equipo"
+                }
+            }
+        });
 
         $('#btnRegresar').click(function () {
             msg.category = '<?=$GLOBALS['category']?>';

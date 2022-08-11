@@ -8,6 +8,8 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
         $action = $_GET['action'];
 
+        $data = json_decode($_GET['data']);
+
         if($action == 'listarIncidencias' ){
 
             include_once ('../Model/IncidenciasModel.php');
@@ -44,7 +46,6 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
         $title = "Incidencias";
         $incidenciasList = $incidencias->GetIncidenciasList();
         $num_filas = mysqli_num_rows($incidenciasList);
-
 
     }
 

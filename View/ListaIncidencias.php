@@ -76,23 +76,20 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-        var msg = {
-            tipo: '',
-            action: '',
-            param: '',
-            filter: ''
+        const msg = {
+            category: ''
         }
 
         $("#btnAddIncidencia").click(function () {
-
             $.ajax({
-                type:'POST',
+                type:'GET',
                 url: 'Controller/IncidenciasController.php',
-                data: msg,
+                data: {data:JSON.stringify(msg), action: 'viewAddIncidencias'},
                 success: function(response){
                     $('#content').html(response);
                 }
             });
         });
+
     })
 </script>
