@@ -139,32 +139,6 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             $equipment = new EquipmentModel();
 
-            $equipment->marca = $data->{'marca'};
-            $equipment->modelo = $data->{'modelo'};
-            $equipment->codigo_ta = $data->{'codigoTA'};
-            $equipment->num_serie = $data->{'serie'};
-            $equipment->fecha_inst = $data->{'fechaInst'};
-            $equipment->proveedor = $data->{'proveedor'};
-            $equipment->responsable = $data->{'responsable'};
-            $equipment->id_estado = $data->{'estado'};
-            $equipment->id_tipo_equi = $data->{'tipoEquipo'};
-            $equipment->descripcion = $data->{'descripcion'};
-            $equipment->observacion = $data->{'observacion'};
-            $equipment->ubicacion = $data->{'ubicacion'};
-
-            if($equipment->createEquipment($equipment)){
-                echo '<script language="JavaScript">';
-                echo 'alert("Registro exitoso");';
-                echo '</script>';
-            }
-
-            else{
-                echo '<script language="JavaScript">';
-                echo 'alert("No se pudo realizar el registro");';
-                echo '</script>';
-
-                include_once ('../View/AddHistoryRecord.php');
-            }
         }
 
         elseif($action == "filter"){

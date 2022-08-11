@@ -67,7 +67,7 @@
             </div>
 
             <div class="mb-2 col">
-                <label for="txtUbicacion" class="col-sm-2 col-form-label">Ubicación:</label>
+                <label for="txtUbicacion" class="col-sm-2 col-form-label">Departamento:</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" id="txtUbicacion" name="ubicacion">
                 </div>
@@ -132,11 +132,67 @@
             rules:{
                 marca: {
                     required: true
+                },
+                modelo:{
+                    required: true
+                },
+                codigoTA: {
+                    required: true
+                },
+                serie: {
+                    required:true
+                },
+                fechaInst: {
+                    required:true,
+                    date: true
+                },
+                proveedor:{
+                    required: true
+                },
+                responsable: {
+                    required: true
+                },
+                ubicacion:{
+                    required: true
+                },
+                estado:{
+                    required: true
+                },
+                descripcion: {
+                    required: true
                 }
             },
             messages:{
                 marca: {
-                    required: "Ingrese la marca del equipo"
+                    required: "Ingrese la marca!"
+                },
+                modelo: {
+                    required: "Ingrese el modelo!"
+                },
+                codigoTA :{
+                    required: "Ingrese el código !"
+                },
+                serie: {
+                    required: "Ingrese el número!"
+                },
+                fechaInst: {
+                    required: "Seleccione la fecha!",
+                    date: "Fecha inválida"
+                },
+                proveedor:{
+                    required: "Ingrese el proveedor!"
+                },
+                responsable:{
+                    required: "Ingrese un responsable!"
+                },
+                ubicacion: {
+                    required: "Ingrese el departamento!"
+                },
+                estado: {
+                    required: "Seleccione el estado del equipo!"
+                },
+                descripcion:{
+                    required: "Ingrese una descripción!"
                 }
             }
         });
@@ -154,24 +210,7 @@
             });
         });
 
-        $('#addEquipmentForm').on('submit', function (e) {
-            e.preventDefault();
 
-            const form = new FormData(this);
-            const equipmentData = {};
-            form.forEach(function(value, key){
-                equipmentData[key] = value;
-            });
-
-            $.ajax({
-                type: 'POST',
-                url: 'Controller/EquipoController.php',
-                data: {data: JSON.stringify(equipmentData), action: 'saveEquipment'},
-                success: function (response) {
-                    $('#content').html(response);
-                }
-            })
-        });
 
     })
 </script>

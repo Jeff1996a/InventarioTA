@@ -77,6 +77,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
 
             </tr>
             </thead>
@@ -96,11 +97,12 @@
                     <td><?php echo $row["fecha_instalacion"]; ?> </td>
                     <td><?php echo $row["proveedor"]; ?> </td>
                     <td><?php echo $row["responsable"]; ?> </td>
-                    <td><?php echo $row["nombre_departamento"]; ?> </td>
+                    <td><?php echo $row["departamento"]; ?> </td>
                     <td><?php echo $row["estado"]; ?> </td>
                     <td><?php echo $row["tipo"]; ?> </td>
                     <td><a id="btnHistorial" href="#">Historial</a></td>
                     <td><a id="btnAccesorios" href="#">Accesorios</a></td>
+                    <td><a id="btnEliminar" href="#">Adjuntos</a></td>
                     <td><a id="btnEliminar" href="#">Eliminar</a></td>
                 </tr>
                 <?php

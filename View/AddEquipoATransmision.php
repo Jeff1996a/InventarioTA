@@ -15,14 +15,14 @@
             <div class="mb-2 col-6">
                 <label for="txtTecnico" class="col-sm-12 col-form-label">Numero de serie:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtSerie" name="txtSerie" required>
+                    <input type="text" class="form-control" id="txtSerie" name="serie" required>
                 </div>
             </div>
 
             <div class="mb-2 col-6">
                 <label for="txtCorreo" class="col-sm-12 col-form-label">Código de TA:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtCodTa" name="txtCodTa" required>
+                    <input type="text" class="form-control" id="txtCodTa" name="codigoTA">
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
 
         <div class="mb-2">
             <label for="txtObservacion" class="form-label">Descripción:</label>
-            <textarea class="form-control" id="txtObservacion" rows="3" name="txtObservacion" required></textarea>
+            <textarea class="form-control" id="txtObservacion" rows="3" name="descripcion"></textarea>
         </div>
 
         <div class="col-auto">
@@ -47,20 +47,26 @@
         };
         $("#form-validation").validate({
             rules:{
-                txtSerie: {
+                serie: {
                     required: true
                 },
-                txtCodTa: {
+                codigoTA: {
                     required:true
+                },
+                descripcion:{
+                    required: true
                 }
             },
             messages:{
-                txtSerie: {
+                serie: {
                     required: "Ingrese el número de serie"
                 },
 
-                txtCodTa: {
+                codigoTA: {
                     required: "Ingrese el código de TA"
+                },
+                descripcion: {
+                    required: "Ingrese una descripción del equipo"
                 }
             }
         });

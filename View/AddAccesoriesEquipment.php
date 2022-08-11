@@ -1,4 +1,4 @@
-<form id="form" method="post" action="../uploadFile.php" enctype="multipart/form-data">
+<form id="accesories-form" method="post" action="" enctype="multipart/form-data">
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="add-equipment-header">
@@ -15,14 +15,14 @@
             <div class="mb-2 col-6">
                 <label for="txtSerie" class="col-sm-12 col-form-label">Número de serie:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtSerie" >
+                    <input type="text" class="form-control" id="txtSerie" name="serie">
                 </div>
             </div>
 
             <div class="mb-2 col-6">
                 <label for="txtSerieTA" class="col-sm-12 col-form-label">Número de serie TA:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtSerieTA"  >
+                    <input type="text" class="form-control" id="txtSerieTA" name="codigoTA" >
                 </div>
             </div>
 
@@ -32,7 +32,7 @@
         <div class="mb-2 row">
             <div class="mb-2 col-sm-6">
                 <label for="txtDescripcion" class="form-label">Descripción:</label>
-                <textarea class="form-control" id="txtDescripcion" rows="3"></textarea>
+                <textarea class="form-control" id="txtDescripcion" rows="3" name="descripcion"></textarea>
             </div>
         </div>
 
@@ -73,6 +73,32 @@
             category: '',
             id: ''
         };
+
+        //Validacion
+        $("#accesories-form").validate({
+            rules:{
+                serie:{
+                    required: true
+                },
+                codigoTA:{
+                    required: true,
+                },
+                descripcion:{
+                    required: true
+                }
+            },
+            messages:{
+                serie:{
+                    required: "Ingrese el número de serie!"
+                },
+                codigoTA:{
+                    required: "Ingrese el código!",
+                },
+                descripcion: {
+                    required: "Ingrese una descripción!"
+                }
+            }
+        });
 
         $('#btnRegresar').click(function () {
             msg.id = '<?=$GLOBALS['id']?>';
