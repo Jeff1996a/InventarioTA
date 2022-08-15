@@ -111,16 +111,16 @@
         </div>
 
         <div class="mb-2">
-            <label for="file" class="form-label">Adjuntos:</label>
-            <input class="form-control" type="file" id="file" name="adjuntos">
+            <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+            <input class="form-control" type="file" id="files" name="files[]" multiple>
         </div>
 
         <div class="col-auto">
-            <button id="btnInsertarEquipo" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
+            <button id="btnAgregarEquipo" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
         </div>
     </div>
 </form>
-
+<div id='preview'></div>
 <script type="text/javascript">
     $(document).ready(function () {
         const msg = {
@@ -128,7 +128,7 @@
         };
 
         //Validaciones
-        $("#addEquipmentForm").validate({
+        const validation = $("#addEquipmentForm").validate({
             rules:{
                 marca: {
                     required: true
@@ -210,7 +210,38 @@
             });
         });
 
+        $('#addEquipmentForm').on('submit',function(e){
+            const form_data = new FormData();
 
+            const files = document.getElementById('files');
 
+            const total_files = files.files.length;
+
+            for (var index = 0; index < total_files; index++) {
+                form_data.append("files[]", files.files[index]);
+            }
+
+            console.log(total_files);
+
+            // AJAX request
+            $.ajax({
+                url: 'Controller/EquipoController.php',
+                type: 'post',
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    for(var index = 0; index < response.length; index++) {
+                        var src = response[index];
+                        console.log(src);
+                        // Add img element in <div id='preview'>
+                        $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+                    }
+                }
+            });
+            e.preventDefault();
+
+        });
     })
 </script>

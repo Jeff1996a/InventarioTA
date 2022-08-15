@@ -134,14 +134,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
         $action = $_POST['action'];
         $data = json_decode($_POST['data']);
 
-        if($action == 'saveEquipment'){
-            include_once ('../Model/EquipmentModel.php');
-
-            $equipment = new EquipmentModel();
-
-        }
-
-        elseif($action == "filter"){
+        if($action == "filter"){
 
             include_once ('../Model/EquipmentModel.php');
 
@@ -205,7 +198,46 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             include_once ("../View/ListaEquipos.php");
         }
 
+    }
 
+    elseif(isset($_FILES['files']) ){
+        // Count total files
+        $countfiles = count($_FILES['files']['name']);
+
+        // Upload Location
+        $upload_location = "../Files/";
+
+        // To store uploaded files path
+        $files_arr = array();
+
+        // Loop all files
+        for($index = 0;$index < $countfiles;$index++){
+
+            if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
+                // File name
+                $filename = $_FILES['files']['name'][$index];
+
+                // Get extension
+                $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+                // Valid image extension
+                $valid_ext = array("png","jpeg","jpg");
+
+                // Check extension
+                if(in_array($ext, $valid_ext)){
+
+                    // File path
+                    $path = $upload_location.$filename;
+
+                    // Upload file
+                    if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
+                        $files_arr[] = $path;
+                    }
+                }
+            }
+        }
+        echo json_encode($files_arr);
+        die;
     }
 }
 
