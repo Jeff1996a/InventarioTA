@@ -1,4 +1,7 @@
 <?php
+
+use mysql_xdevapi\Result;
+
 $action = '';
 
 $data = '';
@@ -134,7 +137,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
         $action = $_POST['action'];
         $data = json_decode($_POST['data']);
 
-        if($action == "filter"){
+       if($action == "filter"){
 
             include_once ('../Model/EquipmentModel.php');
 
@@ -196,47 +199,80 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
                     break;
             }
             include_once ("../View/ListaEquipos.php");
-        }
+       }
 
     }
+    elseif(isset($_POST)){
 
-    elseif(isset($_FILES['files']) ){
-        // Count total files
-        $countfiles = count($_FILES['files']['name']);
+        include_once ('../Model/EquipmentModel.php');
 
-        // Upload Location
-        $upload_location = "../Files/";
+        $equipment = new EquipmentModel();
 
-        // To store uploaded files path
-        $files_arr = array();
+        $equipment->marca = $_POST['marca'];
+        $equipment->modelo = $_POST['modelo'];
+        $equipment->descripcion = $_POST['descripcion'];
+        $equipment->codigo_ta = $_POST['codigoTA'];
+        $equipment->num_serie = $_POST['serie'];
+        $equipment->fecha_inst = $_POST['fechaInst'];
+        $equipment->proveedor = $_POST['proveedor'];
+        $equipment->id_estado = $_POST['estado'];
+        $equipment->id_tipo_equi = $_POST['tipoEquipo'];
+        $equipment->responsable = $_POST['responsable'];
+        $equipment->departamento = $_POST['departamento'];
+        $equipment->disponibilidad = $_POST['disponibilidad'];
+        $equipment->observacion = $_POST['observacion'];
 
-        // Loop all files
-        for($index = 0;$index < $countfiles;$index++){
+        if(isset($_FILES['files'])){
+            // Count total files
+            $countfiles = count($_FILES['files']['name']);
 
-            if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
-                // File name
-                $filename = $_FILES['files']['name'][$index];
+            // Upload Location
+            $upload_location = "../Files/";
 
-                // Get extension
-                $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+            // To store uploaded files path
+            $equipment->file_array = array();
 
-                // Valid image extension
-                $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
+            $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+            $equipment->result = $row["resultado"];
 
-                // Check extension
-                if(in_array($ext, $valid_ext)){
+            // Loop all files
+            for($index = 0;$index < $countfiles;$index++){
 
-                    // File path
-                    $path = $upload_location.$filename;
+                if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
+                    // File name
+                    $filename = $_FILES['files']['name'][$index];
 
-                    // Upload file
-                    if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
-                        $files_arr[] = $path;
+                    // Get extension
+                    $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+                    // Valid image extension
+                    $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
+
+                    // Check extension
+                    if(in_array($ext, $valid_ext)){
+
+                        // File path
+                        $path = $upload_location.$filename;
+
+                        // Upload file
+                        if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
+                            $equipment->file_array[] = $path;
+                        }
                     }
                 }
             }
+            echo json_encode($equipment);
+            die;
         }
-        echo json_encode($files_arr);
+
+        else{
+            $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+
+            $equipment->result = $row["resultado"];
+        }
+
+        echo json_encode($equipment);
+
         die;
     }
 }
@@ -267,6 +303,6 @@ function validateFilter($filterType, $resultado, $filter, $category){
     if($filterType == 'empty'){
         $busqueda = $resultado->GetEquimentByType($category);
     }
-    
+
     return $busqueda;
 }

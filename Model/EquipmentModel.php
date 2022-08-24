@@ -11,12 +11,13 @@ class EquipmentModel
     public $fecha_inst;
     public $proveedor;
     public $responsable;
-    public $ubicacion;
+    public $departamento;
     public $id_estado;
     public $id_tipo_equi;
     public $disponibilidad;
     public $observacion;
-
+    public $result;
+    public $file_array;
 
     private $dbConn;
     private $equipment_list;
@@ -27,29 +28,48 @@ class EquipmentModel
         mysqli_set_charset($this->dbConn, CHARSET);
     }
 
-    function createEquipment($obj){
+
+    function CrearEquipo($obj){
         mysqli_query($this->dbConn ,"SET @Marca='".$obj->marca."'");
         mysqli_query($this->dbConn ,"SET @Modelo='".$obj->modelo."'");
         mysqli_query($this->dbConn ,"SET @Descripcion='".$obj->descripcion."'");
-        mysqli_query($this->dbConn ,"SET @Codigo_ta='".$obj->codigo_ta."'");
-        mysqli_query($this->dbConn ,"SET @Num_serie='".$obj->num_serie."'");
-        mysqli_query($this->dbConn ,"SET @Fecha_inst='".$obj->fecha_inst."'");
+        mysqli_query($this->dbConn ,"SET @SerieTa='".$obj->codigo_ta."'");
+        mysqli_query($this->dbConn ,"SET @Serie='".$obj->num_serie."'");
+        mysqli_query($this->dbConn ,"SET @Fecha='".$obj->fecha_inst."'");
         mysqli_query($this->dbConn ,"SET @Proveedor='".$obj->proveedor."'");
-        mysqli_query($this->dbConn ,"SET @Responsable='".$obj->responsable."'");
-        mysqli_query($this->dbConn ,"SET @Ubicacion='".$obj->ubicacion."'");
         mysqli_query($this->dbConn ,"SET @Id_estado='".$obj->id_estado."'");
         mysqli_query($this->dbConn ,"SET @Id_tipo_equi='".$obj->id_tipo_equi."'");
+        mysqli_query($this->dbConn ,"SET @Responsable='".$obj->responsable."'");
+        mysqli_query($this->dbConn ,"SET @Departamento='".$obj->departamento."'");
         mysqli_query($this->dbConn ,"SET @Disponibilidad='".$obj->disponibilidad."'");
         mysqli_query($this->dbConn ,"SET @Observacion='".$obj->observacion."'");
 
 
-        mysqli_multi_query ($this->dbConn, "CALL uspCrearEquipo(@Marca,@Modelo,@Descripcion,@Codigo_ta,@Num_serie,@Fecha_inst,@Proveedor,@Id_estado,@Id_tipo_equi, @Id_responsable, @Id_departamento, @Disponibilidad,@Observacion)") OR DIE (mysqli_error($this->dbConn));
+        mysqli_multi_query ($this->dbConn, "CALL uspCrearEquipo(@Marca, @Modelo, @Descripcion, @SerieTa, @Serie,
+                            @Fecha,@Proveedor,@Id_estado,@Id_tipo_equi, @Responsable, @Departamento, @Disponibilidad, @Observacion)")
+            OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
 
-            if ($this->equipment_list = mysqli_store_result($this->dbConn)) {
+            if ($result= mysqli_store_result($this->dbConn)) {
 
-                return $this->equipment_list;
+                return $result;
+            }
+        }
+    }
+
+    //Funcion para guardar los adjuntos del archivo
+    function GuardarAdjunto($path, $id){
+        mysqli_query($this->dbConn ,"SET @Path='".$path."'");
+        mysqli_query($this->dbConn ,"SET @Id_equipo='".$id."'");
+
+        mysqli_multi_query ($this->dbConn, "CALL uspInsertarAdjEquipo(@Path, @Id_equipo)") OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result= mysqli_store_result($this->dbConn)) {
+
+                return $result;
             }
         }
     }

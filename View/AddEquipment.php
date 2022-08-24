@@ -69,7 +69,7 @@
             <div class="mb-2 col">
                 <label for="txtUbicacion" class="col-sm-2 col-form-label">Departamento:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="txtUbicacion" name="ubicacion">
+                    <input type="text" class="form-control" id="txtDepartamento" name="ubicacion">
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
         <div class="mb-2 row">
             <div class="mb-2 col">
                 <label for="cbEstado">Estado:</label>
-                <select class="form-select btn-outline-success" aria-label="Default select example" name="estado">
+                <select class="form-select btn-outline-success" aria-label="Default select example" id="cbEstado" name="estado">
                     <option selected>Seleccione un estado</option>
                     <option value="1">Bueno</option>
                     <option value="2">Defectuoso</option>
@@ -87,7 +87,7 @@
 
             <div class="mb-2 col">
                 <label for="cbTipoEquipo">Tipo de Equipo:</label>
-                <select class="form-select btn-outline-success" aria-label="Default select example" name="tipoEquipo">
+                <select class="form-select btn-outline-success" aria-label="Default select example" id="cbTipoEquipo" name="tipoEquipo">
                     <option selected>Seleccione una categoría</option>
                     <option value="1">Accesorio</option>
                     <option value="2">Audio</option>
@@ -211,7 +211,42 @@
         });
 
         $('#addEquipmentForm').on('submit',function(e){
+
+            e.preventDefault();
+
+            const marca = $('#txtMarca').val();
+            const modelo = $('#txtModelo').val();
+            const descripcion = $('#txtDescripcion').val();
+            const serieTA = $('#txtSerieTa').val();
+            const serie = $('#txtSerie').val();
+            const fecha = $('#dpFechaInst').val();
+            const proveedor = $('#txtProveedor').val();
+            const estado = $('#cbEstado').val();
+            const tipoEquipo = $('#cbTipoEquipo').val();
+            const responsable = $('#txtResponsable').val();
+            const departamento = $('#txtDepartamento').val();
+            const observacion = $('#txtObservacion').val();
+
             const form_data = new FormData();
+
+            form_data.append('marca', marca);
+            form_data.append('modelo', modelo);
+            form_data.append('descripcion', descripcion);
+            form_data.append('codigoTA', serieTA);
+            form_data.append('serie', serie);
+            form_data.append('fechaInst', fecha);
+            form_data.append('proveedor', proveedor);
+            form_data.append('estado', estado);
+            form_data.append('tipoEquipo', tipoEquipo);
+            form_data.append('responsable', responsable);
+            form_data.append('departamento', departamento);
+            form_data.append('disponibilidad', 'si');
+            form_data.append('observacion', observacion);
+
+            //Mostrar los datos del formulario mediante clave/valor
+            for(let [name, value] of form_data) {
+                console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2
+            }
 
             const files = document.getElementById('files');
 
@@ -221,9 +256,41 @@
                 form_data.append("files[]", files.files[index]);
             }
 
-            console.log(total_files);
-
             // AJAX request
+            $.ajax({
+                url: 'Controller/EquipoController.php',
+                type: 'POST',
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    for(var index = 0; index < response.file_array.length; index++) {
+                        var src = response.file_array[index];
+                        console.log(src);
+                        // Add img element in <div id='preview'>
+                        $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+                    }
+                   console.log(response);
+                }
+            });
+
+
+
+            /*AJAX request
+
+            const files = document.getElementById('files');
+
+            const total_files = files.files.length;
+
+            for (var index = 0; index < total_files; index++) {
+                form_data.append("files[]", files.files[index]);
+            }
+
+            ;
+            console.log(total_files);
+            console.log($('#cbTipoEquipo').val());
+            console.log($('#cbEstado').val())
             $.ajax({
                 url: 'Controller/EquipoController.php',
                 type: 'post',
@@ -232,16 +299,11 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-                    for(var index = 0; index < response.length; index++) {
-                        var src = response[index];
-                        console.log(src);
-                        // Add img element in <div id='preview'>
-                        $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
-                    }
+
                 }
             });
-            e.preventDefault();
 
+            */
         });
     })
 </script>
