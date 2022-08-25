@@ -58,12 +58,11 @@ class EquipmentModel
         }
     }
 
-    //Funcion para guardar los adjuntos del archivo
-    function GuardarAdjunto($path, $id){
-        mysqli_query($this->dbConn ,"SET @Path='".$path."'");
-        mysqli_query($this->dbConn ,"SET @Id_equipo='".$id."'");
-
-        mysqli_multi_query ($this->dbConn, "CALL uspInsertarAdjEquipo(@Path, @Id_equipo)") OR DIE (mysqli_error($this->dbConn));
+    function GuardarArchivo($path, $id){
+        mysqli_query($this->dbConn,"SET @Path='".$path."'" );
+        mysqli_query($this->dbConn,"SET @Id_equipo='".$id."'" );
+        mysqli_multi_query ($this->dbConn, "CALL uspInsertarAdjEquipo(@Path, @Id_equipo)")
+        OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
 
@@ -72,7 +71,9 @@ class EquipmentModel
                 return $result;
             }
         }
+
     }
+
 
     function GetEquipmentList(){
         mysqli_multi_query ($this->dbConn, "CALL uspVistaListaEquipos") OR DIE (mysqli_error($this->dbConn));

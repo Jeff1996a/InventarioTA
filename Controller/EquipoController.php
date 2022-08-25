@@ -257,6 +257,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
                         // Upload file
                         if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
                             $equipment->file_array[] = $path;
+
                         }
                     }
                 }
