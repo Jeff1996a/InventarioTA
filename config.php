@@ -11,6 +11,9 @@
 	define('DB_DATABASE_NAME', substr($cleardb_url["path"],1));
 	define('DB_CHARSET', 'UTF8');
 
+	$active_group = 'default';
+	$query_builder = TRUE;
+
 	/**
  	* Constantes de nombres de archivos
  	*/
