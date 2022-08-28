@@ -5,14 +5,11 @@
  	*/
 	$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-	define('DB_HOST', $cleardb_url["host"]);
-	define('DB_USER', $cleardb_url["user"]);
-	define('DB_PASSWORD', $cleardb_url["pass"]);
-	define('DB_DATABASE_NAME', substr($cleardb_url["path"],1));
+	define('DB_HOST', 'us-cdbr-east-06.cleardb.net');
+	define('DB_USER', 'b6d703c41b07c3');
+	define('DB_PASSWORD', '5d4c55e4');
+	define('DB_DATABASE_NAME', 'heroku_e4baa52f58ccb53');
 	define('DB_CHARSET', 'UTF8');
-
-	$active_group = 'default';
-	$query_builder = TRUE;
 
 	/**
  	* Constantes de nombres de archivos
