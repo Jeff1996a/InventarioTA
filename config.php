@@ -3,11 +3,12 @@
 	/**
  	* Constantes para la base de datos
  	*/
+	$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-	define('DB_HOST', '127.0.0.1');
-	define('DB_USER', 'root');
-	define('DB_PASSWORD', 'Ne-admin');
-	define('DB_DATABASE_NAME', 'dbTaller');
+	define('DB_HOST', $cleardb_url["host"]);
+	define('DB_USER', $cleardb_url["user"]);
+	define('DB_PASSWORD', $cleardb_url["pass"]);
+	define('DB_DATABASE_NAME', substr($cleardb_url["path"],1));
 	define('DB_CHARSET', 'UTF8');
 
 	/**
