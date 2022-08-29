@@ -227,6 +227,8 @@
             const departamento = $('#txtDepartamento').val();
             const observacion = $('#txtObservacion').val();
 
+            const category = $('#cbEstado option:selected').val();
+
             const form_data = new FormData();
 
             form_data.append('marca', marca);
@@ -276,7 +278,7 @@
                    console.log(response);
                    if(response.result != 0){
                         alert("Registro exitoso!!");
-                        msg.category = '<?=$GLOBALS['category']?>';
+                        msg.category = category;
 
                         $.ajax({
                             type:'GET',
