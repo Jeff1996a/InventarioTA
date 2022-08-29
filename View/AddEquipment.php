@@ -89,11 +89,12 @@
                 <label for="cbTipoEquipo">Tipo de Equipo:</label>
                 <select class="form-select btn-outline-success" aria-label="Default select example" id="cbTipoEquipo" name="tipoEquipo">
                     <option selected>Seleccione una categoría</option>
-                    <option value="1">Accesorio</option>
-                    <option value="2">Audio</option>
-                    <option value="3">Cables</option>
-                    <option value="4">Edición</option>
-                    <option value="5">Video</option>
+                    <option value="1">Audio</option>
+                    <option value="2">Cables</option>
+                    <option value="3">Edición</option>
+                    <option value="4">Video</option>
+                    <option value="5">Red</option>
+                    <option value="5">Eléctrico</option>
                 </select>
             </div>
         </div>
@@ -226,6 +227,27 @@
             const responsable = $('#txtResponsable').val();
             const departamento = $('#txtDepartamento').val();
             const observacion = $('#txtObservacion').val();
+
+            switch(tipoEquipo){
+                case 1:
+                    const category = 'audio';
+                    break;
+                case 2:
+                    const category = 'cables';
+                    break;
+                case 3:
+                    const category = 'edicion';
+                    break;
+                case 4:
+                    const category = 'video';
+                    break;
+                case 5:
+                    const category = 'red';
+                    break;
+                case 6:
+                    const category = 'electrico';
+                    break;
+            }
 
             const category = $('#cbEstado option:selected').val();
 
