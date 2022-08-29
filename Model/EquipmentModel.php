@@ -205,7 +205,7 @@ class EquipmentModel
         mysqli_query($this->dbConn ,"SET @sol='".$obj->solucion."'");
         mysqli_query($this->dbConn ,"SET @obs='".$obj->observacion."'");
         mysqli_query($this->dbConn ,"SET @rep='".$obj->repuesto."'");
-        mysqli_query($this->dbConn ,"SET @disp='".$obj->disponbibilidad."'");
+        mysqli_query($this->dbConn ,"SET @disp='".$obj->disponibibilidad."'");
         mysqli_query($this->dbConn ,"SET @tec='".$obj->tecnico."'");
         mysqli_query($this->dbConn ,"SET @correo='".$obj->correo."'");
 
