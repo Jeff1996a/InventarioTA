@@ -130,13 +130,10 @@ die;
             msg.category = 'audio';
             $.ajax({
                 type:'GET',
-                url: 'https://taller-ta.herokuapp.com/Controller/EquipoController.php',
+                url: 'Controller/EquipoController.php',
                 data: {data: JSON.stringify(msg), action:'listarEquipos'},
                 success: function(response){
                     $('#content').html(response);
-                },
-                error: function(xhr){
-                    console.log(xhr);
                 }
             })
         });
@@ -145,7 +142,7 @@ die;
             msg.category = 'cables';
             $.ajax({
                 type:'GET',
-                url: 'https://taller-ta.herokuapp.com/Controller/EquipoController.php',
+                url: 'Controller/EquipoController.php',
                 data: {data: JSON.stringify(msg), action:'listarEquipos'},
                 success: function(response){
                     $('#content').html(response);

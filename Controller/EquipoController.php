@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
         if($action == 'listarEquipos'){
 
-            include_once('https://taller-ta.herokuapp.com/app/Model/EquipmentModel.php');
+            include_once('../Model/EquipmentModel.php');
 
             $equipment =  new EquipmentModel();
 
