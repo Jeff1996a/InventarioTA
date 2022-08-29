@@ -247,6 +247,8 @@
                 case 6:
                     const category = 'electrico';
                     break;
+                default:
+                    break;
             }
 
             const category = $('#cbEstado option:selected').val();
