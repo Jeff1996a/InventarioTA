@@ -231,7 +231,7 @@
             form_data.append('solucion', solucion);
             form_data.append('observacion', observacion);
             form_data.append('disponibilidad', disp);
-            form_data.append('repuesto', respuesto);
+            form_data.append('repuesto', repuesto);
             form_data.append('category', categoria);
             form_data.append('action', 'addHistory');
             //Mostrar los datos del formulario mediante clave/valor
