@@ -36,7 +36,7 @@ die;
         </div>
 
         <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-light text-white " style="background-color: #005aa9;">
+        <nav class="navbar navbar-expand-sm navbar-light text-white " style="background-color: #005aa9;">
             <a class="navbar-brand"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
