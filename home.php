@@ -130,7 +130,7 @@ die;
             msg.category = 'audio';
             $.ajax({
                 type:'GET',
-                url: 'Controller/EquipoController.php',
+                url: 'https://taller-ta.herokuapp.com/Controller/EquipoController.php',
                 data: {data: JSON.stringify(msg), action:'listarEquipos'},
                 success: function(response){
                     $('#content').html(response);
@@ -142,7 +142,7 @@ die;
             msg.category = 'cables';
             $.ajax({
                 type:'GET',
-                url: 'Controller/EquipoController.php',
+                url: 'https://taller-ta.herokuapp.com/Controller/EquipoController.php',
                 data: {data: JSON.stringify(msg), action:'listarEquipos'},
                 success: function(response){
                     $('#content').html(response);
