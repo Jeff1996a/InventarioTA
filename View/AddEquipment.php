@@ -274,7 +274,11 @@
                     }*/
                    console.log(response);
                    if(response.result != 0){
-                        console.log("Registro exitoso!!");
+                        alert("Registro exitoso!!");
+                   }
+
+                   else{
+                        alert("El equipo ya se encuentra registrado");
                    }
                 }
             });
