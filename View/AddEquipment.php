@@ -276,7 +276,17 @@
                    console.log(response);
                    if(response.result != 0){
                         alert("Registro exitoso!!");
-                   }
+                        msg.category = '<?=$GLOBALS['category']?>';
+
+                        $.ajax({
+                            type:'GET',
+                            url: 'Controller/EquipoController.php',
+                            data: {data: JSON.stringify(msg), action:'listarEquipos'},
+                            success: function(response){
+                                $('#content').html(response);
+                            }
+                        });
+                    }
 
                    else{
                         alert("El equipo ya se encuentra registrado");
