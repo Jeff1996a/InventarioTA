@@ -196,7 +196,7 @@
             const tecnico = $('#txtTecnico').val();
             const correo = $('#txtCorreo').val();
             const fecha_ingreso = $('#dpIngreso').val();
-            const fecha_ult_mant = $('#dpUltMan').val();
+            const fecha_ult_mant = $('#dpUltMant').val();
             const problema = $('#txtProblema').val();
             const solucion = $('#txtSolucion').val();
             const observacion = $('#txtObservacion').val();
