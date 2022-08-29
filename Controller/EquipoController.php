@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
                     break;
             }
 
-            include_once ("https://taller-ta.herokuapp.com/View/ListaEquipos.php");
+            include_once ("../View/ListaEquipos.php");
         }
 
         elseif ($action == 'viewAddEquipment'){
@@ -89,7 +89,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $num_filas = mysqli_num_rows($equipmentList);
 
-            include_once ('https://taller-ta.herokuapp.com/View/Historial_mantenimiento.php');
+            include_once ('../View/Historial_mantenimiento.php');
         }
 
         elseif($action == 'viewAddHistory'){
@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
         elseif($action == "viewAccesories"){
 
-            include_once('https://taller-ta.herokuapp.com/Model/EquipmentModel.php');
+            include_once('../Model/EquipmentModel.php');
 
             $equipment =  new EquipmentModel();
 
@@ -126,7 +126,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $category = $data->{'category'};
 
-            include_once ('https://taller-ta.herokuapp.com/View/AddAccesoriesEquipment.php');
+            include_once ('../View/AddAccesoriesEquipment.php');
         }
     }
 }
