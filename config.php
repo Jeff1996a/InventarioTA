@@ -10,7 +10,7 @@
 	define('DB_PASSWORD', $url["pass"]);
 	define('DB_DATABASE_NAME', substr($url["path"],1));
 	define('DB_CHARSET', 'UTF8');
-
+	
 	/**
  	* Constantes de nombres de archivos
  	*/

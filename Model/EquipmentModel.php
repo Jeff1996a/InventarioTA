@@ -1,5 +1,5 @@
 <?php
-include 'DBConnection.php';
+include 'config.php';
 
 class EquipmentModel
 {
@@ -24,7 +24,7 @@ class EquipmentModel
 
     function __construct(){
         $this-> equipment_list = array();
-        $this-> dbConn =  mysqli_connect(HOST, USER, PASSWORD, DATABASE_NAME);
+        $this-> dbConn =  mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE_NAME);
         mysqli_set_charset($this->dbConn, CHARSET);
     }
 
