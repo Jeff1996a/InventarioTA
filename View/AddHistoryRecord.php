@@ -239,13 +239,14 @@
                 console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2
             }
 
+            /*
             const files = document.getElementById('files');
 
             const total_files = files.files.length;
 
             for (var index = 0; index < total_files; index++) {
                 form_data.append("files[]", files.files[index]);
-            }
+            }*/
 
             // AJAX request
             $.ajax({
