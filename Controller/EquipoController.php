@@ -346,7 +346,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             else{
                 $row = mysqli_fetch_assoc($equipment->AddHistoryRecord($history));
 
-                $equipment->result = $row["resultado"];
+                $history->result = $row["resultado"];
             }
 
             echo json_encode($history);

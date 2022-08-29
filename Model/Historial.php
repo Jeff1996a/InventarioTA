@@ -14,6 +14,7 @@ class Historial
     public $observacion;
     public $disponibilidad;
     public $repuesto;
+    public $result;
 
 
     function __construct()
