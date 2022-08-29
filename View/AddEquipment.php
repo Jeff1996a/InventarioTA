@@ -242,6 +242,7 @@
             form_data.append('departamento', departamento);
             form_data.append('disponibilidad', 'si');
             form_data.append('observacion', observacion);
+            form_data.append('action', 'addEquipo');
 
             //Mostrar los datos del formulario mediante clave/valor
             for(let [name, value] of form_data) {

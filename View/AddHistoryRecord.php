@@ -15,7 +15,7 @@
             <div class="mb-2 col-6">
                 <label for="txtTecnico" class="col-sm-12 col-form-label">Técnico responsable:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="tecnico" name="tecnico" >
+                    <input type="text" class="form-control" id="txtTecnico" name="tecnico" >
                 </div>
             </div>
 
@@ -182,6 +182,95 @@
                 data: {data:JSON.stringify(msg), action:'viewHistory'},
                 success: function(response){
                     $('#content').html(response);
+                }
+            });
+        });
+
+        $('#form-history').on('submit',function(e){
+
+            e.preventDefault();
+
+            const id_equipo = '<?=$GLOBALS['id']?>';
+            const categoria = '<?=$GLOBALS['category']?>';
+            
+            const marca = $('#txtTecnico').val();
+            const modelo = $('#txtCorreo').val();
+            const fecha_ingreso = $('#dpIngreso').val();
+            const fecha_ult_mant = $('#dpUltMan').val();
+            const problema = $('#txtProblema').val();
+            const solucion = $('#txtSolucion').val();
+            const observacion = $('#txtObservacion').val();
+
+            const disp = '';
+            const repuesto = '';
+
+            if($('#rbDispSi').is(':checked')){
+                disp = 'Si';
+            }
+            
+            if($('#rbDispNo').is(':checked')){
+                disp = 'No';
+            }
+
+            if($('#rbRepSi').is(':checked')){
+                repuesto = 'Si';
+            }
+            
+            if($('#rbRepNo').is(':checked')){
+                repuesto = 'No';
+            }
+
+            const form_data = new FormData();
+
+            form_data.append('id_equipo', id_equipo);
+            form_data.append('tecnico', tecnico);
+            form_data.append('correo', correo);
+            form_data.append('ingreso', fecha_ingreso);
+            form_data.append('ultMant', fecha_ult_mant);
+            form_data.append('problema', problema);
+            form_data.append('solucion', solucion);
+            form_data.append('observacion', observacion);
+            form_data.append('disponibilidad', disp);
+            form_data.append('repuesto', respuesto);
+            form_data.append('category', categoria);
+            form_data.append('action', 'addHistory');
+            //Mostrar los datos del formulario mediante clave/valor
+            for(let [name, value] of form_data) {
+                console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2
+            }
+
+            const files = document.getElementById('files');
+
+            const total_files = files.files.length;
+
+            for (var index = 0; index < total_files; index++) {
+                form_data.append("files[]", files.files[index]);
+            }
+
+            // AJAX request
+            $.ajax({
+                url: 'Controller/EquipoController.php',
+                type: 'POST',
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    /*
+                    for(var index = 0; index < response.file_array.length; index++) {
+                        var src = response.file_array[index];
+                        console.log(src);
+                        // Add img element in <div id='preview'>
+                        $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+                    }*/
+                console.log(response);
+                if(response.result != 0){
+                        alert("Registro exitoso!!");
+                }
+
+                else{
+                        alert("El equipo ya se encuentra registrado");
+                }
                 }
             });
         });

@@ -208,73 +208,153 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $equipment = new EquipmentModel();
 
-        $equipment->marca = $_POST['marca'];
-        $equipment->modelo = $_POST['modelo'];
-        $equipment->descripcion = $_POST['descripcion'];
-        $equipment->codigo_ta = $_POST['codigoTA'];
-        $equipment->num_serie = $_POST['serie'];
-        $equipment->fecha_inst = $_POST['fechaInst'];
-        $equipment->proveedor = $_POST['proveedor'];
-        $equipment->id_estado = $_POST['estado'];
-        $equipment->id_tipo_equi = $_POST['tipoEquipo'];
-        $equipment->responsable = $_POST['responsable'];
-        $equipment->departamento = $_POST['departamento'];
-        $equipment->disponibilidad = $_POST['disponibilidad'];
-        $equipment->observacion = $_POST['observacion'];
+        if($_POST['action'] == 'addEquipo' ){
+            $equipment->marca = $_POST['marca'];
+            $equipment->modelo = $_POST['modelo'];
+            $equipment->descripcion = $_POST['descripcion'];
+            $equipment->codigo_ta = $_POST['codigoTA'];
+            $equipment->num_serie = $_POST['serie'];
+            $equipment->fecha_inst = $_POST['fechaInst'];
+            $equipment->proveedor = $_POST['proveedor'];
+            $equipment->id_estado = $_POST['estado'];
+            $equipment->id_tipo_equi = $_POST['tipoEquipo'];
+            $equipment->responsable = $_POST['responsable'];
+            $equipment->departamento = $_POST['departamento'];
+            $equipment->disponibilidad = $_POST['disponibilidad'];
+            $equipment->observacion = $_POST['observacion'];
 
-        if(isset($_FILES['files'])){
-            // Count total files
-            $countfiles = count($_FILES['files']['name']);
+            if(isset($_FILES['files'])){
+                // Count total files
+                $countfiles = count($_FILES['files']['name']);
 
-            // Upload Location
-            $upload_location = "../Files/";
+                // Upload Location
+                $upload_location = "../Files/";
 
-            // To store uploaded files path
-            $equipment->file_array = array();
+                // To store uploaded files path
+                $equipment->file_array = array();
 
-            $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
-            $equipment->result = $row["resultado"];
+                $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+                $equipment->result = $row["resultado"];
 
-            // Loop all files
-            for($index = 0;$index < $countfiles;$index++){
+                // Loop all files
+                for($index = 0;$index < $countfiles;$index++){
 
-                if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
-                    // File name
-                    $filename = $_FILES['files']['name'][$index];
+                    if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
+                        // File name
+                        $filename = $_FILES['files']['name'][$index];
 
-                    // Get extension
-                    $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+                        // Get extension
+                        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
-                    // Valid image extension
-                    $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
+                        // Valid image extension
+                        $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
 
-                    // Check extension
-                    if(in_array($ext, $valid_ext)){
+                        // Check extension
+                        if(in_array($ext, $valid_ext)){
 
-                        // File path
-                        $path = $upload_location.$filename;
+                            // File path
+                            $path = $upload_location.$filename;
 
-                        // Upload file
-                        if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
-                            $equipment->file_array[] = $path;
+                            // Upload file
+                            if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
+                                $equipment->file_array[] = $path;
 
+                            }
                         }
                     }
                 }
+                echo json_encode($equipment);
+                die;
             }
+
+            else{
+                $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+
+                $equipment->result = $row["resultado"];
+            }
+
             echo json_encode($equipment);
+
             die;
         }
 
-        else{
-            $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+        elseif($_POST['action'] == 'addHistory'){
 
-            $equipment->result = $row["resultado"];
+            include_once ('../Model/Historial.php');
+            include_once ('../Model/EquipmentModel.php');
+
+            //Crear el objeto historial 
+            $history = new Historial();
+            $equipment = new EquipmentModel();
+
+            $history->tecnico = $_POST['tecnico'];
+            $history->correo = $_POST['correo'];
+            $history->ingreso = $_POST['ingreso'];
+            $history->ultMant = $_POST['ultMant'];
+            $history->problema = $_POST['problema'];
+            $history->solucion = $_POST['solucion'];
+            $history->observacion = $_POST['observacion'];
+            $history->disponibilidad = $_POST['disponibilidad'];
+            $history->repuesto = $_POST['repuesto'];
+            $history->id_equipo = $_POST['id_equipo'];
+  
+
+            if(isset($_FILES['files'])){
+                // Count total files
+                $countfiles = count($_FILES['files']['name']);
+
+                // Upload Location
+                $upload_location = "../Files/";
+
+                // To store uploaded files path
+                $equipment->file_array = array();
+
+                $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+                $equipment->result = $row["resultado"];
+
+                // Loop all files
+                for($index = 0;$index < $countfiles;$index++){
+
+                    if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
+                        // File name
+                        $filename = $_FILES['files']['name'][$index];
+
+                        // Get extension
+                        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+                        // Valid image extension
+                        $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
+
+                        // Check extension
+                        if(in_array($ext, $valid_ext)){
+
+                            // File path
+                            $path = $upload_location.$filename;
+
+                            // Upload file
+                            if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
+                                $equipment->file_array[] = $path;
+
+                            }
+                        }
+                    }
+                }
+                echo json_encode($equipment);
+                die;
+            }
+
+            else{
+                $row = mysqli_fetch_assoc($equipment->AddHistoryRecord($history));
+
+                $equipment->result = $row["resultado"];
+            }
+
+            echo json_encode($history);
+
+            die;
         }
 
-        echo json_encode($equipment);
-
-        die;
+        
     }
 }
 
