@@ -1,10 +1,10 @@
 <div class="container-fluid">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-11">
+            <div class="col-sm-11">
                 <h1><?=$GLOBALS['title']?></h1>
             </div>
-            <div class="col-lg-1" role="button" id="btnAddEquipment">
+            <div class="col-sm-1" role="button" id="btnAddEquipment">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#ff9000" class="bi bi-plus-circle-fill float-end" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                 </svg>
@@ -16,29 +16,29 @@
     <div class="container-fluid">
         <h3>Buscar por:</h3>
 
-        <div class="row g-3 form-inline d-flex align-items-center justify-content-between">
+        <div class="row  form-inline d-flex align-items-center justify-content-between">
 
-            <div class="col-auto">
+            <div class="col-sm-auto">
                 <label for="txtEquipo">Equipo:</label>
                 <input type="text" class="form-control" id="txtEquipo" placeholder="Ejm: CÁMARA" style="text-transform:uppercase">
             </div>
 
-            <div class="col-auto">
+            <div class="col-sm-auto">
                 <label for="txtMarca">Marca:</label>
                 <input type="text" class="form-control" id="txtMarca" placeholder="Ejm: DELL" style="text-transform:uppercase">
             </div>
 
-            <div class="col-auto">
+            <div class="col-sm-auto">
                 <label for="txtFiltroSerie">Número de serie:</label>
                 <input type="text" class="form-control" id="txtFiltroSerie" placeholder="Ejm: 222214AA" style="text-transform:uppercase">
             </div>
 
-            <div class="col-auto">
+            <div class="col-sm-auto">
                 <label for="txtDepartamento">Departamento:</label>
                 <input type="text" class="form-control" id="txtDepartamento" placeholder="Ejm: PRODUCCIÓN" style="text-transform:uppercase">
             </div>
 
-            <div class="col-auto">
+            <div class="col-sm-auto">
                 <label for="cbEstado">Estado:</label>
                 <select id="cbEstado" class="form-select btn-outline-success" aria-label="Default select example" >
                     <option selected>Seleccione un estado</option>
@@ -49,7 +49,7 @@
                 </select>
             </div>
 
-            <div class="col-auto">
+            <div class="col-sm-auto">
                 <button type="submit" id="btnBuscar" class="btn btn-outline-success" style="margin-top: 25px;" >Buscar</button>
             </div>
         </div>
