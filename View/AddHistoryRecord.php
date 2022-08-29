@@ -192,7 +192,7 @@
 
             const id_equipo = '<?=$GLOBALS['id']?>';
             const categoria = '<?=$GLOBALS['category']?>';
-            
+
             const marca = $('#txtTecnico').val();
             const modelo = $('#txtCorreo').val();
             const fecha_ingreso = $('#dpIngreso').val();
@@ -201,8 +201,8 @@
             const solucion = $('#txtSolucion').val();
             const observacion = $('#txtObservacion').val();
 
-            const disp = '';
-            const repuesto = '';
+            var disp = '';
+            var repuesto = '';
 
             if($('#rbDispSi').is(':checked')){
                 disp = 'Si';
