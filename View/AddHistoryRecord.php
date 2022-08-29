@@ -193,7 +193,7 @@
             const id_equipo = '<?=$GLOBALS['id']?>';
             const categoria = '<?=$GLOBALS['category']?>';
 
-            const tenico = $('#txtTecnico').val();
+            const tecnico = $('#txtTecnico').val();
             const correo = $('#txtCorreo').val();
             const fecha_ingreso = $('#dpIngreso').val();
             const fecha_ult_mant = $('#dpUltMan').val();
