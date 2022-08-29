@@ -279,6 +279,7 @@
                    if(response.result != 0){
                         alert("Registro exitoso!!");
                         msg.category = category;
+                        console.log('category');
 
                         $.ajax({
                             type:'GET',
