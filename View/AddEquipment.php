@@ -249,9 +249,7 @@
                     break;
                 default:
                     break;
-            }
-
-            const category = $('#cbEstado option:selected').val();
+            };
 
             const form_data = new FormData();
 
