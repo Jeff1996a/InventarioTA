@@ -25,7 +25,7 @@ class EquipmentModel
     function __construct(){
         $this-> equipment_list = array();
         $this-> dbConn =  mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE_NAME);
-        mysqli_set_charset($this->dbConn, CHARSET);
+        mysqli_set_charset($this->dbConn, DB_CHARSET);
     }
 
 
