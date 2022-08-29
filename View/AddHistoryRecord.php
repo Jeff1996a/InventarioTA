@@ -265,8 +265,20 @@
                         $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
                     }*/
                 console.log(response);
+                
                 if(response.result != 0){
                         alert("Registro exitoso!!");
+                        msg.id = '<?=$GLOBALS['id']?>';
+                        msg.category = '<?=$GLOBALS['category']?>';
+
+                        $.ajax({
+                            type:'GET',
+                            url: 'Controller/EquipoController.php',
+                            data: {data:JSON.stringify(msg), action:'viewHistory'},
+                            success: function(response){
+                                $('#content').html(response);
+                            }
+                        });
                 }
 
                 else{
