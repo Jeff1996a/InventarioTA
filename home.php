@@ -134,6 +134,9 @@ die;
                 data: {data: JSON.stringify(msg), action:'listarEquipos'},
                 success: function(response){
                     $('#content').html(response);
+                },
+                error: function(xhr){
+                    console.log(xhr);
                 }
             })
         });
