@@ -198,16 +198,16 @@ class EquipmentModel
 
     //Crear un nuevo registro para el historial de mantenimiento de cada equipo
     function AddHistoryRecord($obj){
-        mysqli_query($this->dbConn ,"SET @id='".$obj->idEquipo."'");
+        mysqli_query($this->dbConn ,"SET @id='".$obj->id_equipo."'");
         mysqli_query($this->dbConn ,"SET @ult_mant='".$obj->ultMant."'");
         mysqli_query($this->dbConn ,"SET @ingreso='".$obj->ingreso."'");
-        mysqli_query($this->dbConn ,"SET @prob='".$obj->prob."'");
-        mysqli_query($this->dbConn ,"SET @sol='".$obj->sol."'");
-        mysqli_query($this->dbConn ,"SET @obs='".$obj->obs."'");
-        mysqli_query($this->dbConn ,"SET @rep='".$obj->rep."'");
-        mysqli_query($this->dbConn ,"SET @disp='".$obj->disp."'");
-        mysqli_query($this->dbConn ,"SET @tec='".$obj->tec."'");
-        mysqli_query($this->dbConn ,"SET @correo='".$obj->email."'");
+        mysqli_query($this->dbConn ,"SET @prob='".$obj->problema."'");
+        mysqli_query($this->dbConn ,"SET @sol='".$obj->solucion."'");
+        mysqli_query($this->dbConn ,"SET @obs='".$obj->observacion."'");
+        mysqli_query($this->dbConn ,"SET @rep='".$obj->repuesto."'");
+        mysqli_query($this->dbConn ,"SET @disp='".$obj->disponbibilidad."'");
+        mysqli_query($this->dbConn ,"SET @tec='".$obj->tecnico."'");
+        mysqli_query($this->dbConn ,"SET @correo='".$obj->correo."'");
 
 
         mysqli_multi_query ($this->dbConn, "CALL uspCreateHistoryRecord(@id,@ult_mant,@ingreso,@prob,@sol,@obs,@rep,@disp,@tec,@correo)") OR DIE (mysqli_error($this->dbConn));
