@@ -1,5 +1,5 @@
 <?php
-include 'DBConnection.php';
+include '../config.php';
 
 class IncidenciasModel
 {
@@ -8,8 +8,8 @@ class IncidenciasModel
 
     function __construct(){
         $this-> incidencias_list = array();
-        $this-> dbConn =  mysqli_connect(HOST, USER, PASSWORD, DATABASE_NAME);
-        mysqli_set_charset($this->dbConn, CHARSET);
+        $this-> dbConn =  mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE_NAME);
+        mysqli_set_charset($this->dbConn, DB_CHARSET);
     }
 
     function GetIncidenciasList(){
