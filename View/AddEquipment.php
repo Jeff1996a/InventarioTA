@@ -301,7 +301,7 @@
                    if(response.result != 0){
                         alert("Registro exitoso!!");
 
-                        console.log(msg.category;
+                        console.log(msg.category);
                         $.ajax({
                             type:'GET',
                             url: 'Controller/EquipoController.php',
