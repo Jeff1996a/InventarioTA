@@ -251,6 +251,8 @@
                     break;
             };
 
+            console.log(msg.category);
+
             const form_data = new FormData();
 
             form_data.append('marca', marca);

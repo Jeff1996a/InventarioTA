@@ -18,6 +18,7 @@ class EquipmentModel
     public $observacion;
     public $result;
     public $file_array;
+    public $action;
 
     private $dbConn;
     private $equipment_list;
