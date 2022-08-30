@@ -228,30 +228,30 @@
             const departamento = $('#txtDepartamento').val();
             const observacion = $('#txtObservacion').val();
 
-            switch(tipoEquipo){
-                case 1:
-                    msg.category = 'audio';
-                    break;
-                case 2:
-                    msg.category = 'cables';
-                    break;
-                case 3:
-                    msg.category = 'edicion';
-                    break;
-                case 4:
-                    msg.category = 'video';
-                    break;
-                case 5:
-                    msg.category = 'red';
-                    break;
-                case 6:
-                    msg.category = 'electrico';
-                    break;
-                default:
-                    break;
-            };
+            if(tipoEquipo == 1){
+                msg.category = 'audio';
+            }
 
-            console.log(msg.category);
+            else if(tipoEquipo == 2){
+                msg.category = 'cables';
+            }
+
+            else if(tipoEquipo == 3){
+                msg.category = 'edicion';
+            }
+
+            else if(tipoEquipo == 4){
+                msg.category = 'video';
+            }
+
+            else if(tipoEquipo == 5){
+                msg.category = 'red';
+            }
+            else if(tipoEquipo == 2){
+                msg.category = 'electrico';
+            }
+
+            console.log("Categoria:" + msg.category);
 
             const form_data = new FormData();
 
