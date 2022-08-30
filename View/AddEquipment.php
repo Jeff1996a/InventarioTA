@@ -230,22 +230,22 @@
 
             switch(tipoEquipo){
                 case 1:
-                    const category = 'audio';
+                    msg.category = 'audio';
                     break;
                 case 2:
-                    const category = 'cables';
+                    msg.category = 'cables';
                     break;
                 case 3:
-                    const category = 'edicion';
+                    msg.category = 'edicion';
                     break;
                 case 4:
-                    const category = 'video';
+                    msg.category = 'video';
                     break;
                 case 5:
-                    const category = 'red';
+                    msg.category = 'red';
                     break;
                 case 6:
-                    const category = 'electrico';
+                    msg.category = 'electrico';
                     break;
                 default:
                     break;
@@ -300,8 +300,7 @@
                    console.log(response);
                    if(response.result != 0){
                         alert("Registro exitoso!!");
-                        msg.category = category;
-                        console.log('category');
+
 
                         $.ajax({
                             type:'GET',
