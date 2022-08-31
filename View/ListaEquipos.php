@@ -133,7 +133,7 @@
             ?>
             <thead>
             <tr class="text-center" style="background-color: #005aa9;">
-                <td colspan="16" class="text-white"><strong>Se encontraron <?= $GLOBALS['num_filas'] ?> registros.</strong></td>
+                <td colspan="17" class="text-white"><strong>Se encontraron <?= $GLOBALS['num_filas'] ?> registros.</strong></td>
             </tr>
             </thead>
         </table>
