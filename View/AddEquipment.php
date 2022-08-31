@@ -15,13 +15,13 @@
             <div class="mb-2 col">
                 <label for="txtMarca" class="col-sm-2 col-form-label">Marca:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="txtMarca" name="marca" placeholder="Ejm: DELL" required>
+                    <input type="text" class="form-control" id="txtMarca" name="marca" placeholder="Ejm: DELL" style="text-transform:uppercase">
                 </div>
             </div>
             <div class="mb-2 col">
                 <label for="txtModelo" class="col-sm-2 col-form-label">Modelo:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="txtModelo" name="modelo">
+                    <input type="text" class="form-control" id="txtModelo" name="modelo" style="text-transform:uppercase">
                 </div>
             </div>
         </div>
@@ -30,14 +30,14 @@
             <div class="mb-2 col">
                 <label for="txtSerieTa" class="col-sm-3 col-form-label">Código TA:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="txtSerieTa" name="codigoTA">
+                    <input type="text" class="form-control" id="txtSerieTa" name="codigoTA" style="text-transform:uppercase">
                 </div>
             </div>
 
             <div class="mb-2 col">
                 <label for="txtSerie" class="col-sm-2 col-form-label">Serie:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="txtSerie" name="serie">
+                    <input type="text" class="form-control" id="txtSerie" name="serie" style="text-transform:uppercase">
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
             <div class="mb-2 col">
                 <label for="txtProveedor" class="col-sm-2 col-form-label">Proveedor:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="txtProveedor" name="proveedor">
+                    <input type="text" class="form-control" id="txtProveedor" name="proveedor" style="text-transform:uppercase">
                 </div>
             </div>
         </div>
@@ -62,14 +62,14 @@
             <div class="mb-2 col">
                 <label for="txtResponsable" class="col-sm-2 col-form-label">Responsable:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="txtResponsable" name="responsable">
+                    <input type="text" class="form-control" id="txtResponsable" name="responsable" style="text-transform:uppercase">
                 </div>
             </div>
 
             <div class="mb-2 col">
                 <label for="txtUbicacion" class="col-sm-2 col-form-label">Departamento:</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="txtDepartamento" name="ubicacion">
+                    <input type="text" class="form-control" id="txtDepartamento" name="ubicacion" style="text-transform:uppercase">
                 </div>
             </div>
         </div>
@@ -103,13 +103,13 @@
         <div class="mb-2 row">
             <label for="txtDescripcion" class="col-form-label">Descripción:</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="txtDescripcion"  placeholder="Ejm: CÁMARA" name="descripcion">
+                <input type="text" class="form-control" id="txtDescripcion"  placeholder="Ejm: CÁMARA" name="descripcion" style="text-transform:uppercase">
             </div>
         </div>
 
         <div class="mb-2">
             <label for="txtObservacion" class="form-label">Observación:</label>
-            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion"></textarea>
+            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion" style="text-transform:uppercase"></textarea>
         </div>
 
         <div class="mb-2">
