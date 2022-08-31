@@ -79,8 +79,9 @@
                 <label for="cbEstado">Estado:</label>
                 <select class="form-select btn-outline-success" aria-label="Default select example" id="cbEstado" name="estado">
                     <option selected>Seleccione un estado</option>
-                    <option value="1">Bueno</option>
-                    <option value="2">Defectuoso</option>
+                    <option value="1">Almacenado</option>
+                    <option value="2">Averiado</option>
+                    <option value="3">Óptimo</option>
                     <option value="3">Operativo</option>
                 </select>
             </div>
@@ -89,13 +90,12 @@
                 <label for="cbTipoEquipo">Tipo de Equipo:</label>
                 <select class="form-select btn-outline-success" aria-label="Default select example" id="cbTipoEquipo" name="tipoEquipo">
                     <option selected>Seleccione una categoría</option>
-                    <option value="1">Accesorios</option>
-                    <option value="2">Audio</option>
-                    <option value="3">Cables</option>
-                    <option value="4">Edición</option>
-                    <option value="5">Electricidad</option>
-                    <option value="6">Redes</option>
-                    <option value="7">Video</option>
+                    <option value="1">Audio</option>
+                    <option value="2">Cables</option>
+                    <option value="3">Edición</option>
+                    <option value="4">Electricidad</option>
+                    <option value="5">Red</option>
+                    <option value="6">Video</option>
                 </select>
             </div>
         </div>
