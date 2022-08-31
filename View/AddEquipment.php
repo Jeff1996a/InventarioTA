@@ -113,7 +113,7 @@
         </div>
 
         <div class="mb-2">
-            <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+            <label for="formFileMultiple" class="form-label">Subir adjuntos:</label>
             <input class="form-control" type="file" id="files" name="files[]" multiple>
         </div>
 
@@ -300,11 +300,12 @@
                         // Add img element in <div id='preview'>
                         $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
                     }*/
-                   console.log(response);
+                   console.log(response.result);
                    if(response.result != 0){
                         alert("Registro exitoso!!");
 
                         console.log(msg.category);
+
                         $.ajax({
                             type:'GET',
                             url: 'Controller/EquipoController.php',
