@@ -229,26 +229,26 @@
             const departamento = $('#txtDepartamento').val();
             const observacion = $('#txtObservacion').val();
 
-            if(tipoEquipo == 2){
+            if(tipoEquipo == 1){
                 msg.category = 'audio';
             }
 
-            else if(tipoEquipo == 3){
+            else if(tipoEquipo == 2){
                 msg.category = 'cables';
             }
 
-            else if(tipoEquipo == 4){
+            else if(tipoEquipo == 3){
                 msg.category = 'edicion';
             }
 
-            else if(tipoEquipo == 5){
+            else if(tipoEquipo == 4){
                 msg.category = 'electrico';
             }
 
-            else if(tipoEquipo == 6){
+            else if(tipoEquipo == 5){
                 msg.category = 'red';
             }
-            else if(tipoEquipo == 7){
+            else if(tipoEquipo == 6){
                 msg.category = 'video';
             }
 
