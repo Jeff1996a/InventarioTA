@@ -161,6 +161,7 @@
           });
       });
 
+      //Ver el historial de un equipo
       $('#tblEquipos').on('click','#btnHistorial', function(){
           const row =  $(this).closest('tr');
           msg.id= row.find("td.idEquipo").text();
@@ -177,6 +178,8 @@
           });
       });
 
+
+      //Ver accesorios de un equipo
       $('#tblEquipos').on('click','#btnAccesorios', function(){
           const row =  $(this).closest('tr');
           msg.id= row.find("td.idEquipo").text();
@@ -192,6 +195,36 @@
               }
           });
       });
+
+      //Eliminar equipos
+      $('#tblEquipos').on('click', '#btnEliminar', function () {
+            const row =  $(this).closest('tr');
+            msg.id= row.find("td.idEquipo").text();
+
+            msg.category = '<?=$GLOBALS['category']?>';
+
+            if (confirm('Desea eliminar el registro')) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'Controller/EquipoController.php',
+                    data: {data: JSON.stringify(msg), action:'eliminar'},
+                    dataType: 'json',
+                    success: function (result) {
+                        $.ajax({
+                            type:'GET',
+                            url: 'Controller/EquipoController.php',
+                            data: {data: JSON.stringify(msg), action:'listarEquipos'},
+                            success: function(response){
+                                $('#content').html(response);
+                            }
+                        })
+                    },
+                    error: function (result) {
+                        alert('Ops! No se pudo eliminar el equipo');
+                    }
+                });
+            }
+        });
 
       //Filtrar por marca
       $("#txtMarca").on('keydown', function (e) {
@@ -369,5 +402,7 @@
               }
           });
       });
+
+      
   })
 </script>
