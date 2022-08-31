@@ -116,7 +116,9 @@
                             </svg>
                         </a>
                     </td>
+                    
                     <!--<td><a id="btnEliminar" href="#">Adjuntos</a></td>-->
+
                     <td>
                         <a id="btnEliminar" role="button" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
