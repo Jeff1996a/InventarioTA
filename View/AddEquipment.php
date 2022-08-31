@@ -89,12 +89,13 @@
                 <label for="cbTipoEquipo">Tipo de Equipo:</label>
                 <select class="form-select btn-outline-success" aria-label="Default select example" id="cbTipoEquipo" name="tipoEquipo">
                     <option selected>Seleccione una categoría</option>
-                    <option value="1">Audio</option>
-                    <option value="2">Cables</option>
-                    <option value="3">Edición</option>
-                    <option value="4">Video</option>
-                    <option value="5">Red</option>
-                    <option value="5">Eléctrico</option>
+                    <option value="1">Accesorios</option>
+                    <option value="2">Audio</option>
+                    <option value="3">Cables</option>
+                    <option value="4">Edición</option>
+                    <option value="5">Electricidad</option>
+                    <option value="6">Redes</option>
+                    <option value="7">Video</option>
                 </select>
             </div>
         </div>
