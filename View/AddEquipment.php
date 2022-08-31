@@ -284,43 +284,45 @@
                 form_data.append("files[]", files.files[index]);
             }
 
-            // AJAX request
-            $.ajax({
-                url: 'Controller/EquipoController.php',
-                type: 'POST',
-                data: form_data,
-                dataType: 'json',
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    /*
-                    for(var index = 0; index < response.file_array.length; index++) {
-                        var src = response.file_array[index];
-                        console.log(src);
-                        // Add img element in <div id='preview'>
-                        $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
-                    }*/
-                   console.log(response.result);
-                   if(response.result != 0){
-                        alert("Registro exitoso!!");
+           if(validation){
+                // AJAX request
+                $.ajax({
+                    url: 'Controller/EquipoController.php',
+                    type: 'POST',
+                    data: form_data,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        /*
+                        for(var index = 0; index < response.file_array.length; index++) {
+                            var src = response.file_array[index];
+                            console.log(src);
+                            // Add img element in <div id='preview'>
+                            $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+                        }*/
+                    console.log(response.result);
+                    if(response.result != 0){
+                            alert("Registro exitoso!!");
 
-                        console.log(msg.category);
+                            console.log(msg.category);
 
-                        $.ajax({
-                            type:'GET',
-                            url: 'Controller/EquipoController.php',
-                            data: {data: JSON.stringify(msg), action:'listarEquipos'},
-                            success: function(response){
-                                $('#content').html(response);
-                            }
-                        });
+                            $.ajax({
+                                type:'GET',
+                                url: 'Controller/EquipoController.php',
+                                data: {data: JSON.stringify(msg), action:'listarEquipos'},
+                                success: function(response){
+                                    $('#content').html(response);
+                                }
+                            });
+                        }
+
+                    else{
+                            alert("El equipo ya se encuentra registrado");
                     }
-
-                   else{
-                        alert("El equipo ya se encuentra registrado");
-                   }
-                }
-            });
+                    }
+                });
+           }
 
 
 
