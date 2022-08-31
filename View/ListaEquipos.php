@@ -208,7 +208,6 @@
                     type: 'POST',
                     url: 'Controller/EquipoController.php',
                     data: {data: JSON.stringify(msg), action:'eliminar'},
-                    dataType: 'json',
                     success: function (result) {
                         $.ajax({
                             type:'GET',
