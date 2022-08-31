@@ -201,6 +201,19 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             include_once ("../View/ListaEquipos.php");
        }
 
+       if($action == "eliminar"){
+
+            include_once('../Model/EquipmentModel.php');
+
+            $equipment =  new EquipmentModel();
+
+            $id = $data->{'id'};
+
+            $category = $data->{'category'};
+
+            $equipment->EliminarEquipo($id);
+       }
+
     }
     elseif(isset($_POST)){
 
