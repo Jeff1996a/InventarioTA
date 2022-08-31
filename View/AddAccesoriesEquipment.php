@@ -113,5 +113,119 @@
                 }
             });
         });
+
+        $('#accesories-form').on('submit',function(e){
+
+            e.preventDefault();
+
+            const serie = $('#txtSerie').val();
+            const serieTA = $('#txtSerieTA').val();
+            const descripcion = $('#txtDescripcion').val();
+            const id_equipo = '<?=$GLOBALS['id']?>';
+
+            var disp = '';
+
+            if($('#rbDispSi').is(':checked')){
+                disp = 'Si';
+            }
+            
+            if($('#rbDispNo').is(':checked')){
+                disp = 'No';
+            }
+
+            const form_data = new FormData();
+
+            form_data.append('serie', serie);
+            form_data.append('codigoTA', serieTA);
+            form_data.append('descripcion', descripcion);
+            form_data.append('disponibiliodad', serieTA);
+            form_data.append('action', 'addAccesorio');
+            form_data.append('id_equipo', id_equipo);
+
+            //Mostrar los datos del formulario mediante clave/valor
+            for(let [name, value] of form_data) {
+                console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2
+            }
+
+            const files = document.getElementById('files');
+
+            const total_files = files.files.length;
+
+            for (var index = 0; index < total_files; index++) {
+                form_data.append("files[]", files.files[index]);
+            }
+
+            // AJAX request
+            $.ajax({
+                url: 'Controller/EquipoController.php',
+                type: 'POST',
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+
+                    msg.id= '<?=$GLOBALS['id']?>';
+
+                    msg.category = '<?=$GLOBALS['category']?>';
+                    /*
+                    for(var index = 0; index < response.file_array.length; index++) {
+                        var src = response.file_array[index];
+                        console.log(src);
+                        // Add img element in <div id='preview'>
+                        $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+                    }*/
+                    console.log(response.result);
+                    if(response.result != 0){
+                            alert("Registro exitoso!!");
+
+                            console.log(msg.category);
+
+                            $.ajax({
+                                type:'GET',
+                                url: 'Controller/EquipoController.php',
+                                data: {data: JSON.stringify(msg), action:'viewAccesories'},
+                                success: function(response){
+                                    $('#content').html(response);
+                                }
+                            });
+                        }
+
+                    else{
+                            alert("El accesorio ya se encuentra registrado");
+                    }
+                }
+            });
+
+
+
+            /*AJAX request
+
+            const files = document.getElementById('files');
+
+            const total_files = files.files.length;
+
+            for (var index = 0; index < total_files; index++) {
+                form_data.append("files[]", files.files[index]);
+            }
+
+            ;
+            console.log(total_files);
+            console.log($('#cbTipoEquipo').val());
+            console.log($('#cbEstado').val())
+            $.ajax({
+                url: 'Controller/EquipoController.php',
+                type: 'post',
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+
+                }
+            });
+
+            */
+        });
     })
 </script>
