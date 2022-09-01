@@ -14,7 +14,7 @@
 <!--===============================================================================================-->
 
 </head>
-<body>
+<body style="background-color: #EFBD85">
 	
 	<div class="fondo">
         <div class="limiter">
