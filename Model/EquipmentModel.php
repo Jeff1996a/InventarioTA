@@ -228,10 +228,10 @@ class EquipmentModel
         mysqli_query($this->dbConn ,"SET @Descripcion='".$obj->descripcion."'");
         mysqli_query($this->dbConn ,"SET @Disponibilidad='".$obj->disponibilidad."'");
         mysqli_query($this->dbConn ,"SET @Serie='".$obj->serie."'");
-        mysqli_query($this->dbConn ,"SET @SerieTA='".$obj->serie_ta."'");
+        mysqli_query($this->dbConn ,"SET @SerieTa='".$obj->serie_ta."'");
         mysqli_query($this->dbConn ,"SET @IdEqu='".$obj->id_equipo."'");
 
-        mysqli_multi_query ($this->dbConn, "CALL uspAgregarAccesorios(@Descripcion,@Disponibilidad,@Serie,@SerieTA,@IdEqu)") OR DIE (mysqli_error($this->dbConn));
+        mysqli_multi_query ($this->dbConn, "CALL uspAgregarAccesorios(@Descripcion,@Disponibilidad,@Serie,@SerieTa,@IdEqu)") OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
 
