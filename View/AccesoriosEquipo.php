@@ -37,7 +37,7 @@
                 <td class="idAccesorio"><?php echo $row["id_accesorio"]; ?> </td>
                 <td><?php echo $row['desc_accesorio']; ?> </td>
                 <td><?php echo $row["disponibilidad"]; ?> </td>
-                <td><?php echo $row["serie"]; ?> </td>
+                <td><?php echo $row["serie"]; ?> </td>s
                 <td><?php echo $row["serieTA"]; ?> </td>
                 <td>
                     <a id="btnEliminar" role="button" class="text-danger" data-toggle="tooltip" data-placement="bottom" title="Eliminar accesorio">
@@ -95,7 +95,7 @@
         //Eliminar equipos
       $('#tblAccesorios').on('click', '#btnEliminar', function () {
             const row =  $(this).closest('tr');
-            msg.id= row.find("td.idAccesorio").text();
+            msg.id = row.find("td.idAccesorio").text();
 
             msg.category = '<?=$GLOBALS['category']?>';
 
