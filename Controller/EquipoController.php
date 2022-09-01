@@ -223,9 +223,8 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             $category = $data->{'category'};
 
-            $equipment->EliminarAccesorio($id);
+            $equipment->EliminarEquipo($id);   
         }
-   }
 
     }
     elseif(isset($_POST)){
