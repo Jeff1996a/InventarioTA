@@ -215,16 +215,16 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
        }
 
        if($action == "eliminarAccesorio"){
+            include_once('../Model/EquipmentModel.php');
 
-        include_once('../Model/EquipmentModel.php');
+            $equipment =  new EquipmentModel();
 
-        $equipment =  new EquipmentModel();
+            $id = $data->{'id'};
 
-        $id = $data->{'id'};
+            $category = $data->{'category'};
 
-        $category = $data->{'category'};
-
-        $equipment->EliminarAccesorio($id);
+            $equipment->EliminarAccesorio($id);
+        }
    }
 
     }
