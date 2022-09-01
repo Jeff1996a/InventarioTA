@@ -116,6 +116,10 @@
 
         $('#accesories-form').on('submit',function(e){
 
+            msg.id= '<?=$GLOBALS['id']?>';
+
+            msg.category = '<?=$GLOBALS['category']?>';
+
             e.preventDefault();
 
             const serie = $('#txtSerie').val();
@@ -138,7 +142,7 @@
             form_data.append('serie', serie);
             form_data.append('codigoTA', serieTA);
             form_data.append('descripcion', descripcion);
-            form_data.append('disponibiliodad', serieTA);
+            form_data.append('disponibiliodad', disp);
             form_data.append('action', 'addAccesorio');
             form_data.append('id_equipo', id_equipo);
 
@@ -164,10 +168,6 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-
-                    msg.id= '<?=$GLOBALS['id']?>';
-
-                    msg.category = '<?=$GLOBALS['category']?>';
                     /*
                     for(var index = 0; index < response.file_array.length; index++) {
                         var src = response.file_array[index];

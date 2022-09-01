@@ -429,10 +429,10 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             else{
                 $row = mysqli_fetch_assoc($equipment->AddAccesorio($accesorio));
 
-                $history->result = $row["resultado"];
+                $accesorio->result = $row["resultado"];
             }
 
-            echo json_encode($history);
+            echo json_encode($accesorio);
 
             die;
         }
