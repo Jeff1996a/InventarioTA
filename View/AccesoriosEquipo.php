@@ -63,7 +63,8 @@
     $(document).ready(function(){
         const msg = {
             category: '',
-            id: ''
+            id: '',
+            idAccesorio: ''
         };
 
         $("#btnRegresar").click(function(){
@@ -95,8 +96,9 @@
         //Eliminar equipos
       $('#tblAccesorios').on('click', '#btnEliminar', function () {
             const row =  $(this).closest('tr');
-            msg.id = row.find("td.idAccesorio").text();
+            msg.idAccesorio = row.find("td.idAccesorio").text();
 
+            msg.id = '<?=$GLOBALS['id']?>';
             msg.category = '<?=$GLOBALS['category']?>';
 
             if (confirm('Desea eliminar el registro')) {
@@ -104,7 +106,7 @@
                     type: 'POST',
                     url: 'Controller/EquipoController.php',
                     data: {data: JSON.stringify(msg), action:'eliminarAccesorio'},
-                    success: function (result) {
+                    success: function (result) {s
                         $.ajax({
                             type:'GET',
                             url: 'Controller/EquipoController.php',
