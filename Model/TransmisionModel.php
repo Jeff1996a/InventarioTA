@@ -29,7 +29,7 @@ class TransmisionModel
         mysqli_query($this->dbConn ,"SET @Ubi='".$obj->ubicacion."'");
         mysqli_query($this->dbConn ,"SET @Tec='".$obj->tecnico."'");
         mysqli_query($this->dbConn ,"SET @Correo='".$obj->email."'");
-        mysqli_query($this->dbConn ,"SET @Movil'".$obj->movil."'");
+        mysqli_query($this->dbConn ,"SET @Movil='".$obj->movil."'");
         mysqli_query($this->dbConn ,"SET @Inicio='".$obj->inicio."'");
         mysqli_query($this->dbConn ,"SET @Fin='".$obj->fin."'");
         mysqli_query($this->dbConn ,"SET @Obs='".$obj->obs."'");
