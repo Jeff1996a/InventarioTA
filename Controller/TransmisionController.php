@@ -67,6 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(isset($_POST)){
+        
         include_once ('../Model/TransmisionModel.php');
 
         $transmision = new TransmisionModel();
