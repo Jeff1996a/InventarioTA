@@ -73,7 +73,6 @@
                 <td><strong>Responsable</strong></td>
                 <td><strong>Departamento</strong></td>
                 <td><strong>Estado</strong></td>
-                <td><strong>Tipo</strong></td>
                 <td></td>
                 <td></td>
                 <td></td>
