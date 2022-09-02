@@ -45,7 +45,7 @@
                     <option value="1">Almacenado</option>
                     <option value="2">Averiado</option>
                     <option value="3">Óptimo</option>
-                    <option value="3">Operativo</option>
+                    <option value="4">Operativo</option>
                 </select>
             </div>
 
@@ -327,6 +327,7 @@
           }
       });
 
+      //Permite filtrar una lista  mediante estados
       $("#cbEstado").on('change', function (e) {
 
           const filter = $('#cbEstado option:selected').text();

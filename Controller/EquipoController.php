@@ -134,6 +134,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if(isset($_POST['action']) && isset($_POST['data'])){
+
         $action = $_POST['action'];
         $data = json_decode($_POST['data']);
 
@@ -187,7 +188,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $num_filas = mysqli_num_rows($list);
                     break;
 
-                case "electrico":
+                case "electricidad":
                     $title = "Equipos eléctricos";
                     $list = validateFilter($filterType, $equipment, $filter, $category);
                     $num_filas = mysqli_num_rows($list);
