@@ -71,7 +71,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $transmision = new TransmisionModel();
 
-        if($_POST['action'] == 'addTransmision' ){
+        if($_POST['action'] == 'addTransmision'){
             $transmision->nombre = $_POST['nombre'];
             $transmision->ubicacion = $_POST['ubicacion'];
             $transmision->tecnico = $_POST['tecnico'];

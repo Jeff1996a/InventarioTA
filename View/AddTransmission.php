@@ -145,7 +145,7 @@
                     email: "Correo electrónico inválido!!"
                 },
                 movil:{
-                    required: "Ingrese la móvil asignada!"
+                    required: "Ingrese la unidad móvil asignada!"
                 },
                 fechaInicio:{
                     required: "Seleccion una fecha!",
@@ -239,6 +239,9 @@
                     else{
                             alert("No se pudo registrar la transmisión");
                     }
+                },
+                error: function(xhr){
+                    console.log(xhr);
                 }
             });
 
