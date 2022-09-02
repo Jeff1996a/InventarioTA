@@ -4,7 +4,7 @@
             <div class="col-lg-11">
                 <h1><?=$GLOBALS['title']?></h1>
             </div>
-            <div class="col-lg-1" role="button" id="btnAddTransmision">
+            <div class="col-lg-1" id="btnAddTransmision" role="button" class="text-danger" data-toggle="tooltip" data-placement="bottom" title="Nueva transmisión">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#ff9000" class="bi bi-plus-circle-fill float-end" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                 </svg>
@@ -60,8 +60,14 @@
                     <td><?php echo $row["unidad_movil"]; ?> </td>
                     <td><?php echo $row["fecha_inicio"]; ?> </td>
                     <td><?php echo $row["fecha_fin"]; ?> </td>
-                    <td><?php echo $row["observaciones"]; ?> </td>
-                    <td><a id="btnListaEquipos" href="#">Listado equipos</a></td>
+                    <td><?php echo $row["observaciones"]; ?> </td>   
+                    <td>
+                        <a id="btnListaEquipos" role="button" class="text-success" data-toggle="tooltip" data-placement="bottom" title="Listado de equipos">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                            </svg>
+                        </a>
+                    </td>
                 </tr>
                 <?php
             }
