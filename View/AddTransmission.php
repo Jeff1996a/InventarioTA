@@ -1,4 +1,4 @@
-<form action="" method="post" id="transmision-form">
+<form action="" method="post" id="transmision-form" enctype="multipart/form-data>
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="add-equipment-header">
@@ -188,8 +188,8 @@
             form_data.append('ubicacion', ubicacion);
             form_data.append('tecnico', tecnico);
             form_data.append('email', email);
-            form_data.append('inicio', inicio);
-            form_data.append('fin', fin);
+            form_data.append('fechaInicio', inicio);
+            form_data.append('fechaFin', fin);
             form_data.append('observacion', observacion);
             form_data.append('action', 'addTransmision');
 
@@ -241,7 +241,7 @@
                     }
                 },
                 error: function(xhr){
-                    console.log(xhr);
+                    console.log(xhr.text);
                 }
             });
 

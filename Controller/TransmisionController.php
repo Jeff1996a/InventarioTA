@@ -77,8 +77,8 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             $transmision->tecnico = $_POST['tecnico'];
             $transmision->email = $_POST['email'];
             $transmision->movil = $_POST['movil'];
-            $transmision->inicio = $_POST['inicio'];
-            $transmision->fin = $_POST['fin'];
+            $transmision->inicio = $_POST['fechaInicio'];
+            $transmision->fin = $_POST['fechaFin'];
             $transmision->obs = $_POST['observacion'];
           
             if(isset($_FILES['files'])){
@@ -126,7 +126,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
             else{
-                $row = mysqli_fetch_assoc($transmision->uspCrearTransmision($transmision));
+                $row = mysqli_fetch_assoc($transmision->CrearTransmision($transmision));
 
                 $transmision->result = $row["resultado"];
             }
