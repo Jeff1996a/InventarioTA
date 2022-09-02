@@ -166,6 +166,7 @@
             const ubicacion = $('#txtUbicacion').val();
             const tecnico = $('#txtTecnico').val();
             const email = $('#txtEmail').val();
+            const movil = $('#txtMovil').val();
             const inicio = $('#dpInicio').val();
             const fin = $('#dpFin').val();
             const observacion = $('#txtObservacion').val();
@@ -177,6 +178,7 @@
             form_data.append('ubicacion', ubicacion);
             form_data.append('tecnico', tecnico);
             form_data.append('email', email);
+            form_data.append('movil', movil);
             form_data.append('fechaInicio', inicio);
             form_data.append('fechaFin', fin);
             form_data.append('observacion', observacion);
