@@ -106,7 +106,7 @@
                     type: 'POST',
                     url: 'Controller/EquipoController.php',
                     data: {data: JSON.stringify(msg), action:'eliminarAccesorio'},
-                    success: function (result) {s
+                    success: function (result) {
                         $.ajax({
                             type:'GET',
                             url: 'Controller/EquipoController.php',
