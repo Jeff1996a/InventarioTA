@@ -99,7 +99,6 @@
                     <td><?php echo $row["responsable"]; ?> </td>
                     <td><?php echo $row["departamento"]; ?> </td>
                     <td><?php echo $row["estado"]; ?> </td>
-                    <td><?php echo $row["tipo"]; ?> </td>
                     <td>
                         <a id="btnHistorial" role="button" class="text-success" data-toggle="tooltip" data-placement="bottom" title="Historial mantenimiento">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16">
