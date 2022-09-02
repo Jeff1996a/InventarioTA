@@ -3,6 +3,18 @@ include '../config.php';
 
 class TransmisionModel
 {
+
+    public $id_transmision;
+    public $nombre;
+    public $ubicacion;
+    public $tecnico;
+    public $email;
+    public $movil;
+    public $inicio;
+    public $fin;
+    public $obs;
+    public $result;
+
     private $dbConn;
     private $transmision_list;
 
@@ -12,18 +24,18 @@ class TransmisionModel
         mysqli_set_charset($this->dbConn, DB_CHARSET);
     }
 
-    function insertTransmision($obj){
-        mysqli_query($this->dbConn ,"SET @ubi='".$obj->ubi."'");
-        mysqli_query($this->dbConn ,"SET @tec='".$obj->tec."'");
-        mysqli_query($this->dbConn ,"SET @correo='".$obj->correo."'");
-        mysqli_query($this->dbConn ,"SET @uni_movil='".$obj->uni_movil."'");
-        mysqli_query($this->dbConn ,"SET @fecha_ini='".$obj->fecha_ini."'");
-        mysqli_query($this->dbConn ,"SET @fecha_fin='".$obj->fecha_fin."'");
-        mysqli_query($this->dbConn ,"SET @prob='".$obj->prob."'");
-        mysqli_query($this->dbConn ,"SET @sol='".$obj->sol."'");
-        mysqli_query($this->dbConn ,"SET @obs='".$obj->obs."'");
+    function CrearTransmision($obj){
+        mysqli_query($this->dbConn ,"SET @Nom='".$obj->nombre."'");
+        mysqli_query($this->dbConn ,"SET @Ubi='".$obj->ubicacion."'");
+        mysqli_query($this->dbConn ,"SET @Tec='".$obj->tecnico."'");
+        mysqli_query($this->dbConn ,"SET @Correo='".$obj->email."'");
+        mysqli_query($this->dbConn ,"SET @Movil'".$obj->movil."'");
+        mysqli_query($this->dbConn ,"SET @Inicio='".$obj->inicio."'");
+        mysqli_query($this->dbConn ,"SET @Fin='".$obj->fin."'");
+        mysqli_query($this->dbConn ,"SET @Obs='".$obj->obs."'");
 
-        mysqli_multi_query ($this->dbConn, "CALL uspCreateTransmission(@ubi,@tec,@correo,@uni_movil,@fecha_ini,@fecha_fin,@prob,@sol,@obs)") OR DIE (mysqli_error($this->dbConn));
+
+        mysqli_multi_query ($this->dbConn, "CALL uspCrearTransmision(@Nom,@Ubi,@Tec,@Correo,@Movil,@Inicio,@Fin,@Obs)") OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
 

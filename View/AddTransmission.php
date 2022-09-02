@@ -15,7 +15,7 @@
             <div class="mb-2 col-6">
                 <label for="txtNombreTransmision" class="col-sm-12 col-form-label">Nombre transmisión:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtNombreTransmision" name="nombre">
+                    <input type="text" class="form-control" id="txtNombre" name="nombre">
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="mb-2 col-6">
                 <label for="txtResponsable" class="col-sm-12 col-form-label">Responsable:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtResponsable" name="responsable">
+                    <input type="text" class="form-control" id="txtTecnico" name="tecnico">
                 </div>
             </div>
 
@@ -83,7 +83,7 @@
 
 
         <div class="col-auto">
-            <button id="btnGuardarTransmision" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
+            <button id="btnCrearTransmision" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
         </div>
     </div>
 </form>
@@ -111,7 +111,7 @@
                 ubicacion:{
                     required: true
                 },
-                responsable:{
+                tecnico:{
                     required: true
                 },
                 email:{
@@ -137,7 +137,7 @@
                 ubicacion:{
                     required: "Ingrese la ubicación!"
                 },
-                responsable: {
+                tecnico: {
                     required: "Ingrese un responsable!"
                 },
                 email: {
@@ -158,32 +158,6 @@
             }
         });
 
-/*
-        $('#btnGuardarTransmision').click(function(){
-
-            transmision.ubi = $('#txtUbicacion').val();
-            transmision.tec = $('#txtResponsable').val();
-            transmision.correo = $('#txtEmail').val();
-            transmision.uni_movil = $('#txtMovil').val();
-            transmision.fecha_ini = $('#dpInicio').val();
-            transmision.fecha_fin = $('#dpFin').val();
-            transmision.prob = $('#txtProblema').val();
-            transmision.sol = $('#txtSolucion').val();
-            transmision.obs = $('#txtObservacion').val();
-
-            $.ajax({
-                type: 'POST',
-                dataType:'text',
-                url: 'Controller/TransmisionController.php',
-                data: { register: JSON.stringify( transmision ) },
-                success: function(response) {
-                    alert('Registro exitoso')
-                    $("#content").html(response);
-                }
-            })
-        })
-*/
-
         $('#btnRegresar').click(function(){
             $.ajax({
                 type:'GET',
@@ -193,6 +167,106 @@
                     $('#content').html(response);
                 }
             });
+        });
+
+        $('#transmision-form').on('submit',function(e){
+
+            e.preventDefault();
+
+            const nombre = $('#txtNombre').val();
+            const ubicacion = $('#txtUbicacion').val();
+            const tecnico = $('#txtTecnico').val();
+            const email = $('#txtEmail').val();
+            const inicio = $('#dpInicio').val();
+            const fin = $('#dpFin').val();
+            const observacion = $('#txtObservacion').val();
+   
+           
+            const form_data = new FormData();
+
+            form_data.append('nombre', nombre);
+            form_data.append('ubicacion', ubicacion);
+            form_data.append('tecnico', tecnico);
+            form_data.append('email', email);
+            form_data.append('inicio', inicio);
+            form_data.append('fin', fin);
+            form_data.append('observacion', observacion);
+            form_data.append('action', 'addTransmision');
+
+            //Mostrar los datos del formulario mediante clave/valor
+            for(let [name, value] of form_data) {
+                console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2
+            }
+            /*
+            const files = document.getElementById('files');
+
+            const total_files = files.files.length;
+
+            for (var index = 0; index < total_files; index++) {
+                form_data.append("files[]", files.files[index]);
+            }*/
+
+            // AJAX request
+            $.ajax({
+                url: 'Controller/TransmisionController.php',
+                type: 'POST',
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                      /*
+                        for(var index = 0; index < response.file_array.length; index++) {
+                            var src = response.file_array[index];
+                            console.log(src);
+                            // Add img element in <div id='preview'>
+                            $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+                        }*/  
+                    console.log(response.result);
+                    if(response.result != 0){
+                        alert("Registro exitoso!!");
+
+                        $.ajax({
+                            type:'GET',
+                            url: 'Controller/TransmisionController.php',
+                            data: { data:JSON.stringify(''), action:'listarTransmisiones'},
+                            success: function(response){
+                                $('#content').html(response);
+                            }
+                        });     
+                    }
+
+                    else{
+                            alert("No se pudo registrar la transmisión");
+                    }
+                }
+            });
+
+            /*AJAX request
+
+            const files = document.getElementById('files');
+
+            const total_files = files.files.length;
+
+            for (var index = 0; index < total_files; index++) {
+                form_data.append("files[]", files.files[index]);
+            }
+
+            ;
+            console.log(total_files);
+            console.log($('#cbTipoEquipo').val());
+            console.log($('#cbEstado').val())
+            $.ajax({
+                url: 'Controller/EquipoController.php',
+                type: 'post',
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                }
+            });
+            */
         });
     })
 </script>
