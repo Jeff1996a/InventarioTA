@@ -242,7 +242,7 @@
             }
 
             else if(tipoEquipo == 4){
-                msg.category = 'electrico';
+                msg.category = 'electricidad';
             }
 
             else if(tipoEquipo == 5){
@@ -322,8 +322,6 @@
                 }
             });
 
-
-
             /*AJAX request
 
             const files = document.getElementById('files');
@@ -346,10 +344,8 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-
                 }
             });
-
             */
         });
     })

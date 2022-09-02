@@ -188,7 +188,7 @@ die;
         });
 
         $("#btnElectrico").click(function () {
-            msg.category = 'electrico'
+            msg.category = 'electricidad'
             $.ajax({
                 type:'GET',
                 url: 'Controller/EquipoController.php',

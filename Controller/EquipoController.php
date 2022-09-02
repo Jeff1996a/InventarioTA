@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
                     $num_filas = mysqli_num_rows($list);
                     break;
 
-                case 'electrico':
+                case 'electricidad':
                     $title = "Equipos eléctricos";
                     $list = $equipment->GetEquimentByType($category);
                     $num_filas = mysqli_num_rows($list);
