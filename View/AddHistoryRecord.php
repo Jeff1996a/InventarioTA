@@ -66,7 +66,7 @@
 
         <div class="mb-2 row">
             <div class="mb-2 col-6">
-                Diponibilidad
+                Disponibilidad
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDefault1" id="rbDispSi" checked>
                     <label class="form-check-label" for="rbDispSi">

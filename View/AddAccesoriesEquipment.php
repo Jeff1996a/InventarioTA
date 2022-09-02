@@ -15,14 +15,14 @@
             <div class="mb-2 col-6">
                 <label for="txtSerie" class="col-sm-12 col-form-label">Número de serie:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtSerie" name="serie">
+                    <input type="text" class="form-control" id="txtSerie" name="serie" style="text-transform:uppercase">
                 </div>
             </div>
 
             <div class="mb-2 col-6">
                 <label for="txtSerieTA" class="col-sm-12 col-form-label">Número de serie TA:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtSerieTA" name="codigoTA" >
+                    <input type="text" class="form-control" id="txtSerieTA" name="codigoTA" style="text-transform:uppercase" >
                 </div>
             </div>
 
@@ -32,7 +32,7 @@
         <div class="mb-2 row">
             <div class="mb-2 col-sm-6">
                 <label for="txtDescripcion" class="form-label">Descripción:</label>
-                <textarea class="form-control" id="txtDescripcion" rows="3" name="descripcion"></textarea>
+                <textarea class="form-control" id="txtDescripcion" rows="3" name="descripcion" style="text-transform:uppercase"></textarea>
             </div>
         </div>
 

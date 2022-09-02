@@ -77,7 +77,9 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
     $action = isset($_POST['action']) ? ($_POST['action']) : '';
 
     if(isset($_POST['register'])){
+
         $data = json_decode($_POST['register']);
+        
         if($transmision->insertTransmision($data) != false){
             echo '<script language="JavaScript">';
             echo 'alert("Registro exitoso!!");';
