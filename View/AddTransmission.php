@@ -90,17 +90,6 @@
 
 <script>
     $(document).ready(function (){
-        const transmision = {
-            ubi: '',
-            tec:'',
-            correo: '',
-            uni_movil: '',
-            fecha_ini: '',
-            fecha_fin: '',
-            prob: '',
-            sol: '',
-            obs:''
-        };
 
         //Validacion
         $("#transmision-form").validate({
@@ -169,7 +158,7 @@
             });
         });
 
-        $('#transmision-form').on('submit',function(e){
+        $('#transmision-form').on('submit', function(e){
 
             e.preventDefault();
 
@@ -241,7 +230,7 @@
                     }
                 },
                 error: function(xhr){
-                    console.log(xhr.text);
+                    console.log(xhr);
                 }
             });
 
