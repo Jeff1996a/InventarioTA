@@ -38,7 +38,7 @@
                 <td><?php echo $row['desc_accesorio']; ?> </td>
                 <td><?php echo $row["disponibilidad"]; ?> </td>
                 <td><?php echo $row["serie"]; ?> </td>
-                <td><?php echo $row["serieTA"]; ?> </td>
+                <td><?php echo $row["serieTa"]; ?> </td>
                 <td>
                     <a id="btnEliminar" role="button" class="text-danger" data-toggle="tooltip" data-placement="bottom" title="Eliminar accesorio">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
