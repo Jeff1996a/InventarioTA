@@ -397,7 +397,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             else{
                 $row = mysqli_fetch_assoc($equipment->ActualizarEquipo($equipment));
 
-                $equipment->result = $row["resultado"];
+                $equipment->result = $row["id_equipo"];
             }
 
             echo json_encode($equipment);
