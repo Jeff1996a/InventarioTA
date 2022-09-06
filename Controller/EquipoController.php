@@ -130,7 +130,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $category = $data->{'category'};
 
-            $result = $equipment->ObternerEquipo($id);
+            $result = $equipment->ObtenerEquipo($id);
 
             while ($row = mysql_fetch_array($result)) {
                 $equipment->id_equipo = $row['id_equipo'];
