@@ -3,6 +3,7 @@ include '../config.php';
 
 class EquipmentModel
 {
+    public $id_equipo;
     public $marca;
     public $modelo;
     public $descripcion;
