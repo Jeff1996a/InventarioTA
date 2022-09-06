@@ -172,11 +172,11 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
                 $historial->ingreso = $row['fecha_ingreso'];
                 $historial->problema = $row['problema'];
                 $historial->solucion = $row['solucion'];
-                $equipment->observacion = $row['observacion'];
-                $equipment->repuesto = $row['solic_rep'];
-                $equipment->disponibilidad = $row['disponibilidad'];
-                $equipment->tecnico = $row['tecnico'];
-                $equipment->correo = $row['email'];
+                $historial->observacion = $row['observacion'];
+                $historial->repuesto = $row['solic_rep'];
+                $historial->disponibilidad = $row['disponibilidad'];
+                $historial->tecnico = $row['tecnico'];
+                $historial->correo = $row['email'];
             }
 
             include_once ('../View/ActualizarHistorial.php');
