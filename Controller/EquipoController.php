@@ -148,7 +148,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
                 $equipment->observacion = $row['observacion'];
             }
 
-            include_once ('./View/ActualizarEquipo.php');
+            include_once ('../View/ActualizarEquipo.php');
         }
 
         elseif($action == 'viewAddAccesories'){
