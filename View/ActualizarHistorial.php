@@ -104,6 +104,7 @@ $historial = $GLOBALS['historial'];
             </div>
 
         </div>
+        
         <!--
             Subida de archivos
             <div class="row mb-2">
