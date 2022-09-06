@@ -205,7 +205,7 @@
                     url: 'Controller/EquipoController.php',
                     data: {data: JSON.stringify(msg), action:'update'},
                     success: function (result) {
-                        $('#content').html(response);
+                        $('#content').html(result);
                     },
                     error: function (result) {
                         alert('Ops! No se pudo obtener el registro');
