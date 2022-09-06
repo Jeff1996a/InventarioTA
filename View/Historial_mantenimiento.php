@@ -20,6 +20,7 @@
     <table id="tblEquipos" class="table table-hover">
         <thead style="background-color: #005aa9;" class="text-white">
         <tr>
+            <td><strong>Num Historial</strong></td>
             <td><strong>Cod.</strong></td>
             <td><strong>Marca</strong></td>
             <td><strong>Modelo</strong></td>
