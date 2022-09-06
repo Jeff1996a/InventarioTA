@@ -112,10 +112,13 @@
             <textarea class="form-control" id="txtObservacion" rows="3" name="observacion" style="text-transform:uppercase"></textarea>
         </div>
 
-        <div class="mb-2">
-            <label for="formFileMultiple" class="form-label">Subir adjuntos:</label>
-            <input class="form-control" type="file" id="files" name="files[]" multiple>
-        </div>
+        <!--
+            <div class="mb-2">
+                <label for="formFileMultiple" class="form-label">Subir adjuntos:</label>
+                <input class="form-control" type="file" id="files" name="files[]" multiple>
+            </div>
+        -->
+        
 
         <div class="col-auto">
             <button id="btnAgregarEquipo" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
