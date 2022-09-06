@@ -132,7 +132,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $result = $equipment->ObtenerEquipo($id);
 
-            while ($row = mysql_fetch_assoc($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 $equipment->id_equipo = $row['id_equipo'];
                 $equipment->marca = $row['marca'];
                 $equipment->modelo = $row['modelo'];
