@@ -151,6 +151,37 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             include_once ('../View/ActualizarEquipo.php');
         }
 
+        elseif($action == "updateHistory"){
+
+            include_once('../Model/EquipmentModel.php');
+            include_once ('../Model/Historial.php');
+
+            $equipment =  new EquipmentModel();
+            $historial = new Historial();
+
+            $id = $data->{'id'};
+
+            $category = $data->{'category'};
+
+            $result = $equipment->ObtenerHistorial($id);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $historial->id_equipo = $row['id_equipo'];
+                $historial->id_historial = $row['id_hist_mant'];
+                $historial->ultMant = $row['fecha_ult_mant'];
+                $historial->ingreso = $row['fecha_ingreso'];
+                $historial->problema = $row['problema'];
+                $historial->solucion = $row['solucion'];
+                $equipment->observacion = $row['observacion'];
+                $equipment->repuesto = $row['solic_rep'];
+                $equipment->disponibilidad = $row['disponibilidad'];
+                $equipment->tecnico = $row['tecnico'];
+                $equipment->correo = $row['email'];
+            }
+
+            include_once ('../View/ActualizarHistorial.php');
+        }
+
         elseif($action == 'viewAddAccesories'){
 
             $id = $data->{'id'};

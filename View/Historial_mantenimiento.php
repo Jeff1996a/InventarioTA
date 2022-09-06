@@ -17,10 +17,10 @@
 <br/>
 
 <div class="table-responsive">
-    <table id="tblEquipos" class="table table-hover">
+    <table id="tblHistorial" class="table table-hover">
         <thead style="background-color: #005aa9;" class="text-white">
         <tr>
-            <td><strong>Num Historial</strong></td>
+            <td><strong>Num.</strong></td>
             <td><strong>Cod.</strong></td>
             <td><strong>Marca</strong></td>
             <td><strong>Modelo</strong></td>
@@ -104,6 +104,26 @@
                 success: function(response){
                     $('#content').html(response);
                 }
+            });
+        });
+
+        //Actualizar equipos
+      $('#tblHistorial').on('click', '#btnActualizar', function () {
+            const row =  $(this).closest('tr');
+            msg.id= row.find("td.idHistorial").text();
+
+            msg.category = '<?=$GLOBALS['category']?>';
+
+            $.ajax({
+                    type: 'GET',
+                    url: 'Controller/EquipoController.php',
+                    data: {data: JSON.stringify(msg), action:'updateHistory'},
+                    success: function (result) {
+                        $('#content').html(result);
+                    },
+                    error: function (result) {
+                        alert('Ops! No se pudo obtener el registro');
+                    }
             });
         });
     })

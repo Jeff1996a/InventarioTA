@@ -193,7 +193,7 @@
           });
       });
 
-      //Eliminar equipos
+      //Actualizar equipos
       $('#tblEquipos').on('click', '#btnActualizar', function () {
             const row =  $(this).closest('tr');
             msg.id= row.find("td.idEquipo").text();
