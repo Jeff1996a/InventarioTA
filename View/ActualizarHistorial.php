@@ -104,15 +104,16 @@ $historial = $GLOBALS['historial'];
             </div>
 
         </div>
-
-        <div class="row mb-2">
+        <!--
+            Subida de archivos
+            <div class="row mb-2">
             <div class="mb-2">
                 <label for="file" class="form-label">Adjuntos:</label>
                 <input class="form-control" type="file" id="file">
             </div>
         </div>
-
-
+        -->
+        
         <div class="row text-center">
             <div class="col-md-12 ">
                 <button id="btnSaveHistory" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
@@ -179,7 +180,7 @@ $historial = $GLOBALS['historial'];
         });
 
         $('#btnRegresar').click(function () {
-            msg.id = '<?=$GLOBALS['id']?>';
+            msg.id = <?=$historial->id_equipo?>;
             msg.category = '<?=$GLOBALS['category']?>';
 
             $.ajax({
