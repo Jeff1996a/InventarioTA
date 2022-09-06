@@ -120,6 +120,37 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             include_once "../View/AccesoriosEquipo.php";
         }
 
+        elseif($action == "update"){
+
+            include_once('../Model/EquipmentModel.php');
+
+            $equipment =  new EquipmentModel();
+
+            $id = $data->{'id'};
+
+            $category = $data->{'category'};
+
+            $result = $equipment->ObternerEquipo($id);
+
+            while ($row = mysql_fetch_array($result)) {
+                $equipment->id_equipo = $row['id_equipo'];
+                $equipment->marca = $row['marca'];
+                $equipment->modelo = $row['modelo'];
+                $equipment->descripcion = $row['descripcion'];
+                $equipment->codigo_ta = $row['num_serie_ta'];
+                $equipment->num_serie = $row['num_serie'];
+                $equipment->fecha_inst = $row['fecha_instalacion'];
+                $equipment->proveedor = $row['proveedor'];
+                $equipment->responsable = $row['responsable'];
+                $equipment->departamento = $row['departamento'];
+                $equipment->id_estado = $row['estado'];
+                $equipment->id_tipo_equi = $row['tipo'];
+                $equipment->observacion = $row['observacion'];
+            }
+
+            include_once ('./View/ActualizarEquipo.php');
+        }
+
         elseif($action == 'viewAddAccesories'){
 
             $id = $data->{'id'};

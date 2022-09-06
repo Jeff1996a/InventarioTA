@@ -194,32 +194,23 @@
       });
 
       //Eliminar equipos
-      $('#tblEquipos').on('click', '#btnEliminar', function () {
+      $('#tblEquipos').on('click', '#btnActualizar', function () {
             const row =  $(this).closest('tr');
             msg.id= row.find("td.idEquipo").text();
 
             msg.category = '<?=$GLOBALS['category']?>';
 
-            if (confirm('Desea eliminar el registro')) {
-                $.ajax({
-                    type: 'POST',
+            $.ajax({
+                    type: 'GET',
                     url: 'Controller/EquipoController.php',
-                    data: {data: JSON.stringify(msg), action:'eliminar'},
+                    data: {data: JSON.stringify(msg), action:'update'},
                     success: function (result) {
-                        $.ajax({
-                            type:'GET',
-                            url: 'Controller/EquipoController.php',
-                            data: {data: JSON.stringify(msg), action:'listarEquipos'},
-                            success: function(response){
-                                $('#content').html(response);
-                            }
-                        })
+                        $('#content').html(response);
                     },
                     error: function (result) {
-                        alert('Ops! No se pudo eliminar el equipo');
+                        alert('Ops! No se pudo obtener el registro');
                     }
-                });
-            }
+            });
         });
 
       //Filtrar por marca
