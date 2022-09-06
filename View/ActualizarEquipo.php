@@ -277,12 +277,12 @@ $equipment = $GLOBALS['equipment'];
             }
 
             const files = document.getElementById('files');
-
+            /*
             const total_files = files.files.length;
 
             for (var index = 0; index < total_files; index++) {
                 form_data.append("files[]", files.files[index]);
-            }
+            }*/
 
             // AJAX request
             $.ajax({
