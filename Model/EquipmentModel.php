@@ -274,7 +274,7 @@ class EquipmentModel
 
 
         mysqli_multi_query ($this->dbConn, "CALL uspActualizarEquipo(@Id, @Marca, @Modelo, @Descr, @NumSerieTa, @NumSerie,
-                            @Obs, @FechaInstalacion,@Prov,@IdEstado,@IdTipoEqu, @Resp, @Dep)")
+                            @Obs, @FechaInstalacion,@Prov,@IdEstado,@IdTipoEquiº, @Resp, @Dep)")
             OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
