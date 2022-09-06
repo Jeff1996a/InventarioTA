@@ -335,7 +335,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             die;
         }
 
-        if($_POST['action'] == 'actulizarEquipo' ){
+        if($_POST['action'] == 'actualizarEquipo' ){
             $equipment->marca = $_POST['marca'];
             $equipment->modelo = $_POST['modelo'];
             $equipment->descripcion = $_POST['descripcion'];
