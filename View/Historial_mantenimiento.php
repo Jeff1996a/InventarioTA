@@ -22,11 +22,8 @@
         <tr>
             <td><strong>Cod.</strong></td>
             <td><strong>Marca</strong></td>
-            <td><strong>Cod. Equipo</strong></td>
             <td><strong>Modelo</strong></td>
             <td><strong>Descripción</strong></td>
-            <td><strong>Serie TA</strong></td>
-            <td><strong>Serie</strong></td>
             <td><strong>Técnico</strong></td>
             <td><strong>Email</strong></td>
             <td><strong>Ult.Mantenimiento</strong></td>
@@ -49,8 +46,6 @@
                 <td><?php echo $row["marca"]; ?> </td>
                 <td><?php echo $row["modelo"]; ?> </td>
                 <td><?php echo $row["descripcion"]; ?> </td>
-                <td><?php echo $row["num_serie_ta"]; ?> </td>
-                <td><?php echo $row["num_serie"]; ?> </td>
                 <td><?php echo $row["tecnico"]; ?> </td>
                 <td><?php echo $row["email"]; ?> </td>
                 <td><?php echo $row["fecha_ult_mant"]; ?> </td>
