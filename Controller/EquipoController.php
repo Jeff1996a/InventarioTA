@@ -336,6 +336,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
 
         if($_POST['action'] == 'actualizarEquipo' ){
+            $equipment->id_equipo = $_POST['id_equipo'];
             $equipment->marca = $_POST['marca'];
             $equipment->modelo = $_POST['modelo'];
             $equipment->descripcion = $_POST['descripcion'];
@@ -395,9 +396,10 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             }
 
             else{
-                $row = mysqli_result($equipment->ActualizarEquipo($equipment));
 
-                $equipment->result = $row["id_equipo"];
+                $row = mysqli_fetch_assoc($equipment->ActualizarEquipo($equipment));
+   
+                $equipment->result = $row["resultado"];
             }
 
             echo json_encode($equipment);

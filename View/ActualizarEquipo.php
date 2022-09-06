@@ -256,6 +256,7 @@ $equipment = $GLOBALS['equipment'];
 
             const form_data = new FormData();
 
+            form_data.append('id_equipo','<?php echo $equipment->id_equipo; ?>');
             form_data.append('marca', marca);
             form_data.append('modelo', modelo);
             form_data.append('descripcion', descripcion);
