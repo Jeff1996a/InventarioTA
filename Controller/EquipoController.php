@@ -335,6 +335,77 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             die;
         }
 
+        if($_POST['action'] == 'actulizarEquipo' ){
+            $equipment->marca = $_POST['marca'];
+            $equipment->modelo = $_POST['modelo'];
+            $equipment->descripcion = $_POST['descripcion'];
+            $equipment->codigo_ta = $_POST['codigoTA'];
+            $equipment->num_serie = $_POST['serie'];
+            $equipment->fecha_inst = $_POST['fechaInst'];
+            $equipment->proveedor = $_POST['proveedor'];
+            $equipment->id_estado = $_POST['estado'];
+            $equipment->id_tipo_equi = $_POST['tipoEquipo'];
+            $equipment->responsable = $_POST['responsable'];
+            $equipment->departamento = $_POST['departamento'];
+            $equipment->disponibilidad = $_POST['disponibilidad'];
+            $equipment->observacion = $_POST['observacion'];
+
+            if(isset($_FILES['files'])){
+                // Count total files
+                $countfiles = count($_FILES['files']['name']);
+
+                // Upload Location
+                $upload_location = "../Files/";
+
+                // To store uploaded files path
+                $equipment->file_array = array();
+
+                $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+                $equipment->result = $row["resultado"];
+
+                // Loop all files
+                for($index = 0;$index < $countfiles;$index++){
+
+                    if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
+                        // File name
+                        $filename = $_FILES['files']['name'][$index];
+
+                        // Get extension
+                        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+                        // Valid image extension
+                        $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
+
+                        // Check extension
+                        if(in_array($ext, $valid_ext)){
+
+                            // File path
+                            $path = $upload_location.$filename;
+
+                            // Upload file
+                            if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
+                                $equipment->file_array[] = $path;
+
+                            }
+                        }
+                    }
+                }
+                echo json_encode($equipment);
+                die;
+            }
+
+            else{
+                $row = mysqli_fetch_assoc($equipment->ActualizarEquipo($equipment));
+
+                $equipment->result = $row["resultado"];
+            }
+
+            echo json_encode($equipment);
+
+            die;
+        }
+
+
         elseif($_POST['action'] == 'addHistory'){
 
             include_once ('../Model/Historial.php');

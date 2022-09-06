@@ -257,6 +257,7 @@ class EquipmentModel
     }
 
     function ActualizarEquipo($obj){
+        mysqli_query($this->dbConn ,"SET @Id='".$obj->id_equipo."'");
         mysqli_query($this->dbConn ,"SET @Marca='".$obj->marca."'");
         mysqli_query($this->dbConn ,"SET @Modelo='".$obj->modelo."'");
         mysqli_query($this->dbConn ,"SET @Descr='".$obj->descripcion."'");
@@ -271,7 +272,7 @@ class EquipmentModel
         mysqli_query($this->dbConn ,"SET @Obs='".$obj->observacion."'");
 
 
-        mysqli_multi_query ($this->dbConn, "CALL uspActualizarEquipo(@Marca, @Modelo, @Descr, @NumSerieTa, @NumSerie,
+        mysqli_multi_query ($this->dbConn, "CALL uspActualizarEquipo(@Id, @Marca, @Modelo, @Descr, @NumSerieTa, @NumSerie,
                             @Obs, @FechaInstalacion,@Prov,@IdEstado,@IdTipoEqu, @Resp, @Dep)")
             OR DIE (mysqli_error($this->dbConn));
 
