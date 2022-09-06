@@ -256,6 +256,34 @@ class EquipmentModel
         }
     }
 
+    function ActualizarEquipo($obj){
+        mysqli_query($this->dbConn ,"SET @Marca='".$obj->marca."'");
+        mysqli_query($this->dbConn ,"SET @Modelo='".$obj->modelo."'");
+        mysqli_query($this->dbConn ,"SET @Descr='".$obj->descripcion."'");
+        mysqli_query($this->dbConn ,"SET @NumSerieTa='".$obj->codigo_ta."'");
+        mysqli_query($this->dbConn ,"SET @NumSerie='".$obj->num_serie."'");
+        mysqli_query($this->dbConn ,"SET @FechaInstalacion='".$obj->fecha_inst."'");
+        mysqli_query($this->dbConn ,"SET @Prov='".$obj->proveedor."'");
+        mysqli_query($this->dbConn ,"SET @IdEstado='".$obj->id_estado."'");
+        mysqli_query($this->dbConn ,"SET @IdTipoEqui='".$obj->id_tipo_equi."'");
+        mysqli_query($this->dbConn ,"SET @Resp='".$obj->responsable."'");
+        mysqli_query($this->dbConn ,"SET @Dep='".$obj->departamento."'");
+        mysqli_query($this->dbConn ,"SET @Obs='".$obj->observacion."'");
+
+
+        mysqli_multi_query ($this->dbConn, "CALL uspActualizarEquipo(@Marca, @Modelo, @Descr, @NumSerieTa, @NumSerie,
+                            @Obs, @FechaInstalacion,@Prov,@IdEstado,@IdTipoEqu, @Resp, @Dep)")
+            OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result= mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
+
     function EliminarEquipo($id){
         mysqli_query($this->dbConn ,"SET @id='".$id."'");
 
