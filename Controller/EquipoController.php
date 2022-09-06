@@ -395,7 +395,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             }
 
             else{
-                $row = mysqli_fetch_assoc($equipment->ActualizarEquipo($equipment));
+                $row = mysqli_result($equipment->ActualizarEquipo($equipment));
 
                 $equipment->result = $row["id_equipo"];
             }
