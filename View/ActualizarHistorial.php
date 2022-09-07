@@ -61,7 +61,7 @@ $historial = $GLOBALS['historial'];
 
             <div class="mb-2 col-sm-6">
                 <label for="txtSolucion " class="form-label">Solución:</label>
-                <textarea class="form-control" id="txtSolucion" rows="3" name="solucion" value="<?php echo $historial->solucion; ?>" style="text-transform:uppercase"></textarea>
+                <textarea class="form-control" id="txtSolucion" rows="3" name="solucion" value="<?php echo $historial->solucion ?>" style="text-transform:uppercase"></textarea>
             </div>
         </div>
 
