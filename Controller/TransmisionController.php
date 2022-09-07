@@ -59,6 +59,33 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             include_once "../View/ListaEquiposTransmision.php";
         }
+
+        elseif($action == "update"){
+
+            include_once('../Model/TransmisionModel.php');
+
+            $transmision =  new EquipmentModel();
+
+            $id = $data->{'id'};
+
+            $category = $data->{'category'};
+
+            $result = $transmision->ObtenerTransmision($id);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $transmision->id_transmision = $row['id_transmision'];
+                $transmision->nombre = $row['nombre'];
+                $transmision->ubicacion = $row['ubicacion'];
+                $transmision->tecnico = $row['tecnico'];
+                $transmision->email = $row['email'];
+                $transmision->movil = $row['unidad_movil'];
+                $transmision->inicio = $row['fecha_inicio'];
+                $transmision->fin = $row['fecha_fin'];
+                $transmision->obs = $row['observaciones'];
+            }
+
+            include_once ('../View/ActualizarTransmision.php');
+        }
     }
 
 

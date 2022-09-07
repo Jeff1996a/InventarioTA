@@ -68,4 +68,18 @@ class TransmisionModel
             }
         }
     }
+
+    function ObtenerTransmision($id){
+        mysqli_query($this->dbConn ,"SET @id='".$id."'");
+
+        mysqli_multi_query ($this->dbConn, "CALL uspObtenerTransmision(@id)") OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result = mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
 }

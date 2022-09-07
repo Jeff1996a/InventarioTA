@@ -168,12 +168,12 @@ $accesorio = $GLOBALS['accesorio'];
             const form_data = new FormData();
 
             form_data.append('id_accesorio',<?=$accesorio->id_accesorio?> )
-            form_data.append('serie', serie);
-            form_data.append('codigoTA', serieTA);
             form_data.append('descripcion', descripcion);
-            form_data.append('disponibilidad', disp);
-            form_data.append('action', 'addAccesorio');
+            form_data.append('disponibilidad', disponibilidad);
+            form_data.append('serieTa', serieTA);
+            form_data.append('serie', serie);
             form_data.append('id_equipo', id_equipo);
+            form_data.append('action', 'actualizarAccesorio');
 
             //Mostrar los datos del formulario mediante clave/valor
             for(let [name, value] of form_data) {
@@ -206,7 +206,7 @@ $accesorio = $GLOBALS['accesorio'];
                     }*/
                     console.log(response.result);
                     if(response.result != 0){
-                            alert("Registro exitoso!!");
+                            alert("Registro actulizado correctamente!!");
 
                             console.log(msg.category);
 
@@ -221,7 +221,7 @@ $accesorio = $GLOBALS['accesorio'];
                         }
 
                     else{
-                            alert("El accesorio ya se encuentra registrado");
+                            alert("No se puede actualizar el registro");
                     }
                 }
             });
