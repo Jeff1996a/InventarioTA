@@ -85,24 +85,28 @@ $equipment = $GLOBALS['equipment'];
                 <?php
                     echo '<select class="form-select btn-outline-success" aria-label="Default select example" id="cbEstado"   name="estado">';
                     if($equipment->id_estado == "Almacenado"){
+                        echo '<option>Seleccione un estado</option>';
                         echo '<option value="1" selected="selected">Almacenado</option>';
                         echo '<option value="2">Averiado</option>';
                         echo '<option value="3">Óptimo</option>';
                         echo '<option value="4">Operativos</option>';
                     }
                     elseif($equipment->id_estado == "Averiado"){
+                        echo '<option>Seleccione un estado</option>';
                         echo '<option value="1">Almacenado</option>';
                         echo '<option value="2" selected="selected">Averiado</option>';
                         echo '<option value="3">Óptimo</option>';
                         echo '<option value="4">Operativos</option>';
                     }
                     elseif($equipment->id_estado == "Óptimo"){
+                        echo '<option>Seleccione un estado</option>';
                         echo '<option value="1">Almacenado</option>';
                         echo '<option value="2">Averiado</option>';
                         echo '<option value="3" selected="selected">Óptimo</option>';
                         echo '<option value="4">Operativos</option>';
                     }
                     elseif($equipment->id_estado == "Operativo"){
+                        echo '<option>Seleccione un estado</option>';
                         echo '<option value="1">Almacenado</option>';
                         echo '<option value="2">Averiado</option>';
                         echo '<option value="3">Óptimo</option>';
@@ -115,7 +119,70 @@ $equipment = $GLOBALS['equipment'];
 
             <div class="mb-2 col">
                 <label for="cbTipoEquipo">Tipo de Equipo:</label>
-                <select class="form-select btn-outline-success" aria-label="Default select example" id="cbTipoEquipo" name="tipoEquipo">
+                <?php 
+                    echo '<select class="form-select btn-outline-success" aria-label="Default select example" id="cbTipoEquipo" name="tipoEquipo">';
+                    if($equipment->id_tipo_equi == "Audio"){
+                        echo '<option>Seleccione una categoría</option>';
+                        echo '<option value="1" selected="selected">Audio</option>';
+                        echo '<option value="2">Cables</option>';
+                        echo '<option value="3">Edición</option>';
+                        echo '<option value="4">Electricidad</option>';
+                        echo '<option value="5">Red</option>';
+                        echo '<option value="6">Video</option>';
+                    }
+
+                    elseif($equipment->id_tipo_equi == "Cables"){
+                        echo '<option>Seleccione una categoría</option>';
+                        echo '<option value="1">Audio</option>';
+                        echo '<option value="2" selected="selected">Cables</option>';
+                        echo '<option value="3">Edición</option>';
+                        echo '<option value="4">Electricidad</option>';
+                        echo '<option value="5">Red</option>';
+                        echo '<option value="6">Video</option>';
+                    }
+
+                    elseif($equipment->id_tipo_equi == "Edición"){
+                        echo '<option>Seleccione una categoría</option>';
+                        echo '<option value="1">Audio</option>';
+                        echo '<option value="2" selected="selected">Cables</option>';
+                        echo '<option value="3">Edición</option>';
+                        echo '<option value="4">Electricidad</option>';
+                        echo '<option value="5">Red</option>';
+                        echo '<option value="6">Video</option>';
+                    }
+
+                    elseif($equipment->id_tipo_equi == "Electricidad"){
+                        echo '<option>Seleccione una categoría</option>';
+                        echo '<option value="1">Audio</option>';
+                        echo '<option value="2">Cables</option>';
+                        echo '<option value="3">Edición</option>';
+                        echo '<option value="4" selected="selected">Electricidad</option>';
+                        echo '<option value="5">Red</option>';
+                        echo '<option value="6">Video</option>';
+                    }
+
+                    elseif($equipment->id_tipo_equi == "Red"){
+                        echo '<option>Seleccione una categoría</option>';
+                        echo '<option value="1">Audio</option>';
+                        echo '<option value="2">Cables</option>';
+                        echo '<option value="3">Edición</option>';
+                        echo '<option value="4">Electricidad</option>';
+                        echo '<option value="5" selected="selected">Red</option>';
+                        echo '<option value="6">Video</option>';
+                    }
+
+                    elseif($equipment->id_tipo_equi == "Video"){
+                        echo '<option>Seleccione una categoría</option>';
+                        echo '<option value="1">Audio</option>';
+                        echo '<option value="2">Cables</option>';
+                        echo '<option value="3">Edición</option>';
+                        echo '<option value="4">Electricidad</option>';
+                        echo '<option value="5">Red</option>';
+                        echo '<option value="6" selected="selected">Video</option>';
+                    }
+                    echo '</select>';
+                ?>
+                
                     <option selected>Seleccione una categoría</option>
                     <option value="1">Audio</option>
                     <option value="2">Cables</option>
@@ -123,7 +190,7 @@ $equipment = $GLOBALS['equipment'];
                     <option value="4">Electricidad</option>
                     <option value="5">Red</option>
                     <option value="6">Video</option>
-                </select>
+                
             </div>
         </div>
 
