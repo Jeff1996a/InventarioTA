@@ -167,7 +167,7 @@ $accesorio = $GLOBALS['accesorio'];
 
             const form_data = new FormData();
 
-            form_data.append('id_accesorio',<?=$accesorio->id_accesorios?> )
+            form_data.append('id_accesorio',<?=$accesorio->id_accesorio?> )
             form_data.append('serie', serie);
             form_data.append('codigoTA', serieTA);
             form_data.append('descripcion', descripcion);
