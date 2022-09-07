@@ -153,11 +153,11 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
         elseif($action == "updateHistory"){
 
-            include_once('../Model/EquipmentModel.php');
             include_once ('../Model/Historial.php');
-
-            $equipment =  new EquipmentModel();
+            include_once('../Model/EquipmentModel.php');
+            
             $historial = new Historial();
+            $equipment =  new EquipmentModel();   
 
             $id = $data->{'id'};
 
