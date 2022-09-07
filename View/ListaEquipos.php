@@ -214,7 +214,7 @@
                 $.ajax({
                     type: 'POST',
                     url: 'Controller/EquipoController.php',
-                    data: {data: JSON.stringify(msg), action:'eliminarHistorial'},
+                    data: {data: JSON.stringify(msg), action:'eliminar'},
                     success: function (result) {
                         $.ajax({
                             type:'GET',
