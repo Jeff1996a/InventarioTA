@@ -184,6 +184,34 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             include_once ('../View/ActualizarHistorial.php');
         }
+        elseif($action == "updateAccesorio"){
+
+            include_once ('../Model/Accesorio.php');
+            include_once('../Model/EquipmentModel.php');
+            
+            
+            $equipment =  new EquipmentModel();   
+            
+
+            $id = $data->{'id'};
+
+            $category = $data->{'category'};
+
+            $result = $equipment->ObtenerAccesorio($id);
+
+            $accesorio = new Accesorio();
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $accesorio->id_accesorio = $row['id_accesorio'];
+                $accesorio->descripcion = $row['desc_accesorio'];
+                $accesorio->disponibilidad = $row['disponibilidad'];
+                $accesorio->id_equipo = $row['id_equipo'];
+                $accesorio->serie = $row['serie'];
+                $accesorio->serie_ta = $row['serieTa'];  
+            }
+
+            include_once ('../View/ActualizarAccesorio.php');
+        }
 
         elseif($action == 'viewAddAccesories'){
 
