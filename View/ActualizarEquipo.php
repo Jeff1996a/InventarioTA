@@ -82,22 +82,16 @@ $equipment = $GLOBALS['equipment'];
         <div class="mb-2 row">
             <div class="mb-2 col">
                 <label for="cbEstado">Estado:</label>
-                
-                    
+                <select class="form-select btn-outline-success" aria-label="Default select example" id="cbEstado"   name="estado">
+                    <option selected>Seleccione un estado</option>
                     <?php if($equipment->id_estado == 1){
-                            echo '
-                            <select class="form-select btn-outline-success" aria-label="Default select example" id="cbEstado"   name="estado">
-                                <option selected>Seleccione un estado</option>
-                                <option value="1" selected="selected">Almacenado</option>
-                                <option value="2">Averiado</option>
-                                <option value="3">Óptimo</option>
-                                <option value="4">Operativo</option>
-                            </select>';
+                            echo '<option value="1" selected="selected">Almacenado</option>';
+                            echo '<option value="2">Averiado</option>';
+                            echo '<option value="3">Óptimo</option>';
+                            echo '<option value="3">Operativo</option>';
                         } 
                     ?>
-                   
-                    
-                
+                </select>
             </div>
 
             <div class="mb-2 col">
