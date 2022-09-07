@@ -243,7 +243,7 @@ $historial = $GLOBALS['historial'];
             form_data.append('disponibilidad', disp);
             form_data.append('repuesto', repuesto);
             form_data.append('category', categoria);
-            form_data.append('action', 'updateHistory');
+            form_data.append('action', 'actualizarHistorial');
             //Mostrar los datos del formulario mediante clave/valor
             for(let [name, value] of form_data) {
                 console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2

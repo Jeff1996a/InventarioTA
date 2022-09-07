@@ -114,7 +114,7 @@ $equipment = $GLOBALS['equipment'];
 
         <div class="mb-2">
             <label for="txtObservacion" class="form-label">Observación:</label>
-            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion" value="<?php echo $equipment->observacion; ?>" style="text-transform:uppercase"></textarea>
+            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion" style="text-transform:uppercase"><?php echo $equipment->observacion; ?></textarea>
         </div>
 
         <div class="col-auto">

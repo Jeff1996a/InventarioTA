@@ -328,4 +328,30 @@ class EquipmentModel
             }
         }
     }
+
+    function ActualizarHistorial($obj){
+        mysqli_query($this->dbConn ,"SET @Id='".$obj->id_historial."'");
+        mysqli_query($this->dbConn ,"SET @Tec='".$obj->tecnico."'");
+        mysqli_query($this->dbConn ,"SET @Correo='".$obj->correo."'");
+        mysqli_query($this->dbConn ,"SET @Ingreso='".$obj->ingreso."'");
+        mysqli_query($this->dbConn ,"SET @Mant='".$obj->ultMant."'");
+        mysqli_query($this->dbConn ,"SET @Prob='".$obj->problema."'");
+        mysqli_query($this->dbConn ,"SET @Sol='".$obj->solucion."'");
+        mysqli_query($this->dbConn ,"SET @Obs='".$obj->observacion."'");
+        mysqli_query($this->dbConn ,"SET @Disp='".$obj->disponibilidad."'");
+        mysqli_query($this->dbConn ,"SET @Rep='".$obj->repuesto."'");
+
+
+        mysqli_multi_query ($this->dbConn, "CALL uspActualizarHistorial(@Id, @Tec, @Correo, @Ingreso, @Mant,
+                            @Prob, @Sol, @Obs, @Disp, @Rep)")
+            OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result= mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
 }
