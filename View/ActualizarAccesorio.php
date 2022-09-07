@@ -129,7 +129,7 @@ $accesorio = $GLOBALS['accesorio'];
         });
 
         $('#btnRegresar').click(function () {
-            msg.id = '<?=$GLOBALS['id']?>';
+            msg.id = <?=$accesorio->id_equipo?>;
             msg.category = '<?=$GLOBALS['category']?>';
 
             $.ajax({
