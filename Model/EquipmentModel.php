@@ -300,20 +300,6 @@ class EquipmentModel
         }
     }
 
-    function EliminarAccesorio($id){
-        mysqli_query($this->dbConn ,"SET @id='".$id."'");
-
-        mysqli_multi_query ($this->dbConn, "CALL uspEliminarAccesorio(@id)") OR DIE (mysqli_error($this->dbConn));
-
-        while (mysqli_more_results($this->dbConn)) {
-
-            if ($result = mysqli_store_result($this->dbConn)) {
-
-                return $result;
-            }
-        }
-    }
-
     //Obtener historial
     function ObtenerHistorial($id){
         mysqli_query($this->dbConn ,"SET @Id='".$id."'");
@@ -368,4 +354,54 @@ class EquipmentModel
             }
         }
     }
+
+    function ObtenerAccesorio($id){
+        mysqli_query($this->dbConn ,"SET @id='".$id."'");
+
+        mysqli_multi_query ($this->dbConn, "CALL uspObtenerAccesorio(@id)") OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result = mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
+
+    function ActualizarAccesorio($obj){
+        mysqli_query($this->dbConn ,"SET @Id='".$obj->id_accesorio."'");
+        mysqli_query($this->dbConn ,"SET @Descr='".$obj->descripcion."'");
+        mysqli_query($this->dbConn ,"SET @Disp='".$obj->disponibilidad."'");
+        mysqli_query($this->dbConn ,"SET @IdEquipo='".$obj->id_equipo."'");
+        mysqli_query($this->dbConn ,"SET @NumSerie='".$obj->serie."'");
+        mysqli_query($this->dbConn ,"SET @NumSerieTa='".$obj->serie_ta."'");
+
+        mysqli_multi_query ($this->dbConn, "CALL uspActualizarAccesorio(@Id, @Descr, @Disp, @IdEquipo, @NumSerie,
+                            @NumSerieTa)")
+            OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result= mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
+
+    function EliminarAccesorio($id){
+        mysqli_query($this->dbConn ,"SET @id='".$id."'");
+
+        mysqli_multi_query ($this->dbConn, "CALL uspEliminarAccesorio(@id)") OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result = mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
+   
 }
