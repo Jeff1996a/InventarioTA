@@ -330,7 +330,7 @@ $historial = $GLOBALS['historial'];
                 console.log(response);
                 
                 if(response.result != 0){
-                        alert("Registro exitoso!!");
+                        alert("Registro actualizado correctamente!!");
                         msg.id = <?=$historial->id_equipo?>;
                         msg.category = '<?=$GLOBALS['category']?>';
 
@@ -345,7 +345,7 @@ $historial = $GLOBALS['historial'];
                 }
 
                 else{
-                        alert("El equipo ya se encuentra registrado");
+                        alert("No se pudo actualizar el registro");
                 }
                 }
             });

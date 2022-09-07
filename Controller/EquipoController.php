@@ -280,7 +280,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             $equipment->EliminarEquipo($id);
        }
 
-       if($action == "eliminarAccesorio"){
+       elseif($action == "eliminarAccesorio"){
             include_once('../Model/EquipmentModel.php');
 
             $equipment =  new EquipmentModel();
@@ -290,6 +290,18 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             $category = $data->{'category'};
 
             $equipment->EliminarAccesorio($id);   
+        }
+
+        elseif($action == "eliminarHistorial"){
+            include_once('../Model/EquipmentModel.php');
+
+            $equipment =  new EquipmentModel();
+
+            $id = $data->{'idAccesorio'};
+
+            $category = $data->{'category'};
+
+            $equipment->EliminarHistorial($id);   
         }
 
     }
