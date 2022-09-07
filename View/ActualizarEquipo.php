@@ -88,7 +88,7 @@ $equipment = $GLOBALS['equipment'];
                         echo '<option value="1" selected="selected">Almacenado</option>';
                         echo '<option value="2">Averiado</option>';
                     }
-                    echo '</select>';s
+                    echo '</select>';
 
                 ?>
             </div>
