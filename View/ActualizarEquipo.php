@@ -87,6 +87,26 @@ $equipment = $GLOBALS['equipment'];
                     if($equipment->id_estado == "Almacenado"){
                         echo '<option value="1" selected="selected">Almacenado</option>';
                         echo '<option value="2">Averiado</option>';
+                        echo '<option value="3">Óptimo</option>';
+                        echo '<option value="4">Operativos</option>';
+                    }
+                    elseif($equipment->id_estado == "Averiado"){
+                        echo '<option value="1">Almacenado</option>';
+                        echo '<option value="2" selected="selected">Averiado</option>';
+                        echo '<option value="3">Óptimo</option>';
+                        echo '<option value="4">Operativos</option>';
+                    }
+                    elseif($equipment->id_estado == "Óptimo"){
+                        echo '<option value="1">Almacenado</option>';
+                        echo '<option value="2">Averiado</option>';
+                        echo '<option value="3" selected="selected">Óptimo</option>';
+                        echo '<option value="4">Operativos</option>';
+                    }
+                    elseif($equipment->id_estado == "Operativo"){
+                        echo '<option value="1">Almacenado</option>';
+                        echo '<option value="2">Averiado</option>';
+                        echo '<option value="3">Óptimo</option>';
+                        echo '<option value="4" selected="selected">Operativos</option>';
                     }
                     echo '</select>';
 
