@@ -181,16 +181,7 @@ $equipment = $GLOBALS['equipment'];
                         echo '<option value="6" selected="selected">Video</option>';
                     }
                     echo '</select>';
-                ?>
-                
-                    <option selected>Seleccione una categoría</option>
-                    <option value="1">Audio</option>
-                    <option value="2">Cables</option>
-                    <option value="3">Edición</option>
-                    <option value="4">Electricidad</option>
-                    <option value="5">Red</option>
-                    <option value="6">Video</option>
-                
+                ?>       
             </div>
         </div>
 
