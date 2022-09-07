@@ -73,18 +73,45 @@ $historial = $GLOBALS['historial'];
         <div class="mb-2 row">
             <div class="mb-2 col-6">
                 Disponibilidad
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="rbDispSi" checked>
-                    <label class="form-check-label" for="rbDispSi">
-                        Si
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="rbDispNo">
-                    <label class="form-check-label" for="rbDispNo">
-                        No
-                    </label>
-                </div>
+                <?php 
+                
+                    if($historial->disponibilidad == 'Si'){
+                        echo '
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="rbDispSi" checked>
+                            <label class="form-check-label" for="rbDispSi">
+                              Si
+                            </label>
+                        </div>';
+
+                        echo '
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="rbDispNo">
+                            <label class="form-check-label" for="rbDispNo">
+                              No
+                            </label>
+                        </div>';
+                    } 
+                    else {
+                        echo '
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="rbDispSi">
+                            <label class="form-check-label" for="rbDispSi">
+                              Si
+                            </label>
+                        </div>';
+
+                        echo '
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault1" id="rbDispNo" checked>
+                            <label class="form-check-label" for="rbDispNo">
+                              No
+                            </label>
+                        </div>';
+                    }     
+                ?>
+                
+                
             </div>
 
             <div class="mb-2 col-6">
