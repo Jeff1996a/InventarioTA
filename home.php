@@ -81,7 +81,7 @@ die;
                     </li>
 
                     <li class="nav-item active" id="btnIncidencias">
-                        <a class="nav-link text-white" href="#">Cursos</a>
+                        <a class="nav-link text-white" href="#">Soportes & ayudas</a>
                     </li>
 
                     <li class="nav-item active">
