@@ -156,14 +156,17 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             include_once ('../Model/Historial.php');
             include_once('../Model/EquipmentModel.php');
             
-            $historial = new Historial();
+            
             $equipment =  new EquipmentModel();   
+            
 
             $id = $data->{'id'};
 
             $category = $data->{'category'};
 
             $result = $equipment->ObtenerHistorial($id);
+
+            $historial = new Historial();
 
             while ($row = mysqli_fetch_assoc($result)) {
                 $historial->id_equipo = $row['id_equipo'];
