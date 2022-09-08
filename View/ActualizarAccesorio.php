@@ -153,7 +153,7 @@ $accesorio = $GLOBALS['accesorio'];
             const serie = $('#txtSerie').val();
             const serieTA = $('#txtSerieTA').val();
             const descripcion = $('#txtDescripcion').val();
-            const id_equipo = '<?=$GLOBALS['id']?>';
+            const id_equipo = <?=$accesorio->id_equipo?>;
 
             var disp = '';
 
