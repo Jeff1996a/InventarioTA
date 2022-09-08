@@ -187,8 +187,8 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             $accesorio = new AccesorioTransmision();
 
             $accesorio->serie = $_POST['serie'];
-            $accesorio->nombre = $_POST['codigoTa'];
-            $accesorio->ubicacion = $_POST['descripcion'];
+            $accesorio->serie_ta = $_POST['codigoTa'];
+            $accesorio->descripcion = $_POST['descripcion'];
             $accesorio->id_transmision = $_POST['id_transmision'];
    
             if(isset($_FILES['files'])){
