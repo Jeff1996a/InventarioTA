@@ -75,12 +75,13 @@
             <textarea class="form-control" id="txtObservacion" rows="3" name="observacion" style="text-transform:uppercase"></textarea>
         </div>
 
-
+        <!--
         <div class="mb-2">
             <label for="file" class="form-label">Adjuntos:</label>
             <input class="form-control" type="file" id="file">
         </div>
-
+        -->
+        
 
         <div class="col-auto">
             <button id="btnCrearTransmision" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
