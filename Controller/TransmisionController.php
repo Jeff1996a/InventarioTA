@@ -172,8 +172,6 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $id = $data->{'id'};
 
-            $category = $data->{'category'};
-
             $transmision->EliminarTransmision($id);
        }
 
