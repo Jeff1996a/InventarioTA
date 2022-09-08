@@ -110,7 +110,6 @@ class TransmisionModel
         mysqli_query($this->dbConn ,"SET @Id_transmision='".$obj->id_transmision."'");
         mysqli_query($this->dbConn ,"SET @Descr='".$obj->descripcion."'");
     
-
         mysqli_multi_query ($this->dbConn, "CALL uspAgregarEquiposATransmision(@Num_serie,@Num_serie_ta,@Id_transmision,@Descr)") OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
