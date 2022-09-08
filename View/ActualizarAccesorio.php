@@ -169,7 +169,7 @@ $accesorio = $GLOBALS['accesorio'];
 
             form_data.append('id_accesorio',<?=$accesorio->id_accesorio?> )
             form_data.append('descripcion', descripcion);
-            form_data.append('disponibilidad', disponibilidad);
+            form_data.append('disponibilidad', disp);
             form_data.append('serieTa', serieTA);
             form_data.append('serie', serie);
             form_data.append('id_equipo', id_equipo);
