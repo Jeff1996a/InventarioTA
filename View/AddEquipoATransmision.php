@@ -133,11 +133,11 @@
                     console.log(response.result);
                     if(response.result != 0){
                         alert("Registro exitoso!!");
-
+                        msg.id = '<?=$GLOBALS['id']?>';
                         $.ajax({
                             type:'GET',
                             url: 'Controller/TransmisionController.php',
-                            data: { data:JSON.stringify(''), action:'listarAccesorios'},
+                            data: { data:JSON.stringify(msg), action:'listarAccesorios'},
                             success: function(response){
                                 $('#content').html(response);
                             }
