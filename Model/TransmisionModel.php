@@ -24,6 +24,7 @@ class TransmisionModel
         mysqli_set_charset($this->dbConn, DB_CHARSET);
     }
 
+    //función para crear la transmisión
     function CrearTransmision($obj){
         mysqli_query($this->dbConn ,"SET @Nom='".$obj->nombre."'");
         mysqli_query($this->dbConn ,"SET @Ubi='".$obj->ubicacion."'");
@@ -46,6 +47,7 @@ class TransmisionModel
         }
     }
 
+    //Listar todas las transmisiones
     function GetTransmisionList(){
         mysqli_multi_query ($this->dbConn, "CALL uspVistaListaTransmisiones") OR DIE (mysqli_error($this->dbConn));
         while (mysqli_more_results($this->dbConn)) {
@@ -56,23 +58,25 @@ class TransmisionModel
         }
     }
 
-    function GetEquipmentListByTransmision($id){
-        mysqli_query($this->dbConn, "SET @id='".$id."'");
+    //Obtener transmision
+    function ObtenerTransmision($id){
+        mysqli_query($this->dbConn ,"SET @id='".$id."'");
 
-        mysqli_multi_query($this->dbConn, "CALL uspLeerEquiposTransmision(@id)") OR DIE (mysqli_error($this->dbConn));
+        mysqli_multi_query ($this->dbConn, "CALL uspObtenerTransmision(@id)") OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
 
             if ($result = mysqli_store_result($this->dbConn)) {
+
                 return $result;
             }
         }
     }
 
-    function ObtenerTransmision($id){
+    function EliminarTransmision($id){
         mysqli_query($this->dbConn ,"SET @id='".$id."'");
 
-        mysqli_multi_query ($this->dbConn, "CALL uspObtenerTransmision(@id)") OR DIE (mysqli_error($this->dbConn));
+        mysqli_multi_query ($this->dbConn, "CALL uspEliminarTransmision(@id)") OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
 

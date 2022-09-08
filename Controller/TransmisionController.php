@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $id = $data->{'id'};
 
-            $category = $data->{'category'};
+            //$category = $data->{'category'};
 
             $result = $transmision->ObtenerTransmision($id);
 
@@ -163,6 +163,19 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             die;
         }
+
+        if($action == "eliminar"){
+
+            include_once('../Model/EquipmentModel.php');
+
+            $transmision =  new TransmisionModel();
+
+            $id = $data->{'id'};
+
+            //$category = $data->{'category'};
+
+            $transmision->EliminarTransmision($id);
+       }
 
     }
 }
