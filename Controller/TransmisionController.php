@@ -53,7 +53,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $title = "Lista de equipos";
 
-            $list = $transmision->GetEquipmentListByTransmision($id);
+            $list = $transmision->ObtenerEquiposPorTransmision($id);
 
             $num_filas = mysqli_num_rows($list);
 
