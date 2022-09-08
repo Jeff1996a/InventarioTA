@@ -19,7 +19,7 @@ $transmision = $GLOBALS['transmision']
             <div class="mb-2 col-6">
                 <label for="txtNombreTransmision" class="col-sm-12 col-form-label">Nombre transmisión:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtNombre" name="nombre" value="<?php echo $transmsion->nombre; ?>">
+                    <input type="text" class="form-control" id="txtNombre" name="nombre" value="<?php echo $transmision->nombre; ?>">
                 </div>
             </div>
         </div>
