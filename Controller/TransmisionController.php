@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $id = $data->{'id'};
 
-            //$category = $data->{'category'};
+            $category = $data->{'category'};
 
             $result = $transmision->ObtenerTransmision($id);
 
@@ -172,7 +172,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $id = $data->{'id'};
 
-            //$category = $data->{'category'};
+            $category = $data->{'category'};
 
             $transmision->EliminarTransmision($id);
        }
