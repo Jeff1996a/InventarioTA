@@ -100,7 +100,6 @@
 <script type="text/javascript">
     $(document).ready(function(){
         const msg = {
-            category: '',
             id: ''
         };
 
@@ -139,8 +138,6 @@
             const row =  $(this).closest('tr');
             msg.id= row.find("td.idTransmision").text();
 
-            msg.category = '<?=$GLOBALS['category']?>';
-
             $.ajax({
                     type: 'GET',
                     url: 'Controller/TransmisionController.php',
@@ -158,8 +155,6 @@
        $('#tblTransmisiones').on('click', '#btnEliminar', function () {
             const row =  $(this).closest('tr');
             msg.id = row.find("td.idTransmision").text();
-
-            msg.category = '<?=$GLOBALS['category']?>';
 
             if (confirm('Desea eliminar el registro')) {
                 $.ajax({
