@@ -64,11 +64,9 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             include_once('../Model/TransmisionModel.php');
 
-            $transmision =  new EquipmentModel();
+            $transmision =  new TransmisionModel();
 
             $id = $data->{'id'};
-
-            $category = $data->{'category'};
 
             $result = $transmision->ObtenerTransmision($id);
 
@@ -97,7 +95,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $action = $_POST['action'];
         $data = json_decode($_POST['data']);
-        
+
         if($action == "eliminar"){
 
             include_once('../Model/TransmisionModel.php');
