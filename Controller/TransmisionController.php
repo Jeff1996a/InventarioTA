@@ -185,8 +185,8 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             include_once ('../Model/AccesorioTransmision.php');
 
             $accesorio->serie = $_POST['serie'];
-            $accesorio->nombre = $_POST['serieTa'];
-            $accesorio->ubicacion = $_POST['observacion'];
+            $accesorio->nombre = $_POST['codigoTa'];
+            $accesorio->ubicacion = $_POST['descripcion'];
             $accesorio->tecnico = $_POST['id_transmision'];
    
             if(isset($_FILES['files'])){
