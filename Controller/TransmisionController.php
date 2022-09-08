@@ -184,6 +184,8 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             include_once ('../Model/AccesorioTransmision.php');
 
+            $accesorio = new AccesorioTransmision();
+
             $accesorio->serie = $_POST['serie'];
             $accesorio->nombre = $_POST['codigoTa'];
             $accesorio->ubicacion = $_POST['descripcion'];
