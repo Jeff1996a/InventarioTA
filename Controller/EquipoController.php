@@ -689,7 +689,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             else{
 
-                $row = mysqli_fetch_assoc($equipment->ActualizarAccesorio($accesorios));
+                $row = mysqli_fetch_assoc($equipment->ActualizarAccesorio($accesorio));
    
                 $equipment->result = $row["resultado"];
             }
