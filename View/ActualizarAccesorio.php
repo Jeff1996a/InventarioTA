@@ -144,7 +144,7 @@ $accesorio = $GLOBALS['accesorio'];
 
         $('#accesories-form').on('submit',function(e){
 
-            msg.id= '<?=$GLOBALS['id']?>';
+            msg.id= <?=$accesorio->id_equipo?>;
 
             msg.category = '<?=$GLOBALS['category']?>';
 
