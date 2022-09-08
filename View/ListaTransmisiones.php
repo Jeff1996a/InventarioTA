@@ -116,6 +116,8 @@
             });
         });
 
+
+        //Lista todos los equipos asignados a la transmision
         $('#tblTransmisiones').on('click','#btnListaEquipos', function(){
             const row =  $(this).closest('tr');
             msg.id = row.find("td.idTransmision").text();
@@ -130,6 +132,55 @@
                     console.log(xhr);
                 }
             });
+        });
+
+      //Actualizar datos de la transmision
+      $('#tblTransmisiones').on('click', '#btnActualizar', function () {
+            const row =  $(this).closest('tr');
+            msg.id= row.find("td.idTransmision").text();
+
+            msg.category = '<?=$GLOBALS['category']?>';
+
+            $.ajax({
+                    type: 'GET',
+                    url: 'Controller/TransmisionController.php',
+                    data: {data: JSON.stringify(msg), action:'update'},
+                    success: function (result) {
+                        $('#content').html(result);
+                    },
+                    error: function (result) {
+                        alert('Ops! No se pudo obtener el registro');
+                    }
+            });
+        });
+
+        //Eliminar equipos
+       $('#tblTransmisiones').on('click', '#btnEliminar', function () {
+            const row =  $(this).closest('tr');
+            msg.id = row.find("td.idTransmision").text();
+
+            //msg.category = '<?=$GLOBALS['category']?>';
+
+            if (confirm('Desea eliminar el registro')) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'Controller/TransmisionController.php',
+                    data: {data: JSON.stringify(msg), action:'eliminar'},
+                    success: function (result) {
+                        $.ajax({
+                            type:'GET',
+                            url: 'Controller/EquipoController.php',
+                            data: {data: JSON.stringify(msg), action:'listarEquipos'},
+                            success: function(response){
+                                $('#content').html(response);
+                            }
+                        });
+                    },
+                    error: function (result) {
+                        alert('Ops! No se pudo eliminar el equipo');
+                    }
+                });
+            }
         });
     })
 </script>
