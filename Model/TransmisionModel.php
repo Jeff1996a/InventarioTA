@@ -102,4 +102,23 @@ class TransmisionModel
             }
         }
     }
+
+    //función para crear la transmisión
+    function AgregarEquipos($obj){
+        mysqli_query($this->dbConn ,"SET @Num_serie='".$obj->serie."'");
+        mysqli_query($this->dbConn ,"SET @Num_serie_ta='".$obj->serie_ta."'");
+        mysqli_query($this->dbConn ,"SET @Id_transmision='".$obj->id_transmision."'");
+        mysqli_query($this->dbConn ,"SET @Descr='".$obj->descripcion."'");
+    
+
+        mysqli_multi_query ($this->dbConn, "CALL uspAgregarEquiposATransmision(@Num_serie,@Num_serie_ta,@Id_transmision,@Descr)") OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result = mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
 }

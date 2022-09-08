@@ -1,4 +1,4 @@
-<form method="post" action="" enctype="multipart/form-data" id="form-validation">
+<form method="post" action="" enctype="multipart/form-data" id="frmEquiposTransmision">
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="add-equipment-header">
@@ -45,7 +45,7 @@
         const msg = {
             id: ''
         };
-        $("#form-validation").validate({
+        $("#frmEquipoTransmision").validate({
             rules:{
                 serie: {
                     required: true
@@ -82,6 +82,102 @@
                     $('#content').html(response);
                 }
             });
+        });
+
+        $('#frmEquiposTransmision').on('submit', function(e){
+
+            e.preventDefault();
+
+            const serie = $('#txtSerie').val();
+            const serieTa = $('#txtCodTa').val();
+            const observacion = $('#txtObservacion').val();
+            const id_transmision = <?=$GLOBALS['id']?>;
+
+            const form_data = new FormData();
+
+            form_data.append('serie', serie);
+            form_data.append('serieTa', serieTa);
+            form_data.append('observacion', observacion);
+            form_data.append('id_transmision', id_transmision);
+            form_data.append('action', 'addEquipoTrans');
+
+            //Mostrar los datos del formulario mediante clave/valor
+            for(let [name, value] of form_data) {
+                console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2
+            }
+            /*
+            const files = document.getElementById('files');
+
+            const total_files = files.files.length;
+
+            for (var index = 0; index < total_files; index++) {
+                form_data.append("files[]", files.files[index]);
+            }*/
+
+            // AJAX request
+            $.ajax({
+                url: 'Controller/TransmisionController.php',
+                type: 'POST',
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    /*
+                        for(var index = 0; index < response.file_array.length; index++) {
+                            var src = response.file_array[index];
+                            console.log(src);
+                            // Add img element in <div id='preview'>
+                            $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+                        }*/  
+                    console.log(response.result);
+                    if(response.result != 0){
+                        alert("Registro exitoso!!");
+
+                        $.ajax({
+                            type:'GET',
+                            url: 'Controller/TransmisionController.php',
+                            data: { data:JSON.stringify(''), action:'listarAccesorios'},
+                            success: function(response){
+                                $('#content').html(response);
+                            }
+                        });     
+                    }
+
+                    else{
+                            alert("No se pudo registrar la transmisión");
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+
+            /*AJAX request
+
+            const files = document.getElementById('files');
+
+            const total_files = files.files.length;
+
+            for (var index = 0; index < total_files; index++) {
+                form_data.append("files[]", files.files[index]);
+            }
+
+            ;
+            console.log(total_files);
+            console.log($('#cbTipoEquipo').val());
+            console.log($('#cbEstado').val())
+            $.ajax({
+                url: 'Controller/EquipoController.php',
+                type: 'post',
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                }
+            });
+            */
         });
     })
 </script>

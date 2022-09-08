@@ -180,6 +180,69 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             die;
         }
 
+        if($_POST['action'] == 'addEquipoTrans'){
+
+            include_once ('../Model/AccesorioTransmision.php');
+
+            $accesorio->serie = $_POST['serie'];
+            $accesorio->nombre = $_POST['serieTa'];
+            $accesorio->ubicacion = $_POST['observacion'];
+            $accesorio->tecnico = $_POST['id_transmision'];
+   
+            if(isset($_FILES['files'])){
+                // Count total files
+                $countfiles = count($_FILES['files']['name']);
+
+                // Upload Location
+                $upload_location = "../Files/";
+
+                // To store uploaded files path
+                $equipment->file_array = array();
+
+                $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+                $equipment->result = $row["resultado"];
+
+                // Loop all files
+                for($index = 0;$index < $countfiles;$index++){
+
+                    if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
+                        // File name
+                        $filename = $_FILES['files']['name'][$index];
+
+                        // Get extension
+                        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+                        // Valid image extension
+                        $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
+
+                        // Check extension
+                        if(in_array($ext, $valid_ext)){
+
+                            // File path
+                            $path = $upload_location.$filename;
+
+                            // Upload file
+                            if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
+                                $equipment->file_array[] = $path;
+
+                            }
+                        }
+                    }
+                }
+                echo json_encode($equipment);
+                die;
+            }
+
+            else{
+                $row = mysqli_fetch_assoc($transmision->AgregarEquipos($accesorio));
+
+                $accesorio->result = $row["resultado"];
+            }
+
+            echo json_encode($accesorio);
+
+            die;
+        }
         
     }
 }
