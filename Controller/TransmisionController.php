@@ -93,6 +93,24 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
 elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
+    if(isset($_POST['action']) && isset($_POST['data'])){
+
+        $action = $_POST['action'];
+        $data = json_decode($_POST['data']);
+        
+        if($action == "eliminar"){
+
+            include_once('../Model/TransmisionModel.php');
+
+            $transmision =  new TransmisionModel();
+
+            $id = $data->{'id'};
+
+            $transmision->EliminarTransmision($id);
+       }
+
+    }
+
     if(isset($_POST)){
         
         include_once ('../Model/TransmisionModel.php');
@@ -164,17 +182,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             die;
         }
 
-        if($action == "eliminar"){
-
-            include_once('../Model/TransmisionModel.php');
-
-            $transmision =  new TransmisionModel();
-
-            $id = $data->{'id'};
-
-            $transmision->EliminarTransmision($id);
-       }
-
+        
     }
 }
 

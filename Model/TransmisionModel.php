@@ -76,7 +76,8 @@ class TransmisionModel
     function EliminarTransmision($id){
         mysqli_query($this->dbConn ,"SET @id='".$id."'");
 
-        mysqli_multi_query ($this->dbConn, "CALL uspEliminarTransmision(@id)") OR DIE (mysqli_error($this->dbConn));
+        mysqli_multi_query ($this->dbConn, "CALL uspEliminarTransmision(@id)") 
+            OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
 
