@@ -19,7 +19,7 @@ $transmision = $GLOBALS['transmision']
             <div class="mb-2 col-6">
                 <label for="txtNombreTransmision" class="col-sm-12 col-form-label">Nombre transmisión:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtNombre" name="nombre" value="<?php echo $transmision->nombre; ?>">
+                    <input type="text" class="form-control" id="txtNombre" name="nombre" value="<?php echo $transmision->nombre; ?>" style="text-transform:uppercase">
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@ $transmision = $GLOBALS['transmision']
             <div class="mb-2 col-6">
                 <label for="txtUbicacion" class="col-sm-12 col-form-label">Ubicación:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtUbicacion" name="ubicacion" value="<?php echo $transmision->ubicacion; ?>">
+                    <input type="text" class="form-control" id="txtUbicacion" name="ubicacion" value="<?php echo $transmision->ubicacion; ?>" style="text-transform:uppercase">
                 </div>
             </div>
 
@@ -44,14 +44,14 @@ $transmision = $GLOBALS['transmision']
             <div class="mb-2 col-6">
                 <label for="txtEmail" class="col-sm-12 col-form-label">Email:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtEmail" name="email" value="<?php echo $transmision->email; ?>">
+                    <input type="text" class="form-control" id="txtEmail" name="email" value="<?php echo $transmision->email; ?>" style="text-transform:uppercase">
                 </div>
             </div>
 
             <div class="mb-2 col-6">
                 <label for="txtMovil" class="col-sm-12 col-form-label">Unidad móvil:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtMovil" name="movil" value="<?php echo $transmision->movil; ?>">
+                    <input type="text" class="form-control" id="txtMovil" name="movil" value="<?php echo $transmision->movil; ?>" style="text-transform:uppercase">
                 </div>
             </div>
 
@@ -61,14 +61,14 @@ $transmision = $GLOBALS['transmision']
             <div class="mb-2 col-6">
                 <label for="dpInicio" class="col-sm-6 col-form-label">Fecha inicio:</label>
                 <div class="col-sm-6">
-                    <input type="date" class="form-control" id="dpInicio" name="fechaInicio" value="<?php echo $transmision->inicio; ?>">
+                    <input type="date" class="form-control" id="dpInicio" name="fechaInicio" value="<?php echo $transmision->inicio; ?>" style="text-transform:uppercase">
                 </div>
             </div>
 
             <div class="mb-2 col-6">
                 <label for="dpFin" class="col-sm-6 col-form-label">Fecha fin:</label>
                 <div class="col-sm-6">
-                    <input type="date" class="form-control" id="dpFin" name="fechaFin" value="<?php echo $transmision->fin; ?>">
+                    <input type="date" class="form-control" id="dpFin" name="fechaFin" value="<?php echo $transmision->fin; ?>" style="text-transform:uppercase">
                 </div>
             </div>
 
@@ -76,7 +76,7 @@ $transmision = $GLOBALS['transmision']
 
         <div class="mb-2">
             <label for="txtObservacion" class="form-label">Observación:</label>
-            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion" ><?php echo $transmision->obs; ?></textarea>
+            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion" style="text-transform:uppercase" ><?php echo $transmision->obs; ?></textarea>
         </div>
 
         <!--
