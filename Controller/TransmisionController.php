@@ -109,7 +109,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
     }
 
-    if(isset($_POST)){
+    elseif(isset($_POST)){
         
         include_once ('../Model/TransmisionModel.php');
 
@@ -189,7 +189,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             $accesorio->serie = $_POST['serie'];
             $accesorio->nombre = $_POST['codigoTa'];
             $accesorio->ubicacion = $_POST['descripcion'];
-            $accesorio->tecnico = $_POST['id_transmision'];
+            $accesorio->id_transmision = $_POST['id_transmision'];
    
             if(isset($_FILES['files'])){
                 // Count total files
