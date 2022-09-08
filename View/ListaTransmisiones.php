@@ -35,6 +35,7 @@
             <thead style="background-color:  #005aa9; color:white;">
             <tr>
                 <td><strong>Cod.</strong></td>
+                <td><strong>Nombre</strong></td>
                 <td><strong>Ubicación</strong></td>
                 <td><strong>Responsable</strong></td>
                 <td><strong>Email</strong></td>
@@ -54,6 +55,7 @@
                 ?>
                 <tr>
                     <td class="idTransmision"><?php echo $row["id_transmision"]; ?> </td>
+                    <td><?php echo $row["nombre"]; ?> </td>
                     <td><?php echo $row["ubicacion"]; ?> </td>
                     <td><?php echo $row["tecnico"]; ?> </td>
                     <td><?php echo $row["email"]; ?> </td>
