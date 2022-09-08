@@ -15,7 +15,7 @@
             <div class="mb-2 col-6">
                 <label for="txtNombreTransmision" class="col-sm-12 col-form-label">Nombre transmisión:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtNombre" name="nombre">
+                    <input type="text" class="form-control" id="txtNombre" name="nombre" style="text-transform:uppercase">
                 </div>
             </div>
         </div>
@@ -23,14 +23,14 @@
             <div class="mb-2 col-6">
                 <label for="txtUbicacion" class="col-sm-12 col-form-label">Ubicación:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtUbicacion" name="ubicacion">
+                    <input type="text" class="form-control" id="txtUbicacion" name="ubicacion" style="text-transform:uppercase">
                 </div>
             </div>
 
             <div class="mb-2 col-6">
                 <label for="txtResponsable" class="col-sm-12 col-form-label">Responsable:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtTecnico" name="tecnico">
+                    <input type="text" class="form-control" id="txtTecnico" name="tecnico" style="text-transform:uppercase">
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
             <div class="mb-2 col-6">
                 <label for="txtMovil" class="col-sm-12 col-form-label">Unidad móvil:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtMovil" name="movil">
+                    <input type="text" class="form-control" id="txtMovil" name="movil" style="text-transform:uppercase">
                 </div>
             </div>
 
@@ -72,7 +72,7 @@
 
         <div class="mb-2">
             <label for="txtObservacion" class="form-label">Observación:</label>
-            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion" ></textarea>
+            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion" style="text-transform:uppercase"></textarea>
         </div>
 
 
