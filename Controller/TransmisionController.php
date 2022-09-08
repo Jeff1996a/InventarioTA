@@ -166,7 +166,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if($action == "eliminar"){
 
-            include_once('../Model/EquipmentModel.php');
+            include_once('../Model/TransmisionModel.php');
 
             $transmision =  new TransmisionModel();
 
