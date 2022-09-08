@@ -91,14 +91,13 @@
             const serie = $('#txtSerie').val();
             const serieTa = $('#txtCodTa').val();
             const observacion = $('#txtObservacion').val();
-            const id_transmision = <?=$GLOBALS['id']?>;
 
             const form_data = new FormData();
 
             form_data.append('serie', serie);
             form_data.append('codigoTa', serieTa);
             form_data.append('descripcion', observacion);
-            form_data.append('id_transmision', id_transmision);
+            form_data.append('id_transmision', <?=$GLOBALS['id']?>);
             form_data.append('action', 'addEquipoTrans');
 
             //Mostrar los datos del formulario mediante clave/valor
