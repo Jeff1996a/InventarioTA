@@ -159,7 +159,7 @@
             const row =  $(this).closest('tr');
             msg.id = row.find("td.idTransmision").text();
 
-            //msg.category = '<?=$GLOBALS['category']?>';
+            msg.category = '<?=$GLOBALS['category']?>';
 
             if (confirm('Desea eliminar el registro')) {
                 $.ajax({
