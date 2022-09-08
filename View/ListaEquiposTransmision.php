@@ -56,7 +56,7 @@
                 <tr>
                     <td class="idEquTrans"><?php echo $row["id_lista"]; ?> </td>
                     <td><?php echo $row["serie"]; ?> </td>
-                    <td><?php echo $row["serieTA"]; ?> </td>
+                    <td><?php echo $row["serieTa"]; ?> </td>
                     <td><?php echo $row["descripcion"]; ?> </td>
                 </tr>
                 <?php
