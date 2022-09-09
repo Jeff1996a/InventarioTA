@@ -125,8 +125,6 @@
             const row =  $(this).closest('tr');
             msg.id = row.find("td.idEquTrans").text();
 
-            msg.category = '<?=$GLOBALS['category']?>';
-
             if (confirm('Desea eliminar el registro')) {
                 $.ajax({
                     type: 'POST',
@@ -136,7 +134,7 @@
                         $.ajax({
                             type:'GET',
                             url: 'Controller/TransmisionController.php',
-                            data: {data: JSON.stringify(msg), action:'listarTransmisiones'},
+                            data: {data: JSON.stringify(msg), action:'listarAccesorios'},
                             success: function(response){
                                 $('#content').html(response);
                             }
