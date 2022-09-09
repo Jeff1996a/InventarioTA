@@ -115,7 +115,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $transmision =  new TransmisionModel();
 
-        $id = $data->{'idAccesorio'};
+        $id = $data->{'id'};
 
         $transmision->EliminarEquipoTrans($id);   
     }

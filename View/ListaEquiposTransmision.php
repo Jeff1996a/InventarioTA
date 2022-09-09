@@ -131,6 +131,7 @@
                     url: 'Controller/TransmisionController.php',
                     data: {data: JSON.stringify(msg), action:'eliminar'},
                     success: function (result) {
+                        msg.id = <?=$GLOBALS['id']?>;
                         $.ajax({
                             type:'GET',
                             url: 'Controller/TransmisionController.php',
