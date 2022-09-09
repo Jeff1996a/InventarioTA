@@ -89,6 +89,8 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
 }
 
+
+////MÉTODOS POST//////
 elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(isset($_POST['action']) && isset($_POST['data'])){
@@ -106,6 +108,17 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $transmision->EliminarTransmision($id);
        }
+
+       elseif($action == "eliminar"){
+
+        include_once('../Model/TransmisionModel.php');
+
+        $transmision =  new TransmisionModel();
+
+        $id = $data->{'idAccesorio'};
+
+        $transmision->EliminarEquipoTrans($id);   
+    }
 
     }
 

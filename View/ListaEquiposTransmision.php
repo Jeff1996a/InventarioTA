@@ -93,6 +93,8 @@
        const msg = {
            id:''
        }
+
+      //GET: el formulario para agregar equipos
        $('#btnAddEquipo').click(function(){
            msg.id = '<?=$GLOBALS['id']?>';
            $.ajax({
@@ -106,6 +108,7 @@
 
        });
 
+       //Regresar a la lista de transmisiones
        $('#btnRegresar').click(function(){
            $.ajax({
                type:'GET',
@@ -116,5 +119,34 @@
                }
            });
        });
+
+       //Eliminar equipos
+       $('#tblEquTransmisiones').on('click', '#btnEliminar', function () {
+            const row =  $(this).closest('tr');
+            msg.id = row.find("td.idEquTrans").text();
+
+            msg.category = '<?=$GLOBALS['category']?>';
+
+            if (confirm('Desea eliminar el registro')) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'Controller/TransmisionController.php',
+                    data: {data: JSON.stringify(msg), action:'eliminar'},
+                    success: function (result) {
+                        $.ajax({
+                            type:'GET',
+                            url: 'Controller/TransmisionController.php',
+                            data: {data: JSON.stringify(msg), action:'listarTransmisiones'},
+                            success: function(response){
+                                $('#content').html(response);
+                            }
+                        });
+                    },
+                    error: function (result) {
+                        alert('Ops! No se pudo eliminar el equipo');
+                    }
+                });
+            }
+        });
    })
 </script>

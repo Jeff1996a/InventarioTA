@@ -88,6 +88,7 @@ class TransmisionModel
         }
     }
 
+    //Elimina una transmision
     function EliminarTransmision($id){
         mysqli_query($this->dbConn ,"SET @id='".$id."'");
 
@@ -103,7 +104,23 @@ class TransmisionModel
         }
     }
 
-    //función para crear la transmisión
+    //Elimina el equipo de una transmisión
+    function EliminarEquipoTrans($id){
+        mysqli_query($this->dbConn ,"SET @id='".$id."'");
+
+        mysqli_multi_query ($this->dbConn, "CALL uspEliminarEquipoTrans(@id)") 
+            OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result = mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
+
+    //Función para crear la transmisión
     function AgregarEquipos($obj){
         mysqli_query($this->dbConn ,"SET @Num_serie='".$obj->serie."'");
         mysqli_query($this->dbConn ,"SET @Num_serie_ta='".$obj->serie_ta."'");
