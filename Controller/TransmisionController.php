@@ -109,7 +109,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             $transmision->EliminarTransmision($id);
        }
 
-       elseif($action == "eliminar"){
+       elseif($action == "eliminarEquiTrans"){
 
         include_once('../Model/TransmisionModel.php');
 

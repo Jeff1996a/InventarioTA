@@ -129,7 +129,7 @@
                 $.ajax({
                     type: 'POST',
                     url: 'Controller/TransmisionController.php',
-                    data: {data: JSON.stringify(msg), action:'eliminar'},
+                    data: {data: JSON.stringify(msg), action:'eliminarEquiTrans'},
                     success: function (result) {
                         msg.id = <?=$GLOBALS['id']?>;
                         $.ajax({
