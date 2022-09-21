@@ -1,5 +1,5 @@
-<?php
-
+<?php 
+$equTrans = $GLOBALS['accesorio'];
 ?>
 <form method="post" action="" enctype="multipart/form-data" id="frmActualizarEquTrans">
     <div class="container-fluid">
@@ -18,14 +18,14 @@
             <div class="mb-2 col-6">
                 <label for="txtTecnico" class="col-sm-12 col-form-label">Numero de serie:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtSerie" name="serie" style="text-transform:uppercase">
+                    <input type="text" class="form-control" id="txtSerie" name="serie" value="<?php echo $equTrans->serie; ?>" style="text-transform:uppercase">
                 </div>
             </div>
 
             <div class="mb-2 col-6">
                 <label for="txtCorreo" class="col-sm-12 col-form-label">Código de TA:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtCodTa" name="codigoTA" style="text-transform:uppercase">
+                    <input type="text" class="form-control" id="txtCodTa" name="codigoTA" value="<?php echo $equTrans->serie_ta; ?>" style="text-transform:uppercase">
                 </div>
             </div>
 
@@ -33,7 +33,7 @@
 
         <div class="mb-2">
             <label for="txtObservacion" class="form-label">Descripción:</label>
-            <textarea class="form-control" id="txtObservacion" rows="3" name="descripcion" style="text-transform:uppercase"></textarea>
+            <textarea class="form-control" id="txtObservacion" rows="3" name="descripcion" style="text-transform:uppercase"><?php echo $equTrans->descripcion; ?></textarea>
         </div>
 
         <div class="col-auto">
