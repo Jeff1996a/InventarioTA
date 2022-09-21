@@ -127,7 +127,7 @@
 
             if (confirm('Desea eliminar el registro')) {
                 $.ajax({
-                    type: 'GET',
+                    type: 'POST',
                     url: 'Controller/TransmisionController.php',
                     data: {data: JSON.stringify(msg), action:'eliminarEquiTrans'},
                     success: function (result) {
@@ -149,7 +149,7 @@
         });
 
       //Actualizar equipos
-      $('#tblEquTranbsmisiones').on('click', '#btnActualizar', function () {
+      $('#tblEquTransmisiones').on('click', '#btnActualizar', function () {
             const row =  $(this).closest('tr');
             msg.id= row.find("td.idEquTrans").text();
 

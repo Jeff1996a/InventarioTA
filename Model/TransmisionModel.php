@@ -139,7 +139,7 @@ class TransmisionModel
     }
 
     function ActualizarEquTrans($obj){
-        mysqli_query($this->dbConn, "SET @id='".$obj->id_transmision."'");
+        mysqli_query($this->dbConn, "SET @id='".$obj->id_lista."'");
         mysqli_query($this->dbConn, "SET @NumSerieTa='".$obj->serie_ta."'");
         mysqli_query($this->dbConn, "SET @NumSerie='".$obj->serie."'");
         mysqli_query($this->dbConn, "SET @Descr='".$obj->descripcion."'");
