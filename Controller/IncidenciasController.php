@@ -155,15 +155,15 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if($_POST['action'] == 'actualizarIncidencia' ){
 
-            $transmision->id_incidencia = $_POST['id_incidencia'];
-            $transmision->nombre = $_POST['nombre'];
-            $transmision->responsable = $_POST['responsable'];
-            $transmision->quien_reporta = $_POST['reporta'];
-            $transmision->fecha_sop = $_POST['fecha_reporte'];
-            $transmision->fecha_sol = $_POST['fecha_solucion'];
-            $transmision->problema = $_POST['problema'];
-            $transmision->solucion = $_POST['solucion'];
-            $transmision->observacion = $_POST['observacion'];
+            $incidencia->id_incidencia = $_POST['id_incidencia'];
+            $incidencia->nombre = $_POST['nombre'];
+            $incidencia->responsable = $_POST['responsable'];
+            $incidencia->quien_reporta = $_POST['reporta'];
+            $incidencia->fecha_sop = $_POST['fecha_reporte'];
+            $incidencia->fecha_sol = $_POST['fecha_solucion'];
+            $incidencia->problema = $_POST['problema'];
+            $incidencia->solucion = $_POST['solucion'];
+            $incidencia->observacion = $_POST['observacion'];
 
             if(isset($_FILES['files'])){
                 // Count total files
