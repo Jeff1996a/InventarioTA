@@ -223,8 +223,8 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $equTrans->id_transmision = $_POST['id_transmision'];
             $equTrans->serie = $_POST['serie'];
-            $equTrans->serieTa = $_POST['codigoTa'];
-            $equTrans->desripcion = $_POST['descripcion'];
+            $equTrans->serie_ta = $_POST['codigoTa'];
+            $equTrans->descripcion = $_POST['descripcion'];
           
             if(isset($_FILES['files'])){
                 // Count total files
