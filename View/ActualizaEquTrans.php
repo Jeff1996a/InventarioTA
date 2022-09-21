@@ -134,7 +134,7 @@ $equTrans = $GLOBALS['equTrans'];
                         }*/  
                     console.log(response.result);
                     if(response.result != 0){
-                        alert("Registro exitoso!!");
+                        alert("Actualización exitosa!!");
                         msg.id = '<?=$equTrans->id_transmision;?>';
                         $.ajax({
                             type:'GET',
