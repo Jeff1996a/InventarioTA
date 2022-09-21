@@ -104,23 +104,8 @@ class TransmisionModel
         }
     }
 
-    //Elimina el equipo de una transmisión
-    function EliminarEquipoTrans($id){
-        mysqli_query($this->dbConn ,"SET @id='".$id."'");
-
-        mysqli_multi_query ($this->dbConn, "CALL uspEliminarEquipoTrans(@id)") 
-            OR DIE (mysqli_error($this->dbConn));
-
-        while (mysqli_more_results($this->dbConn)) {
-
-            if ($result = mysqli_store_result($this->dbConn)) {
-
-                return $result;
-            }
-        }
-    }
-
-    //Función para crear la transmisión
+    
+    //Agrega equipos a una transmisión
     function AgregarEquipos($obj){
         mysqli_query($this->dbConn ,"SET @Num_serie='".$obj->serie."'");
         mysqli_query($this->dbConn ,"SET @Num_serie_ta='".$obj->serie_ta."'");
@@ -137,4 +122,52 @@ class TransmisionModel
             }
         }
     }
+
+    //Obtener accesorios de una transmisión
+    function ObtenerAccesorio($id){
+        mysqli_query($this->dbConn ,"SET @id='".$id."'");
+
+        mysqli_multi_query ($this->dbConn, "CALL uspObtenerEquTrans(@id)") OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result = mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
+
+    function ActualizarEquTrans($obj){
+        mysqli_query($this->dbConn, "SET @id='".$obj->id_transmision."'");
+        mysqli_query($this->dbConn, "SET @NumSerieTa='".$obj->serie_ta."'");
+        mysqli_query($this->dbConn, "SET @NumSerie='".$obj->serie."'");
+        mysqli_query($this->dbConn, "SET @Descr='".$obj->descripcion."'");
+
+        mysqli_multi_query($this->dbConn, "CALL uspActualizarEquTrans(@id,@NumSerieTa,@NumSerie,@Descr)") OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result = mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
+
+    //Elimina el equipo de una transmisión
+    function EliminarEquipoTrans($id){
+        mysqli_query($this->dbConn ,"SET @id='".$id."'");
+
+        mysqli_multi_query ($this->dbConn, "CALL uspEliminarEquipoTrans(@id)") 
+            OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result = mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }   
 }

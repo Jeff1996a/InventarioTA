@@ -84,6 +84,28 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             include_once ('../View/ActualizarTransmision.php');
         }
+
+        elseif($action == "updateEquiTrans"){
+
+            include_once('../Model/AccesorioTransmsion.php');
+
+            $equTrans =  new AccesorioTransmision();
+
+            $id = $data->{'id'};
+
+            $result = $equTrans->ObtenerTransmision($id);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $equTrans->id_lista = $row['id_lista'];
+                $equTrans->serie_ta = $row['serieTa'];
+                $equTrans->serie = $row['serie'];
+                $equTrans->descripcion = $row['descripcion'];
+                $equTrans->id_transmision = $row['id_transmision'];
+
+            }
+
+            include_once ('../View/ActualizarTransmision.php');
+        }
     }
 
 
@@ -193,16 +215,16 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             die;
         }
 
-        if($_POST['action'] == 'addEquipoTrans'){
+        if($_POST['action'] == 'actualizarEquTrans'){
 
             include_once ('../Model/AccesorioTransmision.php');
 
-            $accesorio = new AccesorioTransmision();
+            $equTrans = new AccesorioTransmision();
 
-            $accesorio->serie = $_POST['serie'];
-            $accesorio->serie_ta = $_POST['codigoTa'];
-            $accesorio->descripcion = $_POST['descripcion'];
-            $accesorio->id_transmision = $_POST['id_transmision'];
+            $equTrans->serie = $_POST['serie'];
+            $equTrans->serie_ta = $_POST['codigoTa'];
+            $equTrans->descripcion = $_POST['descripcion'];
+            $equTrans->id_transmision = $_POST['id_transmision'];
    
             if(isset($_FILES['files'])){
                 // Count total files
@@ -249,12 +271,84 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
             else{
-                $row = mysqli_fetch_assoc($transmision->AgregarEquipos($accesorio));
+                $row = mysqli_fetch_assoc($transmision->ActualizarEquTrans($equTrans));
 
-                $accesorio->result = $row["resultado"];
+                $equTrans->result = $row["resultado"];
             }
 
-            echo json_encode($accesorio);
+            echo json_encode($equTrans);
+
+            die;
+        }
+
+        if($_POST['action'] == 'actualizarTransmision' ){
+            $equipment->id_equipo = $_POST['id_equipo'];
+            $equipment->marca = $_POST['marca'];
+            $equipment->modelo = $_POST['modelo'];
+            $equipment->descripcion = $_POST['descripcion'];
+            $equipment->codigo_ta = $_POST['codigoTA'];
+            $equipment->num_serie = $_POST['serie'];
+            $equipment->fecha_inst = $_POST['fechaInst'];
+            $equipment->proveedor = $_POST['proveedor'];
+            $equipment->id_estado = $_POST['estado'];
+            $equipment->id_tipo_equi = $_POST['tipoEquipo'];
+            $equipment->responsable = $_POST['responsable'];
+            $equipment->departamento = $_POST['departamento'];
+            $equipment->disponibilidad = $_POST['disponibilidad'];
+            $equipment->observacion = $_POST['observacion'];
+
+            if(isset($_FILES['files'])){
+                // Count total files
+                $countfiles = count($_FILES['files']['name']);
+
+                // Upload Location
+                $upload_location = "../Files/";
+
+                // To store uploaded files path
+                $equipment->file_array = array();
+
+                $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+                $equipment->result = $row["resultado"];
+
+                // Loop all files
+                for($index = 0;$index < $countfiles;$index++){
+
+                    if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
+                        // File name
+                        $filename = $_FILES['files']['name'][$index];
+
+                        // Get extension
+                        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+                        // Valid image extension
+                        $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
+
+                        // Check extension
+                        if(in_array($ext, $valid_ext)){
+
+                            // File path
+                            $path = $upload_location.$filename;
+
+                            // Upload file
+                            if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
+                                $equipment->file_array[] = $path;
+
+                            }
+                        }
+                    }
+                }
+                echo json_encode($equipment);
+                die;
+            }
+
+            else{
+
+                $row = mysqli_fetch_assoc($equipment->ActualizarEquipo($equipment));
+   
+                $equipment->result = $row["resultado"];
+            }
+
+            echo json_encode($equipment);
 
             die;
         }

@@ -1,6 +1,7 @@
 <?php
 
 class AccesorioTransmision{
+    public $id_lista;
     public $id_transmision;
     public $serie_ta;
     public $serie;
