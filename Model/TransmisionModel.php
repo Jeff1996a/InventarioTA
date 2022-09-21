@@ -35,7 +35,6 @@ class TransmisionModel
         mysqli_query($this->dbConn ,"SET @Fin='".$obj->fin."'");
         mysqli_query($this->dbConn ,"SET @Obs='".$obj->obs."'");
 
-
         mysqli_multi_query ($this->dbConn, "CALL uspCrearTransmision(@Nom,@Ubi,@Tec,@Correo,@Movil,@Inicio,@Fin,@Obs)") OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
