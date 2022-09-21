@@ -190,7 +190,7 @@ $transmision = $GLOBALS['transmision']
             form_data.append('fechaInicio', inicio);
             form_data.append('fechaFin', fin);
             form_data.append('observacion', observacion);
-            form_data.append('action', 'addTransmision');
+            form_data.append('action', 'actualizarTransmision');
 
             //Mostrar los datos del formulario mediante clave/valor
             for(let [name, value] of form_data) {
