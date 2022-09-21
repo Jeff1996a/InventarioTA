@@ -1,4 +1,4 @@
-<form action="" method="post" id="incidencias-form">
+<form action="" method="post" id="frmCrearIncidencia">
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="add-equipment-header">
@@ -9,6 +9,17 @@
                 </div>
                 <h1>Nueva incidencia:</h1>
             </div>
+        </div>
+
+        <div class="mb-2 row">
+            <div class="mb-2 col-7">
+                <label for="txtNombre" class="col-sm-12 col-form-label">Nombre:</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" id="txtNombre" name="nombre">
+                </div>
+            </div>
+
+
         </div>
 
         <div class="mb-2 row">
@@ -30,16 +41,16 @@
 
         <div class="mb-2 row">
             <div class="mb-2 col-6">
-                <label for="dpReporte" class="col-sm-6 col-form-label">Fecha reporte:</label>
+                <label for="dpInicios" class="col-sm-6 col-form-label">Fecha reporte:</label>
                 <div class="col-sm-6">
-                    <input type="date" class="form-control" id="dpInicio" name="fechaReporte">
+                    <input type="date" class="form-control" id="dpInicio" name="fecha_reporte">
                 </div>
             </div>
 
             <div class="mb-2 col-6">
-                <label for="dpSolucion" class="col-sm-6 col-form-label">Fecha solución:</label>
+                <label for="dpFin" class="col-sm-6 col-form-label">Fecha solución:</label>
                 <div class="col-sm-6">
-                    <input type="date" class="form-control" id="dpFin" name="fechaSolucion">
+                    <input type="date" class="form-control" id="dpFin" name="fecha_solucion">
                 </div>
             </div>
 
@@ -59,16 +70,16 @@
 
         <div class="mb-2">
             <label for="txtObservacion" class="form-label">Observación:</label>
-            <textarea class="form-control" id="txtObservacion" rows="3"></textarea>
+            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion"></textarea>
         </div>
 
-
-        <div class="mb-2">
+        <!--
+            <div class="mb-2">
             <label for="file" class="form-label">Adjuntos:</label>
             <input class="form-control" type="file" id="file">
         </div>
-
-
+        -->
+        
         <div class="col-auto">
             <button id="btnGuardarIncidencia" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
         </div>
@@ -77,20 +88,9 @@
 
 <script>
     $(document).ready(function (){
-        var incidencia = {
-            ubi: '',
-            tec:'',
-            correo: '',
-            uni_movil: '',
-            fecha_ini: '',
-            fecha_fin: '',
-            prob: '',
-            sol: '',
-            obs:''
-        };
 
         //Validaciones
-        $("#incidencias-form").validate({
+        $("#frmCrearIncidencia").validate({
             rules:{
                 reporta: {
                     required: true
@@ -98,11 +98,11 @@
                 responsable:{
                     required: true
                 },
-                fechaReporte: {
+                fecha_reporte: {
                     required: true,
                     date: true
                 },
-                fechaSolucion: {
+                fecha_solucion: {
                     required:true,
                     date: true
                 },
@@ -120,11 +120,11 @@
                 responsable: {
                     required: "Ingrese un responsable!"
                 },
-                fechaReporte :{
+                fecha_reporte :{
                     required: "Seleccione una fecha!",
                     date: "Fecha inválida"
                 },
-                fechaSolucion: {
+                fecha_solucion: {
                     required: "Seleccione una fecha!",
                     date: "Fecha inválida"
                 },
@@ -137,52 +137,121 @@
             }
         });
 
-
-
-    /*
-        $('#btnGuardarTransmision').click(function(){
-
-            transmision.ubi = $('#txtUbicacion').val();
-            transmision.tec = $('#txtResponsable').val();
-            transmision.correo = $('#txtEmail').val();
-            transmision.uni_movil = $('#txtMovil').val();
-            transmision.fecha_ini = $('#dpInicio').val();
-            transmision.fecha_fin = $('#dpFin').val();
-            transmision.prob = $('#txtProblema').val();
-            transmision.sol = $('#txtSolucion').val();
-            transmision.obs = $('#txtObservacion').val();
-
-            $.ajax({
-                type: 'POST',
-                dataType:'text',
-                url: 'Controller/TransmisionController.php',
-                data: { register: JSON.stringify( transmision ) },
-                success: function(response) {
-                    alert('Registro exitoso')
-                    $("#content").html(response);
-                }
-            })
-        })
-*/
-        var msg = {
-            tipo: '',
-            action: '',
-            param: '',
-            filter: ''
-        }
-
         $('#btnRegresar').click(function(){
-            msg.action =  'Lista';
-            msg.tipo = 'Incidencias';
             $.ajax({
-                type: 'POST',
-                dataType:'text',
+                type:'GET',
                 url: 'Controller/IncidenciasController.php',
-                data: msg,
-                success: function(response) {
-                    $("#content").html(response);
+                data: { data:JSON.stringify(''), action:'listarIncidencias'},
+                success: function(response){
+                    $('#content').html(response);
                 }
-            })
-        })
+            });
+        });
+
+        $('#frmCrearIncidencia').on('submit', function(e){
+
+                e.preventDefault();
+
+                const nombre = $('#txtNombre').val();
+                const reporta = $('#txtReporta').val();
+                const responsable = $('#txtResponsable').val();
+                const fecha_rep = $('#dpInicio').val();
+                const fecha_sol = $('#dpFin').val();
+                const prob = $('#txtProblema').val();
+                const sol = $('#txtSolucion').val();
+                const obs = $('#txtObservacion').val();
+
+
+                const form_data = new FormData();
+
+                form_data.append('nombre', nombre);
+                form_data.append('reporta', reporta);
+                form_data.append('responsable', responsable);
+                form_data.append('fecha_reporte', fecha_rep);
+                form_data.append('fecha_solucion', fecha_sol);
+                form_data.append('problema', prob);
+                form_data.append('solucion', sol);
+                form_data.append('observacion', obs);
+                form_data.append('action', 'addIncidencia');
+
+                //Mostrar los datos del formulario mediante clave/valor
+                for(let [name, value] of form_data) {
+                    console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2
+                }
+                /*
+                const files = document.getElementById('files');
+
+                const total_files = files.files.length;
+
+                for (var index = 0; index < total_files; index++) {
+                    form_data.append("files[]", files.files[index]);
+                }*/
+
+                // AJAX request
+                $.ajax({
+                    url: 'Controller/IncidenciasController.php',
+                    type: 'POST',
+                    data: form_data,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        /*
+                            for(var index = 0; index < response.file_array.length; index++) {
+                                var src = response.file_array[index];
+                                console.log(src);
+                                // Add img element in <div id='preview'>
+                                $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+                            }*/  
+                        console.log(response.result);
+                        if(response.result != 0){
+                            alert("Registro exitoso!!");
+
+                            $.ajax({
+                                type:'GET',
+                                url: 'Controller/IncidenciasController.php',
+                                data: { data:JSON.stringify(''), action:'listarIncidencias'},
+                                success: function(response){
+                                    $('#content').html(response);
+                                }
+                            });     
+                        }
+
+                        else{
+                                alert("No se pudo registrar la transmisión");
+                        }
+                    },
+                    error: function(xhr){
+                        console.log(xhr);
+                    }
+                });
+
+                /*AJAX request
+
+                const files = document.getElementById('files');
+
+                const total_files = files.files.length;
+
+                for (var index = 0; index < total_files; index++) {
+                    form_data.append("files[]", files.files[index]);
+                }
+
+                ;
+                console.log(total_files);
+                console.log($('#cbTipoEquipo').val());
+                console.log($('#cbEstado').val())
+                $.ajax({
+                    url: 'Controller/EquipoController.php',
+                    type: 'post',
+                    data: form_data,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                    }
+                });
+                */
+        });
+
     })
 </script>

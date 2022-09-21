@@ -45,7 +45,7 @@
         const msg = {
             id: ''
         };
-        $("#frmEquipoTransmision").validate({
+        $("#frmEquiposTransmision").validate({
             rules:{
                 serie: {
                     required: true

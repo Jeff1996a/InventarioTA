@@ -92,11 +92,11 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             $transmision->nombre = $_POST['nombre'];
             $transmision->responsable = $_POST['responsable'];
             $transmision->quien_reporta = $_POST['reporta'];
-            $transmision->fecha_sop = $_POST['fecha_sop'];
-            $transmision->fecha_sol = $_POST['fecha_sol'];
-            $transmision->problema = $_POST['prob'];
-            $transmision->solucion = $_POST['sol'];
-            $transmision->observacion = $_POST['obs'];
+            $transmision->fecha_sop = $_POST['fecha_reporte'];
+            $transmision->fecha_sol = $_POST['fecha_solucion'];
+            $transmision->problema = $_POST['problema'];
+            $transmision->solucion = $_POST['solucion'];
+            $transmision->observacion = $_POST['observacion'];
           
             if(isset($_FILES['files'])){
                 // Count total files
@@ -153,16 +153,16 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             die;
         }
 
-        if($_POST['action'] == 'actualizarIncidenci' ){
+        if($_POST['action'] == 'actualizarIncidencia' ){
             $transmision->id_incidencia = $_POST['id_incidencia'];
             $transmision->nombre = $_POST['nombre'];
             $transmision->responsable = $_POST['responsable'];
             $transmision->quien_reporta = $_POST['reporta'];
-            $transmision->fecha_sop = $_POST['fecha_sop'];
-            $transmision->fecha_sol = $_POST['fecha_sol'];
-            $transmision->problema = $_POST['prob'];
-            $transmision->solucion = $_POST['sol'];
-            $transmision->observacion = $_POST['obs'];
+            $transmision->fecha_sop = $_POST['fecha_reporte'];
+            $transmision->fecha_sol = $_POST['fecha_solucion'];
+            $transmision->problema = $_POST['problema'];
+            $transmision->solucion = $_POST['solucion'];
+            $transmision->observacion = $_POST['observacion'];
 
             if(isset($_FILES['files'])){
                 // Count total files
@@ -215,7 +215,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
                 $incidencia->result = $row["resultado"];
             }
 
-            echo json_encode($incidencia);
+            echo json_encode($transmision);
 
             die;
         }
