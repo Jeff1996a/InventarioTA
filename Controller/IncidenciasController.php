@@ -154,6 +154,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
         if($_POST['action'] == 'actualizarIncidencia' ){
+            
             $transmision->id_incidencia = $_POST['id_incidencia'];
             $transmision->nombre = $_POST['nombre'];
             $transmision->responsable = $_POST['responsable'];
