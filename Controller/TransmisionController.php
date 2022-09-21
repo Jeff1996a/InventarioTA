@@ -104,7 +104,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
                 $equTrans->serie_ta = $row['serieTa'];
                 $equTrans->serie = $row['serie'];
                 $equTrans->descripcion = $row['descripcion'];
-                $equTrans->id_transmision = $row['id_transmision'];
+                $equTrans->id_transmision = $row['id_trans'];
 
             }
 
