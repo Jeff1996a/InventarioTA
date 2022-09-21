@@ -153,11 +153,9 @@
             const row =  $(this).closest('tr');
             msg.id= row.find("td.idEquTrans").text();
 
-            msg.category = '<?=$GLOBALS['category']?>';
-
             $.ajax({
                     type: 'GET',
-                    url: 'Controller/EquipoController.php',
+                    url: 'Controller/TransmisionController.php',
                     data: {data: JSON.stringify(msg), action:'updateEquTrans'},
                     success: function (result) {
                         $('#content').html(result);
