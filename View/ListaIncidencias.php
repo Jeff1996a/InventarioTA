@@ -107,6 +107,26 @@
             });
         });
 
+        //Actualizar incidencias
+        $('#tblIncidencias').on('click', '#btnActualizar', function () {
+            const row =  $(this).closest('tr');
+            msg.id= row.find("td.idIncidencia").text();
+
+            $.ajax({
+                    type: 'GET',
+                    url: 'Controller/IncidenciasController.php',
+                    data: {data: JSON.stringify(msg), action:'update'},
+                    success: function (result) {
+                        $('#content').html(result);
+                    },
+                    error: function (result) {
+                        alert('Ops! No se pudo obtener el registro');
+                    }
+            });
+        });
+
+
+        //Eliminar incidencias
         $('#tblIncidencias').on('click', '#btnEliminar', function () {
             const row =  $(this).closest('tr');
             msg.id = row.find("td.idIncidencia").text();
