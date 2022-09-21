@@ -221,10 +221,9 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $equTrans = new AccesorioTransmision();
 
-            $equTrans->id_lista = $_POST['id_lista'];
-            $equTrans->id_transmision = $_POST['id_trans'];
+            $equTrans->id_transmision = $_POST['id_transmision'];
             $equTrans->serie = $_POST['serie'];
-            $equTrans->serieTa = $_POST['serieTa'];
+            $equTrans->serieTa = $_POST['codigoTa'];
             $equTrans->desripcion = $_POST['descripcion'];
           
             if(isset($_FILES['files'])){
