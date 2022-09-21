@@ -210,7 +210,7 @@ $incidencia = $GLOBALS['incidencia']
                             }*/  
                         console.log(response.result);
                         if(response.result != 0){
-                            alert("Registro exitoso!!");
+                            alert("Actualización exitosa!!");
 
                             $.ajax({
                                 type:'GET',

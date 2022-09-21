@@ -216,7 +216,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
                 $incidencia->result = $row["resultado"];
             }
 
-            echo json_encode($transmision);
+            echo json_encode($incidencia);
 
             die;
         }
