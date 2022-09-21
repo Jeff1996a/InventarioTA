@@ -223,7 +223,7 @@ $transmision = $GLOBALS['transmision']
                         }*/  
                     console.log(response.result);
                     if(response.result != 0){
-                        alert("Registro exitoso!!");
+                        alert("Actualización exitosa!!");
 
                         $.ajax({
                             type:'GET',
@@ -236,7 +236,7 @@ $transmision = $GLOBALS['transmision']
                     }
 
                     else{
-                            alert("No se pudo registrar la transmisión");
+                            alert("No se pudo actualizar la transmisión");
                     }
                 },
                 error: function(xhr){
