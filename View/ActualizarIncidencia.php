@@ -176,7 +176,7 @@ $incidencia = $GLOBALS['incidencia']
                 form_data.append('problema', prob);
                 form_data.append('solucion', sol);
                 form_data.append('observacion', obs);
-                form_data.append('id_incidencia', <?php echo $incidencia->observacion; ?>);
+                form_data.append('id_incidencia', <?=$incidencia->id_incidencia;?>);
                 form_data.append('action', 'actualizarIncidencia');
 
                 //Mostrar los datos del formulario mediante clave/valor
