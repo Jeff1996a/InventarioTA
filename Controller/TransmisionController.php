@@ -295,7 +295,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             $equTrans->serie_ta = $_POST['codigoTa'];
             $equTrans->descripcion = $_POST['descripcion'];
             $equTrans->id_transmision = $_POST['id_transmision'];
-   
+            
        
             $row = mysqli_fetch_assoc($transmision->ActualizarEquTrans($equTrans));
 

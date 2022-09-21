@@ -87,7 +87,7 @@ $equTrans = $GLOBALS['equTrans'];
             });
         });
 
-        $('#frmActulizarEquTrans').on('submit', function(e){
+        $('#frmActualizarEquTrans').on('submit', function(e){
 
             e.preventDefault();
 
