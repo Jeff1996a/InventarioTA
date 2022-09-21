@@ -166,7 +166,6 @@ class TransmisionModel
         mysqli_query($this->dbConn, "SET @NumSerieTa='".$obj->serie_ta."'");
         mysqli_query($this->dbConn, "SET @NumSerie='".$obj->serie."'");
         mysqli_query($this->dbConn, "SET @Descr='".$obj->descripcion."'");
-
         mysqli_multi_query($this->dbConn, "CALL uspActualizarEquTrans(@id,@NumSerieTa,@NumSerie,@Descr)") OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
