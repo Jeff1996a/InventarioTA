@@ -219,6 +219,75 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             include_once ('../Model/AccesorioTransmision.php');
 
+
+            $transmision->nombre = $_POST['nombre'];
+            $transmision->ubicacion = $_POST['ubicacion'];
+            $transmision->tecnico = $_POST['tecnico'];
+            $transmision->email = $_POST['email'];
+            $transmision->movil = $_POST['movil'];
+            $transmision->inicio = $_POST['fechaInicio'];
+            $transmision->fin = $_POST['fechaFin'];
+            $transmision->obs = $_POST['observacion'];
+          
+            if(isset($_FILES['files'])){
+                // Count total files
+                $countfiles = count($_FILES['files']['name']);
+
+                // Upload Location
+                $upload_location = "../Files/";
+
+                // To store uploaded files path
+                $equipment->file_array = array();
+
+                $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+                $equipment->result = $row["resultado"];
+
+                // Loop all files
+                for($index = 0;$index < $countfiles;$index++){
+
+                    if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
+                        // File name
+                        $filename = $_FILES['files']['name'][$index];
+
+                        // Get extension
+                        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+                        // Valid image extension
+                        $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
+
+                        // Check extension
+                        if(in_array($ext, $valid_ext)){
+
+                            // File path
+                            $path = $upload_location.$filename;
+
+                            // Upload file
+                            if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
+                                $equipment->file_array[] = $path;
+
+                            }
+                        }
+                    }
+                }
+                echo json_encode($equipment);
+                die;
+            }
+
+            else{
+                $row = mysqli_fetch_assoc($transmision->CrearTransmision($transmision));
+
+                $transmision->result = $row["resultado"];
+            }
+
+            echo json_encode($transmision);
+
+            die;
+        }
+
+        if($_POST['action'] == 'addEquipoTrans'){
+
+            include_once ('../Model/AccesorioTransmision.php');
+
             $equTrans = new AccesorioTransmision();
 
             $equTrans->id_lista = $_POST['id_lista'];
@@ -272,7 +341,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
             else{
-                $row = mysqli_fetch_assoc($transmision->ActualizarEquTrans($equTrans));
+                $row = mysqli_fetch_assoc($transmision->AgregarEquipos($equTrans));
 
                 $equTrans->result = $row["resultado"];
             }
@@ -293,55 +362,11 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             $equTrans->descripcion = $_POST['descripcion'];
             $equTrans->id_transmision = $_POST['id_transmision'];
    
-            if(isset($_FILES['files'])){
-                // Count total files
-                $countfiles = count($_FILES['files']['name']);
+       
+            $row = mysqli_fetch_assoc($transmision->ActualizarEquTrans($equTrans));
 
-                // Upload Location
-                $upload_location = "../Files/";
-
-                // To store uploaded files path
-                $equipment->file_array = array();
-
-                $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
-                $equipment->result = $row["resultado"];
-
-                // Loop all files
-                for($index = 0;$index < $countfiles;$index++){
-
-                    if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
-                        // File name
-                        $filename = $_FILES['files']['name'][$index];
-
-                        // Get extension
-                        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-
-                        // Valid image extension
-                        $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
-
-                        // Check extension
-                        if(in_array($ext, $valid_ext)){
-
-                            // File path
-                            $path = $upload_location.$filename;
-
-                            // Upload file
-                            if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
-                                $equipment->file_array[] = $path;
-
-                            }
-                        }
-                    }
-                }
-                echo json_encode($equipment);
-                die;
-            }
-
-            else{
-                $row = mysqli_fetch_assoc($transmision->ActualizarEquTrans($equTrans));
-
-                $equTrans->result = $row["resultado"];
-            }
+            $equTrans->result = $row["resultado"];
+     
 
             echo json_encode($equTrans);
 
