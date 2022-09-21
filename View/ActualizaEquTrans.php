@@ -1,5 +1,5 @@
 <?php 
-$equTrans = $GLOBALS['accesorio'];
+$equTrans = $GLOBALS['equTrans'];
 ?>
 <form method="post" action="" enctype="multipart/form-data" id="frmActualizarEquTrans">
     <div class="container-fluid">
