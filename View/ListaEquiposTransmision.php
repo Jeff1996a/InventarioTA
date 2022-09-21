@@ -120,14 +120,14 @@
            });
        });
 
-       //Eliminar equipos
+       //Eliminar equipo asignado a transmisión
        $('#tblEquTransmisiones').on('click', '#btnEliminar', function () {
             const row =  $(this).closest('tr');
             msg.id = row.find("td.idEquTrans").text();
 
             if (confirm('Desea eliminar el registro')) {
                 $.ajax({
-                    type: 'POST',
+                    type: 'GET',
                     url: 'Controller/TransmisionController.php',
                     data: {data: JSON.stringify(msg), action:'eliminarEquiTrans'},
                     success: function (result) {
@@ -147,5 +147,25 @@
                 });
             }
         });
-   })
+
+      //Actualizar equipos
+      $('#tblEquTranbsmisiones').on('click', '#btnActualizar', function () {
+            const row =  $(this).closest('tr');
+            msg.id= row.find("td.idEquTrans").text();
+
+            msg.category = '<?=$GLOBALS['category']?>';
+
+            $.ajax({
+                    type: 'GET',
+                    url: 'Controller/EquipoController.php',
+                    data: {data: JSON.stringify(msg), action:'updateEquTrans'},
+                    success: function (result) {
+                        $('#content').html(result);
+                    },
+                    error: function (result) {
+                        alert('Ops! No se pudo obtener el registro');
+                    }
+            });
+        });
+    })
 </script>
