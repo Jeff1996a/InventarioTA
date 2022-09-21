@@ -88,7 +88,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
         elseif($action == "updateEquTrans"){
 
             include_once('../Model/AccesorioTransmision.php');
-            
+
             include_once ('../Model/TransmisionModel.php');
 
             $transmision = new TransmisionModel();
@@ -108,7 +108,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             }
 
-            include_once ('../View/ActualizarEquTrans.php');
+            include_once ('../View/ActualizaEquTrans.php');
         }
     }
 
