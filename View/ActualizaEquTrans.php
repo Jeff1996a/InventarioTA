@@ -76,7 +76,7 @@ $equTrans = $GLOBALS['equTrans'];
 
         $('#btnRegresar').click(function(){
 
-            msg.id = '<?=$equTrans->id_transmision?>;';
+            msg.id = '<?=$equTrans->id_transmision;?>';
             $.ajax({
                 type:'GET',
                 url: 'Controller/TransmisionController.php',
@@ -100,7 +100,7 @@ $equTrans = $GLOBALS['equTrans'];
             form_data.append('serie', serie);
             form_data.append('codigoTa', serieTa);
             form_data.append('descripcion', observacion);
-            form_data.append('id_transmision', <?=$equTrans->id_transmision?>;);
+            form_data.append('id_transmision', <?=$equTrans->id_transmision?;>);
             form_data.append('action', 'actualizarEquTrans');
 
             //Mostrar los datos del formulario mediante clave/valor
