@@ -15,7 +15,7 @@
             <div class="mb-2 col-7">
                 <label for="txtNombre" class="col-sm-12 col-form-label">Nombre:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtNombre" name="nombre">
+                    <input type="text" class="form-control" id="txtNombre" name="nombre" style="text-transform:uppercase">
                 </div>
             </div>
 
@@ -26,14 +26,14 @@
             <div class="mb-2 col-6">
                 <label for="txtReporta" class="col-sm-12 col-form-label">Quien reporta:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtReporta" name="reporta">
+                    <input type="text" class="form-control" id="txtReporta" name="reporta" style="text-transform:uppercase">
                 </div>
             </div>
 
             <div class="mb-2 col-6">
                 <label for="txtResponsable" class="col-sm-12 col-form-label">Responsable:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtResponsable" name="responsable">
+                    <input type="text" class="form-control" id="txtResponsable" name="responsable" style="text-transform:uppercase">
                 </div>
             </div>
 
@@ -59,18 +59,18 @@
         <div class="mb-2 row">
             <div class="mb-2 col-sm-6">
                 <label for="txtProblema" class="form-label">Problema:</label>
-                <textarea class="form-control" id="txtProblema" rows="3" name="problema"></textarea>
+                <textarea class="form-control" id="txtProblema" rows="3" name="problema" style="text-transform:uppercase"></textarea>
             </div>
 
             <div class="mb-2 col-sm-6">
                 <label for="txtSolucion " class="form-label">Solución:</label>
-                <textarea class="form-control" id="txtSolucion" rows="3" name="solucion"></textarea>
+                <textarea class="form-control" id="txtSolucion" rows="3" name="solucion" style="text-transform:uppercase"></textarea>
             </div>
         </div>
 
         <div class="mb-2">
             <label for="txtObservacion" class="form-label">Observación:</label>
-            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion"></textarea>
+            <textarea class="form-control" id="txtObservacion" rows="3" name="observacion" style="text-transform:uppercase"></textarea>
         </div>
 
         <!--
