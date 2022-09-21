@@ -93,7 +93,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $id = $data->{'id'};
 
-            $result = $equTrans->ObtenerAccesorio($id);
+            $result = $transmision->ObtenerAccesorio($id);
 
             while ($row = mysqli_fetch_assoc($result)) {
                 $equTrans->id_lista = $row['id_lista'];
