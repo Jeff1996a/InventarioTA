@@ -306,23 +306,16 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             die;
         }
 
-        
-
         if($_POST['action'] == 'actualizarTransmision' ){
-            $equipment->id_equipo = $_POST['id_equipo'];
-            $equipment->marca = $_POST['marca'];
-            $equipment->modelo = $_POST['modelo'];
-            $equipment->descripcion = $_POST['descripcion'];
-            $equipment->codigo_ta = $_POST['codigoTA'];
-            $equipment->num_serie = $_POST['serie'];
-            $equipment->fecha_inst = $_POST['fechaInst'];
-            $equipment->proveedor = $_POST['proveedor'];
-            $equipment->id_estado = $_POST['estado'];
-            $equipment->id_tipo_equi = $_POST['tipoEquipo'];
-            $equipment->responsable = $_POST['responsable'];
-            $equipment->departamento = $_POST['departamento'];
-            $equipment->disponibilidad = $_POST['disponibilidad'];
-            $equipment->observacion = $_POST['observacion'];
+            $transmision->id_transmision = $_POST['id_transmision'];
+            $transmision->nombre = $_POST['nombre'];
+            $transmision->ubicacion = $_POST['ubicacion'];
+            $transmision->tecnico = $_POST['tecnico'];
+            $transmision->email = $_POST['email'];
+            $transmision->movil = $_POST['movil'];
+            $transmision->inicio = $_POST['fechaInicio'];
+            $transmision->fin = $_POST['fechaFin'];
+            $transmision->obs = $_POST['observacion'];
 
             if(isset($_FILES['files'])){
                 // Count total files

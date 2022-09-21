@@ -2,7 +2,7 @@
 $transmision = $GLOBALS['transmision']
 ?>
 
-<form action="" method="post" id="transmision-form" enctype="multipart/form-data>
+<form action="" method="post" id="frmActualizarTransmision" enctype="multipart/form-data>
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="add-equipment-header">
@@ -98,7 +98,7 @@ $transmision = $GLOBALS['transmision']
     $(document).ready(function (){
 
         //Validacion
-        $("#transmision-form").validate({
+        $("#frmActualizarTransmision").validate({
             rules:{
                 nombre:{
                     required: true
@@ -165,7 +165,7 @@ $transmision = $GLOBALS['transmision']
         });
 
         
-        $('#transmision-form').on('submit', function(e){
+        $('#frmActualizarTransmision').on('submit', function(e){
 
             e.preventDefault();
 
@@ -181,6 +181,7 @@ $transmision = $GLOBALS['transmision']
            
             const form_data = new FormData();
 
+            form_data.append('id_transmision','<?php echo $transmision->id_transmision; ?>');
             form_data.append('nombre', nombre);
             form_data.append('ubicacion', ubicacion);
             form_data.append('tecnico', tecnico);

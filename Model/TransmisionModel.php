@@ -47,6 +47,29 @@ class TransmisionModel
         }
     }
 
+    //Actualizar una transmisión
+    function ActualizarTransmision($obj){
+        mysqli_query($this->dbConn ,"SET @id='".$obj->id_transmision."'");
+        mysqli_query($this->dbConn ,"SET @Nom='".$obj->nombre."'");
+        mysqli_query($this->dbConn ,"SET @Ubi='".$obj->ubicacion."'");
+        mysqli_query($this->dbConn ,"SET @Tec='".$obj->tecnico."'");
+        mysqli_query($this->dbConn ,"SET @Correo='".$obj->email."'");
+        mysqli_query($this->dbConn ,"SET @Movil='".$obj->movil."'");
+        mysqli_query($this->dbConn ,"SET @Inicio='".$obj->inicio."'");
+        mysqli_query($this->dbConn ,"SET @Fin='".$obj->fin."'");
+        mysqli_query($this->dbConn ,"SET @Obs='".$obj->obs."'");
+
+        mysqli_multi_query($this->dbConn, "CALL uspActualizarTransmision(@id,@Nom,@Ubi,@Tec,@Correo,@Movil,@Inicio,@Fin,@Obs)") OR DIE (mysqli_error($this->dbConn));
+
+        while (mysqli_more_results($this->dbConn)) {
+
+            if ($result = mysqli_store_result($this->dbConn)) {
+
+                return $result;
+            }
+        }
+    }
+
     //Listar todas las transmisiones
     function GetTransmisionList(){
         mysqli_multi_query ($this->dbConn, "CALL uspVistaListaTransmisiones") OR DIE (mysqli_error($this->dbConn));
@@ -104,7 +127,6 @@ class TransmisionModel
         }
     }
 
-    
     //Agrega equipos a una transmisión
     function AgregarEquipos($obj){
         mysqli_query($this->dbConn ,"SET @Num_serie='".$obj->serie."'");
@@ -138,6 +160,7 @@ class TransmisionModel
         }
     }
 
+    //Actualizar equipo asignado a la transmsión
     function ActualizarEquTrans($obj){
         mysqli_query($this->dbConn, "SET @id='".$obj->id_lista."'");
         mysqli_query($this->dbConn, "SET @NumSerieTa='".$obj->serie_ta."'");
