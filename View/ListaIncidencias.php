@@ -35,6 +35,7 @@
             <thead style="background-color:  #005aa9; color:white;">
             <tr>
                 <td><strong>Cod.</strong></td>
+                <td><strong>Nombre</strong></td>
                 <td><strong>Quien reporta</strong></td>
                 <td><strong>Responsable</strong></td>
                 <td><strong>Fecha reporte</strong></td>
@@ -53,7 +54,8 @@
 
                 ?>
                 <tr>
-                    <td class="idIncidencias"><?php echo $row["id_inc"]; ?> </td>
+                    <td class="idIncidencia"><?php echo $row["id_inc"]; ?> </td>
+                    <td><?php echo $row["nombre"]; ?> </td>
                     <td><?php echo $row["reporta"]; ?> </td>
                     <td><?php echo $row["responsable"]; ?> </td>
                     <td><?php echo $row["fecha_reporte"]; ?> </td>
@@ -103,6 +105,32 @@
                     $('#content').html(response);
                 }
             });
+        });
+
+        $('#tblIncidencias').on('click', '#btnEliminar', function () {
+            const row =  $(this).closest('tr');
+            msg.id = row.find("td.idIncidencia").text();
+
+            if (confirm('Desea eliminar el registro')) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'Controller/IncidenciasController.php',
+                    data: {data: JSON.stringify(msg), action:'eliminar'},
+                    success: function (result) {
+                        $.ajax({
+                            type:'GET',
+                            url: 'Controller/IncidenciasController.php',
+                            data: {data: JSON.stringify(msg), action:'listarIncidencias'},
+                            success: function(response){
+                                $('#content').html(response);
+                            }
+                        });
+                    },
+                    error: function (result) {
+                        alert('Ops! No se pudo eliminar el equipo');
+                    }
+                });
+            }
         });
 
     })
