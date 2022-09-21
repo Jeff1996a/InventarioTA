@@ -1,3 +1,6 @@
+<?php
+
+?>
 <form method="post" action="" enctype="multipart/form-data" id="frmActualizarEquTrans">
     <div class="container-fluid">
         <div class="container-fluid">
