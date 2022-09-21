@@ -85,7 +85,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             include_once ('../View/ActualizarTransmision.php');
         }
 
-        elseif($action == "updateEquiTrans"){
+        elseif($action == "updateEquTrans"){
 
             include_once('../Model/AccesorioTransmsion.php');
 
@@ -93,7 +93,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             $id = $data->{'id'};
 
-            $result = $equTrans->ObtenerTransmision($id);
+            $result = $equTrans->ObtenerAccesorio($id);
 
             while ($row = mysqli_fetch_assoc($result)) {
                 $equTrans->id_lista = $row['id_lista'];
@@ -104,7 +104,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
             }
 
-            include_once ('../View/ActualizarTransmision.php');
+            include_once ('../View/ActualizarEquTrans.php');
         }
     }
 
