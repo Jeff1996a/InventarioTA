@@ -363,12 +363,12 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             else{
 
-                $row = mysqli_fetch_assoc($equipment->ActualizarEquipo($equipment));
+                $row = mysqli_fetch_assoc($transmision->ActualizarEquipo($transmision));
    
-                $equipment->result = $row["resultado"];
+                $transmision->result = $row["resultado"];
             }
 
-            echo json_encode($equipment);
+            echo json_encode($transmision);
 
             die;
         }
