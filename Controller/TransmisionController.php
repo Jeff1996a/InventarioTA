@@ -363,7 +363,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             else{
 
-                $row = mysqli_fetch_assoc($transmision->ActualizarEquipo($transmision));
+                $row = mysqli_fetch_assoc($transmision->ActualizarTransmision($transmision));
    
                 $transmision->result = $row["resultado"];
             }
