@@ -81,7 +81,7 @@ class CursosModel
     function EliminarCurso($id){
         mysqli_query($this->dbConn ,"SET @id='".$id."'");
 
-        mysqli_multi_query ($this->dbConn, "CALL uspEliminarCursos(@id)") 
+        mysqli_multi_query ($this->dbConn, "CALL uspEliminarCurso(@id)") 
             OR DIE (mysqli_error($this->dbConn));
 
         while (mysqli_more_results($this->dbConn)) {
