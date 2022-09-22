@@ -38,6 +38,20 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 elseif($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['action']) && isset($_POST['data'])){
 
+        $action = $_POST['action'];
+        $data = json_decode($_POST['data']);
+
+        if($action == "eliminar"){
+
+            include_once('../Model/CursoModel.php');
+
+            $curso =  new CursosModel();
+
+            $id = $data->{'id'};
+
+            $curso->EliminarCurso($id);
+       }
+
     }
 
     elseif(isset($_POST)){
@@ -46,6 +60,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
         $curso = new CursosModel();
 
         if($_POST['action'] == 'addCurso'){
+            
             $curso->nombre = $_POST['nombre'];
             $curso->descripcion = $_POST['descripcion'];
             $curso->url = $_POST['url'];

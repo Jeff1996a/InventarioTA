@@ -31,7 +31,7 @@
 
     <br/>
     <div class="table-responsive">
-        <table id="tblIncidencias" class="table table-hover">
+        <table id="tblSoportes" class="table table-hover">
             <thead style="background-color:  #005aa9; color:white;">
             <tr>
                 <td><strong>Cod.</strong></td>
@@ -49,7 +49,7 @@
 
                 ?>
                 <tr>
-                    <td class="idIncidencia"><?php echo $row["idCurso"]; ?> </td>
+                    <td class="idCurso"><?php echo $row["idCurso"]; ?> </td>
                     <td><?php echo $row["nombreCurso"]; ?> </td>
                     <td><?php echo $row["descripcion"]; ?> </td>
                     <td><?php echo $row["enlace"]; ?> </td>
@@ -118,27 +118,27 @@
 
 
         //Eliminar incidencias
-        $('#tblIncidencias').on('click', '#btnEliminar', function () {
+        $('#tblSoportes').on('click', '#btnEliminar', function () {
             const row =  $(this).closest('tr');
-            msg.id = row.find("td.idIncidencia").text();
+            msg.id = row.find("td.idCurso").text();
 
             if (confirm('Desea eliminar el registro')) {
                 $.ajax({
                     type: 'POST',
-                    url: 'Controller/IncidenciasController.php',
+                    url: 'Controller/CursosController.php',
                     data: {data: JSON.stringify(msg), action:'eliminar'},
                     success: function (result) {
                         $.ajax({
                             type:'GET',
-                            url: 'Controller/IncidenciasController.php',
-                            data: {data: JSON.stringify(msg), action:'listarIncidencias'},
+                            url: 'Controller/CursosController.php',
+                            data: {data: JSON.stringify(msg), action:'listarCursos'},
                             success: function(response){
                                 $('#content').html(response);
                             }
                         });
                     },
                     error: function (result) {
-                        alert('Ops! No se pudo eliminar el equipo');
+                        alert('Ops! No se pudo eliminar el curso');
                     }
                 });
             }
