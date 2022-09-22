@@ -50,7 +50,7 @@
                 <tr>
                     <td class="idCurso"><?php echo $row["idCurso"]; ?> </td>
                     <td>
-                        <h3><?php echo $row["nombreCurso"]; ?></h3>
+                        <h3><?= $row["nombreCurso"]; ?></h3>
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item"
                                 src="<?=$row["enlace"]?>" allowfullscreen>
