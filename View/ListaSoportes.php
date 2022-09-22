@@ -84,7 +84,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         const msg = {
-            category: ''
+            id: ''
         }
 
         $("#btnAddSoporte").click(function () {
