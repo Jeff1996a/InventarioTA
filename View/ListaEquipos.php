@@ -85,11 +85,11 @@ die;
                 <td></td>
                 <td></td>
                 <?php
-                        if($_SESSION['rol'] == 'admin'){
-                            echo '
-                            <td></td>';
-                        }
-                    ?>
+                     if($_SESSION['rol'] == 'admin'){
+                        echo '
+                        <td></td>';
+                    }                       
+                ?>
 
             </tr>
             </thead>
