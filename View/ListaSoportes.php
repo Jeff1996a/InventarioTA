@@ -35,7 +35,7 @@
             <thead style="background-color:  #005aa9; color:white;">
             <tr>
                 <td><strong>Cod.</strong></td>
-                <td><strong>Url</strong></td>
+                <td><strong>Video</strong></td>
                 <td><strong>Descripción</strong></td>
                 <td></td>
                 <td></td>
@@ -50,13 +50,13 @@
                 <tr>
                     <td class="idCurso"><?php echo $row["idCurso"]; ?> </td>
                     <td>
+                        <h3><?php echo $row["nombreCurso"]; ?></h3>
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item"
                                 src="<?=$row["enlace"]?>">
                             </iframe>
                         </div>
                     </td>
-                    <td><?php echo $row["nombreCurso"]; ?> </td>
                     <td><?php echo $row["descripcion"]; ?> </td>
                           
                     <td>
