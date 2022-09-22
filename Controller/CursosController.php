@@ -45,7 +45,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             include_once('../Model/CursoModel.php');
 
-            $curso =  new CursosModel();
+            $curso =  new CursoModel();
 
             $id = $data->{'id'};
 
@@ -60,7 +60,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
         $curso = new CursosModel();
 
         if($_POST['action'] == 'addCurso'){
-            
+
             $curso->nombre = $_POST['nombre'];
             $curso->descripcion = $_POST['descripcion'];
             $curso->url = $_POST['url'];
