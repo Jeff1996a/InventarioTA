@@ -104,13 +104,13 @@
         });
 
         //Actualizar incidencias
-        $('#tblIncidencias').on('click', '#btnActualizar', function () {
+        $('#tblSoportes').on('click', '#btnActualizar', function () {
             const row =  $(this).closest('tr');
-            msg.id= row.find("td.idIncidencia").text();
+            msg.id= row.find("td.idCurso").text();
 
             $.ajax({
                     type: 'GET',
-                    url: 'Controller/IncidenciasController.php',
+                    url: 'Controller/CursosController.php',
                     data: {data: JSON.stringify(msg), action:'update'},
                     success: function (result) {
                         $('#content').html(result);
