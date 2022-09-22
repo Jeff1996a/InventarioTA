@@ -95,7 +95,7 @@
             form_data.append('nombre', nombre);
             form_data.append('url', url);
             form_data.append('descripcion', descripcion);
-            form_data.append('acton', 'addCurso')
+            form_data.append('action', 'addCurso')
 
             //Mostrar los datos del formulario mediante clave/valor
             for(let [name, value] of form_data) {
