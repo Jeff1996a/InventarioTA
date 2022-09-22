@@ -45,7 +45,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
             include_once('../Model/CursosModel.php');
 
-            $curso =  new CursoModel();
+            $curso =  new CursosModel();
 
             $id = $data->{'id'};
 
