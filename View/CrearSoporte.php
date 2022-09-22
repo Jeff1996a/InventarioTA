@@ -13,9 +13,9 @@
 
         <div class="mb-2 row">
             <div class="mb-2 col-6">
-                <label for="txtNombre" class="col-sm-12 col-form-label">Nombre:</label>
+                <label for="txtNombreCurso" class="col-sm-12 col-form-label">Nombre:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtNombre" name="nombre" style="text-transform:uppercase">
+                    <input type="text" class="form-control" id="txtNombreCurso" name="nombre" style="text-transform:uppercase">
                 </div>
             </div>
 
@@ -86,16 +86,16 @@
 
             e.preventDefault();
 
-            const nombre = $('#txtNombre').val();
+            const nombre = $('#txtNombreCurso').val();
             const url = $('#txtURL').val();
             const descripcion = $('#txtDescripcion').val();
 
             const form_data = new FormData();
 
-            form_data.append('nombre', nombre);
+            form_data.append('nombreCurso', nombre);
             form_data.append('url', url);
             form_data.append('descripcion', descripcion);
-            form_data.append('action', 'addCurso')
+            form_data.append('action', 'addCurso');
 
             //Mostrar los datos del formulario mediante clave/valor
             for(let [name, value] of form_data) {

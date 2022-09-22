@@ -81,7 +81,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if($_POST['action'] == 'addCurso'){
 
-            $curso->nombre = $_POST['nombre'];
+            $curso->nombre = $_POST['nombreCurso'];
             $curso->descripcion = $_POST['descripcion'];
             $curso->url = $_POST['url'];
           
