@@ -40,6 +40,7 @@
                 <td><strong>Url</strong></td>
                 <td></td>
                 <td></td>
+                <td></td>
 
             </tr>
             </thead>
@@ -50,10 +51,14 @@
                 ?>
                 <tr>
                     <td class="idCurso"><?php echo $row["idCurso"]; ?> </td>
+                    <td>
+                        <iframe width="300" height="300"
+                            src="<?=$row["enlace"]?>">
+                        </iframe>   
+                    </td>
                     <td><?php echo $row["nombreCurso"]; ?> </td>
                     <td><?php echo $row["descripcion"]; ?> </td>
-                    <td><?php echo $row["enlace"]; ?> </td>
-      
+                          
                     <td>
                         <a id="btnActualizar" role="button" class="text-warning" data-toggle="tooltip" data-placement="bottom" title="Editar transmisión">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
