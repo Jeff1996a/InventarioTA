@@ -140,7 +140,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             die;
         }
 
-        if($_POST['action'] == 'actualizarTransmision' ){
+        if($_POST['action'] == 'update' ){
             $curso->id_curso = $_POST['id_curso'];
             $curso->nombreCurso = $_POST['nombre'];
             $curso->descripcion = $_POST['descripcion'];
