@@ -25,9 +25,9 @@ die;
 
     <header>
         <div id="header-info">
-            <h4 class="text-success"> <?php $us = isset($_SESSION['nickuser']) ? ($_SESSION['nickuser']) : '';
+            <h3 class="text-success"> <?php $us = isset($_SESSION['nickuser']) ? ($_SESSION['nickuser']) : '';
                 $ap = isset($_SESSION['nickapellido']) ? ($_SESSION['nickapellido']) : ''; echo 'Bienvenid@: '.$us.' '.$ap; ?>
-            </h4>
+            </h3>
             <h4 class="text-success">Fecha: <?= date('Y-m-d'); ?></h4>
             <div id="logo-ta">
                 <img src="img/logo.png" width="170" height="125" alt=""/>
