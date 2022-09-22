@@ -12,17 +12,23 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
         if($action == 'listarCursos' ){
 
-            include_once ('../Model/IncidenciasModel.php');
+            include_once ('../Model/CursosModel.php');
 
-            $incidencias = new IncidenciasModel();
+            $cursos = new CursosModel();
 
-            $title = "Incidencias";
+            $title = "Cursos";
 
-            $list = $incidencias->GetIncidenciasList();
+            $list = $cursos->LeerCursos();
 
             $num_filas = mysqli_num_rows($list);
 
-            include_once ("../View/ListaIncidencias.php");
+            include_once ("../View/ListaSoportes.php");
+        }
+
+        //Formulario para crear una nueva transmision
+        elseif($action == 'viewAddCurso'){
+
+            include_once "../View/CrearSoporte.php";
         }
     }
 

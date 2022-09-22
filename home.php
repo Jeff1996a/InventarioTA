@@ -80,7 +80,7 @@ die;
                         <a class="nav-link text-white" href="#">Incidencias</a>
                     </li>
 
-                    <li class="nav-item active" id="btnIncidencias">
+                    <li class="nav-item active" id="btnSoporte">
                         <a class="nav-link text-white" href="#">Soporte</a>
                     </li>
 
@@ -205,6 +205,19 @@ die;
                 type:'GET',
                 url: 'Controller/IncidenciasController.php',
                 data: {data:JSON.stringify(msg), action: 'listarIncidencias'},
+                success: function(response){
+                    $('#content').html(response);
+                }
+            });
+
+        });
+
+        $("#btnSoporte").click(function(){
+            msg.category = 'soporte';
+            $.ajax({
+                type:'GET',
+                url: 'Controller/CursosController.php',
+                data: {data:JSON.stringify(msg), action: 'listarCursos'},
                 success: function(response){
                     $('#content').html(response);
                 }

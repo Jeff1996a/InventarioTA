@@ -16,7 +16,7 @@ class CursosModel
         mysqli_set_charset($this->dbConn, DB_CHARSET);
     }
 
-    //Obtener la lista de incidencias
+    //Obtener la lista de cursos
     function LeerCursos(){
         mysqli_multi_query ($this->dbConn, "CALL uspLeerCursos") OR DIE (mysqli_error($this->dbConn));
         while (mysqli_more_results($this->dbConn)) {
