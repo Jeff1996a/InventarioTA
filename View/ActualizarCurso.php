@@ -1,4 +1,7 @@
-<form method="post" action="" enctype="multipart/form-data" id="frmCrearSoporte">
+<?php
+$curso = $GLOBALS['curso'];
+?>
+<form method="post" action="" enctype="multipart/form-data" id="frmActualizarSoporte">
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="add-equipment-header">
@@ -7,7 +10,7 @@
                         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
                     </svg>
                 </div>
-                <h1>Agregar video</h1>
+                <h1>Actualizar video</h1>
             </div>
         </div>
 
@@ -15,14 +18,14 @@
             <div class="mb-2 col-6">
                 <label for="txtNombre" class="col-sm-12 col-form-label">Nombre:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtNombre" name="nombre" style="text-transform:uppercase">
+                    <input type="text" class="form-control" id="txtNombre" name="nombre" value="<?php echo $curso->nombreCurso; ?>" style="text-transform:uppercase">
                 </div>
             </div>
 
             <div class="mb-2 col-6">
                 <label for="txtURL" class="col-sm-12 col-form-label">Enlace:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtURL" name="url">
+                    <input type="text" class="form-control" id="txtURL" name="url" value="<?php echo $curso->url; ?>">
                 </div>
             </div>
 
@@ -30,7 +33,7 @@
 
         <div class="mb-2">
             <label for="txtObservacion" class="form-label">Descripción:</label>
-            <textarea class="form-control" id="txtDescripcion" rows="3" name="descripcion" style="text-transform:uppercase"></textarea>
+            <textarea class="form-control" id="txtDescripcion" rows="3" name="descripcion" style="text-transform:uppercase"><?php echo $curso->descripcion; ?></textarea>
         </div>
 
         <div class="col-auto">
@@ -82,7 +85,7 @@
             });
         });
 
-        $('#frmCrearSoporte').on('submit', function(e){
+        $('#frmActualizarSoporte').on('submit', function(e){
 
             e.preventDefault();
 
@@ -92,10 +95,11 @@
 
             const form_data = new FormData();
 
+            form_data.append('id_curso',<?=$curso->id_curso; ?> )
             form_data.append('nombre', nombre);
             form_data.append('url', url);
             form_data.append('descripcion', descripcion);
-            form_data.append('action', 'addCurso')
+            form_data.append('action', 'update')
 
             //Mostrar los datos del formulario mediante clave/valor
             for(let [name, value] of form_data) {

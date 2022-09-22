@@ -25,6 +25,26 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             include_once ("../View/ListaSoportes.php");
         }
 
+        elseif($action == "update"){
+
+            include_once('../Model/CursosModel.php');
+
+            $curso =  new CursosModel();
+
+            $id = $data->{'id'};
+
+            $result = $curso->ObtenerCurso($id);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $curso->id_curso = $row['idCurso'];
+                $curso->nombreCurso = $row['nombreCurso'];
+                $curso->decripcion = $row['descripcion'];
+                $curoso->url = $row['url'];
+            }
+
+            include_once ('../View/ActualizarCurso.php');
+        }
+
         //Formulario para crear una nueva transmision
         elseif($action == 'viewAddCurso'){
 
@@ -112,6 +132,68 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
             else{
                 $row = mysqli_fetch_assoc($curso->CrearCurso($curso));
 
+                $curso->result = $row["resultado"];
+            }
+
+            echo json_encode($curso);
+
+            die;
+        }
+
+        if($_POST['action'] == 'actualizarTransmision' ){
+            $curso->id_curso = $_POST['id_curso'];
+            $curso->nombreCurso = $_POST['nombre'];
+            $curso->descripcion = $_POST['descripcion'];
+            $curso->url = $_POST['url'];
+
+            if(isset($_FILES['files'])){
+                // Count total files
+                $countfiles = count($_FILES['files']['name']);
+
+                // Upload Location
+                $upload_location = "../Files/";
+
+                // To store uploaded files path
+                $equipment->file_array = array();
+
+                $row = mysqli_fetch_assoc($equipment->CrearEquipo($equipment));
+                $equipment->result = $row["resultado"];
+
+                // Loop all files
+                for($index = 0;$index < $countfiles;$index++){
+
+                    if(isset($_FILES['files']['name'][$index]) && $_FILES['files']['name'][$index] != ''){
+                        // File name
+                        $filename = $_FILES['files']['name'][$index];
+
+                        // Get extension
+                        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+                        // Valid image extension
+                        $valid_ext = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt');
+
+                        // Check extension
+                        if(in_array($ext, $valid_ext)){
+
+                            // File path
+                            $path = $upload_location.$filename;
+
+                            // Upload file
+                            if(move_uploaded_file($_FILES['files']['tmp_name'][$index],$path)){
+                                $equipment->file_array[] = $path;
+
+                            }
+                        }
+                    }
+                }
+                echo json_encode($equipment);
+                die;
+            }
+
+            else{
+
+                $row = mysqli_fetch_assoc($curso->ActualizarCurso($curso));
+   
                 $curso->result = $row["resultado"];
             }
 
