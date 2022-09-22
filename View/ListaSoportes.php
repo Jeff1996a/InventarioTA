@@ -128,7 +128,7 @@
                     url: 'Controller/CursosController.php',
                     data: {data: JSON.stringify(msg), action:'eliminar'},
                     success: function (result) {
-                        alert('Registro eliminado');
+                        alert('Registro eliminado!!');
                         $.ajax({
                             type:'GET',
                             url: 'Controller/CursosController.php',
