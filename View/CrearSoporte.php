@@ -22,7 +22,7 @@
             <div class="mb-2 col-6">
                 <label for="txtURL" class="col-sm-12 col-form-label">Enlace:</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtURL" name="url" style="text-transform:uppercase">
+                    <input type="text" class="form-control" id="txtURL" name="url">
                 </div>
             </div>
 
