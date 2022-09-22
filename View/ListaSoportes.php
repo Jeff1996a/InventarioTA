@@ -35,10 +35,8 @@
             <thead style="background-color:  #005aa9; color:white;">
             <tr>
                 <td><strong>Cod.</strong></td>
-                <td><strong>Nombre</strong></td>
-                <td><strong>Descripción</strong></td>
                 <td><strong>Url</strong></td>
-                <td></td>
+                <td><strong>Descripción</strong></td>
                 <td></td>
                 <td></td>
 
