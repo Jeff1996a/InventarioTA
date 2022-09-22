@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario_sesion'])) {
+header('Location: index.php');
+die;
+}
+?>
 <div class="container-fluid">
     <div class="container-fluid">
         <div class="row">
