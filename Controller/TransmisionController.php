@@ -137,15 +137,14 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
        elseif($action == "eliminarEquiTrans"){
 
-        include_once('../Model/TransmisionModel.php');
+            include_once('../Model/TransmisionModel.php');
 
-        $transmision =  new TransmisionModel();
+            $transmision =  new TransmisionModel();
 
-        $id = $data->{'id'};
+            $id = $data->{'id'};
 
-        $transmision->EliminarEquipoTrans($id);   
-    }
-
+            $transmision->EliminarEquipoTrans($id);   
+        }
     }
 
     elseif(isset($_POST)){
