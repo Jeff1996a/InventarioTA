@@ -53,7 +53,7 @@
                         <h3><?php echo $row["nombreCurso"]; ?></h3>
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item"
-                                src="<?=$row["enlace"]?>">
+                                src="<?=$row["enlace"]?>" allowfullscreen>
                             </iframe>
                         </div>
                     </td>
