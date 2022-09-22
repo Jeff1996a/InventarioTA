@@ -38,8 +38,8 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             while ($row = mysqli_fetch_assoc($result)) {
                 $curso->id_curso = $row['idCurso'];
                 $curso->nombreCurso = $row['nombreCurso'];
-                $curso->decripcion = $row['descripcion'];
-                $curso->url = $row['url'];
+                $curso->descripcion = $row['descripcion'];
+                $curso->url = $row['enlace'];
             }
 
             include_once ('../View/ActualizarCurso.php');
