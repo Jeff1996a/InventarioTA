@@ -72,12 +72,10 @@
         });
 
         $('#btnRegresar').click(function(){
-
-            msg.id = '<?=$GLOBALS['id']?>';
             $.ajax({
                 type:'GET',
                 url: 'Controller/CursosController.php',
-                data: { data:JSON.stringify(msg), action:'listarCursos'},
+                data: { data:JSON.stringify(''), action:'listarCursos'},
                 success: function(response){
                     $('#content').html(response);
                 }
@@ -131,11 +129,10 @@
                     console.log(response.result);
                     if(response.result != 0){
                         alert("Registro exitoso!!");
-                        msg.id = '<?=$GLOBALS['id']?>';
                         $.ajax({
                             type:'GET',
                             url: 'Controller/CursosController.php',
-                            data: { data:JSON.stringify(msg), action:'listarCursos'},
+                            data: { data:JSON.stringify(''), action:'listarCursos'},
                             success: function(response){
                                 $('#content').html(response);
                             }
