@@ -43,7 +43,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if($action == "eliminar"){
 
-            include_once('../Model/CursoModel.php');
+            include_once('../Model/CursosModel.php');
 
             $curso =  new CursoModel();
 
