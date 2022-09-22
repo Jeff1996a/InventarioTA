@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
                 $curso->id_curso = $row['idCurso'];
                 $curso->nombreCurso = $row['nombreCurso'];
                 $curso->decripcion = $row['descripcion'];
-                $curoso->url = $row['url'];
+                $curso->url = $row['url'];
             }
 
             include_once ('../View/ActualizarCurso.php');
