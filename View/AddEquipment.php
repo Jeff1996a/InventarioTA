@@ -199,6 +199,10 @@
                 descripcion:{
                     required: "Ingrese una descripción!"
                 }
+            },
+            submitHandler: function(e){
+                e.preventDefault();
+                console.log("ingrese los datos");
             }
         });
 
@@ -214,143 +218,7 @@
                 }
             });
         });
-
-        $('#addEquipmentForm').on('submit',function(event){
-
-            event.preventDefault();
-
-            const marca = $('#txtMarca').val();
-            const modelo = $('#txtModelo').val();
-            const descripcion = $('#txtDescripcion').val();
-            const serieTA = $('#txtSerieTa').val();
-            const serie = $('#txtSerie').val();
-            const fecha = $('#dpFechaInst').val();
-            const proveedor = $('#txtProveedor').val();
-            const estado = $('#cbEstado').val();
-            const tipoEquipo = $('#cbTipoEquipo').val();
-            const responsable = $('#txtResponsable').val();
-            const departamento = $('#txtDepartamento').val();
-            const observacion = $('#txtObservacion').val();
-
-            
-            if(tipoEquipo == 1){
-                msg.category = 'audio';
-            }
-
-            else if(tipoEquipo == 2){
-                msg.category = 'cables';
-            }
-
-            else if(tipoEquipo == 3){
-                msg.category = 'edicion';
-            }
-
-            else if(tipoEquipo == 4){
-                msg.category = 'electricidad';
-            }
-
-            else if(tipoEquipo == 5){
-                msg.category = 'red';
-            }
-            else if(tipoEquipo == 6){
-                msg.category = 'video';
-            }
-
-            console.log("Categoria:" + msg.category);
-            
-            const form_data = new FormData();
-
-            form_data.append('marca', marca);
-            form_data.append('modelo', modelo);
-            form_data.append('descripcion', descripcion);
-            form_data.append('codigoTA', serieTA);
-            form_data.append('serie', serie);
-            form_data.append('fechaInst', fecha);
-            form_data.append('proveedor', proveedor);
-            form_data.append('estado', estado);
-            form_data.append('tipoEquipo', tipoEquipo);
-            form_data.append('responsable', responsable);
-            form_data.append('departamento', departamento);
-            form_data.append('disponibilidad', 'si');
-            form_data.append('observacion', observacion);
-            form_data.append('action', 'addEquipo');
-
-            //Mostrar los datos del formulario mediante clave/valor
-            for(let [name, value] of form_data) {
-                console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2
-            }
-            /*
-            const files = document.getElementById('files');
-
-            const total_files = files.files.length;
-
-            for (var index = 0; index < total_files; index++) {
-                form_data.append("files[]", files.files[index]);
-            }*/
-
-            // AJAX request
-            $.ajax({
-                url: 'Controller/EquipoController.php',
-                type: 'POST',
-                data: form_data,
-                dataType: 'json',
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    /*
-                    for(var index = 0; index < response.file_array.length; index++) {
-                        var src = response.file_array[index];
-                        console.log(src);
-                        // Add img element in <div id='preview'>
-                        $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
-                    }*/
-                   console.log(response.result);
-                   if(response.result != 0){
-                        alert("Registro exitoso!!");
-
-                        console.log(msg.category);
-
-                        $.ajax({
-                            type:'GET',
-                            url: 'Controller/EquipoController.php',
-                            data: {data: JSON.stringify(msg), action:'listarEquipos'},
-                            success: function(response){
-                                $('#content').html(response);
-                            }
-                        });
-                    }
-
-                   else{
-                        alert("El equipo ya se encuentra registrado");
-                   }
-                }
-            });
-
-            /*AJAX request
-
-            const files = document.getElementById('files');
-
-            const total_files = files.files.length;
-
-            for (var index = 0; index < total_files; index++) {
-                form_data.append("files[]", files.files[index]);
-            }
-
-            ;
-            console.log(total_files);
-            console.log($('#cbTipoEquipo').val());
-            console.log($('#cbEstado').val())
-            $.ajax({
-                url: 'Controller/EquipoController.php',
-                type: 'post',
-                data: form_data,
-                dataType: 'json',
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                }
-            });
-            */
-        });
+        
+        
     })
 </script>
