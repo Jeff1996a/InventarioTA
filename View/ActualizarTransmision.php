@@ -81,16 +81,30 @@ $transmision = $GLOBALS['transmision']
             <div class="mb-2 col-6">
                 <label for="txtEmail" class="col-sm-12 col-form-label">Email:</label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" id="txtEmail" name="email" value="'.$transmision->email.'">
+                        <input type="text" class="form-control" id="txtEmail" name="email" value="<?php echo $transmision->movil; ?>">
                     </div>
             </div>
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtMovil" class="col-sm-12 col-form-label">Unidad móvil:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtMovil" name="movil" value="'.$transmision->movil.'" style="text-transform:uppercase">
+                        </div>
+                    </div>';
+                }
+                else{
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtMovil" class="col-sm-12 col-form-label">Unidad móvil:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtMovil" name="movil" value="'.$transmision->movil.'" style="text-transform:uppercase" disabled>
+                        </div>
+                    </div>';
+                }
+            ?>
             
-            <div class="mb-2 col-6">
-                <label for="txtMovil" class="col-sm-12 col-form-label">Unidad móvil:</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtMovil" name="movil" value="<?php echo $transmision->movil; ?>" style="text-transform:uppercase">
-                </div>
-            </div>
 
         </div>
 
