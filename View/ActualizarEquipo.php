@@ -1,9 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['usuario_sesion'])) {
-header('Location: index.php');
-die;
-}
+
 $equipment = $GLOBALS['equipment'];
 
 ?>
@@ -52,6 +48,7 @@ $equipment = $GLOBALS['equipment'];
         </div>
 
         <div class="mb-2 row">
+
             <?php
                 if($_SESSION['rol'] == 'admin'){
                     echo '
@@ -71,9 +68,10 @@ $equipment = $GLOBALS['equipment'];
                             <input type="date" class="form-control" id="dpFechaInst" value="'.$equipment->fecha_inst.'" name="fechaInst" disabled>
                         </div>
                     </div>';
+
                 }
-            
             ?>
+        
             <div class="mb-2 col">
                 <label for="txtProveedor" class="col-sm-2 col-form-label">Proveedor:</label>
                 <div class="col-sm-6">
@@ -83,8 +81,9 @@ $equipment = $GLOBALS['equipment'];
         </div>
 
         <div class="mb-2 row">
+
             <?php
-                if($_SESSION['rol'] == 'admin'){
+                if($_SESSION['rol' == 'admin']){
                     echo '
                     <div class="mb-2 col">
                         <label for="txtResponsable" class="col-sm-2 col-form-label">Responsable:</label>
@@ -92,8 +91,9 @@ $equipment = $GLOBALS['equipment'];
                             <input type="text" class="form-control" id="txtResponsable" name="responsable" value="'.$equipment->responsable.'" style="text-transform:uppercase">
                         </div>
                     </div>';
-    
-                    echo '<div class="mb-2 col">
+
+                    echo '
+                    <div class="mb-2 col">
                         <label for="txtUbicacion" class="col-sm-2 col-form-label">Departamento:</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="txtDepartamento" name="ubicacion"  value="'.$equipment->departamento.'"  style="text-transform:uppercase">
@@ -102,6 +102,7 @@ $equipment = $GLOBALS['equipment'];
                 }
 
                 else{
+
                     echo '
                     <div class="mb-2 col">
                         <label for="txtResponsable" class="col-sm-2 col-form-label">Responsable:</label>
@@ -109,11 +110,12 @@ $equipment = $GLOBALS['equipment'];
                             <input type="text" class="form-control" id="txtResponsable" name="responsable" value="'.$equipment->responsable.'" style="text-transform:uppercase" disabled>
                         </div>
                     </div>';
-    
-                    echo '<div class="mb-2 col">
+
+                    echo '
+                    <div class="mb-2 col">
                         <label for="txtUbicacion" class="col-sm-2 col-form-label">Departamento:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="txtDepartamento" name="ubicacion"  value="'.$equipment->departamento.'"  style="text-transform:uppercase disabled">
+                            <input type="text" class="form-control" id="txtDepartamento" name="ubicacion"  value="'.$equipment->departamento.'"  style="text-transform:uppercase" disabled>
                         </div>
                     </div>';
 
@@ -318,7 +320,7 @@ $equipment = $GLOBALS['equipment'];
                 descripcion:{
                     required: "Ingrese una descripción!"
                 }
-            }                
+            }
         });
 
         $('#btnRegresar').click(function () {
@@ -336,113 +338,114 @@ $equipment = $GLOBALS['equipment'];
 
         $('#frmActualizarEquipo').on('submit',function(e){
 
-                e.preventDefault();
-                const marca = $('#txtMarca').val();
-                const modelo = $('#txtModelo').val();
-                const descripcion = $('#txtDescripcion').val();
-                const serieTA = $('#txtSerieTa').val();
-                const serie = $('#txtSerie').val();
-                const fecha = $('#dpFechaInst').val();
-                const proveedor = $('#txtProveedor').val();
-                const estado = $('#cbEstado').val();
-                const tipoEquipo = $('#cbTipoEquipo').val();
-                const responsable = $('#txtResponsable').val();
-                const departamento = $('#txtDepartamento').val();
-                const observacion = $('#txtObservacion').val();
+            e.preventDefault();
 
-                if(tipoEquipo == 1){
-                    msg.category = 'audio';
-                }
+            const marca = $('#txtMarca').val();
+            const modelo = $('#txtModelo').val();
+            const descripcion = $('#txtDescripcion').val();
+            const serieTA = $('#txtSerieTa').val();
+            const serie = $('#txtSerie').val();
+            const fecha = $('#dpFechaInst').val();
+            const proveedor = $('#txtProveedor').val();
+            const estado = $('#cbEstado').val();
+            const tipoEquipo = $('#cbTipoEquipo').val();
+            const responsable = $('#txtResponsable').val();
+            const departamento = $('#txtDepartamento').val();
+            const observacion = $('#txtObservacion').val();
 
-                else if(tipoEquipo == 2){
-                    msg.category = 'cables';
-                }
+            if(tipoEquipo == 1){
+                msg.category = 'audio';
+            }
 
-                else if(tipoEquipo == 3){
-                    msg.category = 'edicion';
-                }
+            else if(tipoEquipo == 2){
+                msg.category = 'cables';
+            }
 
-                else if(tipoEquipo == 4){
-                    msg.category = 'electricidad';
-                }
+            else if(tipoEquipo == 3){
+                msg.category = 'edicion';
+            }
 
-                else if(tipoEquipo == 5){
-                    msg.category = 'red';
-                }
-                else if(tipoEquipo == 6){
-                    msg.category = 'video';
-                }
+            else if(tipoEquipo == 4){
+                msg.category = 'electricidad';
+            }
 
-                console.log("Categoria:" + msg.category);
+            else if(tipoEquipo == 5){
+                msg.category = 'red';
+            }
+            else if(tipoEquipo == 6){
+                msg.category = 'video';
+            }
 
-                const form_data = new FormData();
+            console.log("Categoria:" + msg.category);
 
-                form_data.append('id_equipo','<?php echo $equipment->id_equipo; ?>');
-                form_data.append('marca', marca);
-                form_data.append('modelo', modelo);
-                form_data.append('descripcion', descripcion);
-                form_data.append('codigoTA', serieTA);
-                form_data.append('serie', serie);
-                form_data.append('fechaInst', fecha);
-                form_data.append('proveedor', proveedor);
-                form_data.append('estado', estado);
-                form_data.append('tipoEquipo', tipoEquipo);
-                form_data.append('responsable', responsable);
-                form_data.append('departamento', departamento);
-                form_data.append('disponibilidad', 'si');
-                form_data.append('observacion', observacion);
-                form_data.append('action', 'actualizarEquipo');
+            const form_data = new FormData();
 
-                //Mostrar los datos del formulario mediante clave/valor
-                for(let [name, value] of form_data) {
-                    console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2
-                }
+            form_data.append('id_equipo','<?php echo $equipment->id_equipo; ?>');
+            form_data.append('marca', marca);
+            form_data.append('modelo', modelo);
+            form_data.append('descripcion', descripcion);
+            form_data.append('codigoTA', serieTA);
+            form_data.append('serie', serie);
+            form_data.append('fechaInst', fecha);
+            form_data.append('proveedor', proveedor);
+            form_data.append('estado', estado);
+            form_data.append('tipoEquipo', tipoEquipo);
+            form_data.append('responsable', responsable);
+            form_data.append('departamento', departamento);
+            form_data.append('disponibilidad', 'si');
+            form_data.append('observacion', observacion);
+            form_data.append('action', 'actualizarEquipo');
 
-                const files = document.getElementById('files');
-                /*
-                const total_files = files.files.length;
+            //Mostrar los datos del formulario mediante clave/valor
+            for(let [name, value] of form_data) {
+                console.log(`${name} = ${value}`); // key1 = value1, luego key2 = value2
+            }
 
-                for (var index = 0; index < total_files; index++) {
-                    form_data.append("files[]", files.files[index]);
-                }*/
+            const files = document.getElementById('files');
+            /*
+            const total_files = files.files.length;
 
-                // AJAX request
-                $.ajax({
-                    url: 'Controller/EquipoController.php',
-                    type: 'POST',
-                    data: form_data,
-                    dataType: 'json',
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        /*
-                        for(var index = 0; index < response.file_array.length; index++) {
-                            var src = response.file_array[index];
-                            console.log(src);
-                            // Add img element in <div id='preview'>
-                            $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
-                        }*/
-                    console.log(response.result);
-                    if(response.result != 0){
-                            alert("Registro actualizado correctamente!!");
+            for (var index = 0; index < total_files; index++) {
+                form_data.append("files[]", files.files[index]);
+            }*/
 
-                            console.log(msg.category);
+            // AJAX request
+            $.ajax({
+                url: 'Controller/EquipoController.php',
+                type: 'POST',
+                data: form_data,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    /*
+                    for(var index = 0; index < response.file_array.length; index++) {
+                        var src = response.file_array[index];
+                        console.log(src);
+                        // Add img element in <div id='preview'>
+                        $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+                    }*/
+                   console.log(response.result);
+                   if(response.result != 0){
+                        alert("Registro actualizado correctamente!!");
 
-                            $.ajax({
-                                type:'GET',
-                                url: 'Controller/EquipoController.php',
-                                data: {data: JSON.stringify(msg), action:'listarEquipos'},
-                                success: function(response){
-                                    $('#content').html(response);
-                                }
-                            });
+                        console.log(msg.category);
+
+                        $.ajax({
+                            type:'GET',
+                            url: 'Controller/EquipoController.php',
+                            data: {data: JSON.stringify(msg), action:'listarEquipos'},
+                            success: function(response){
+                                $('#content').html(response);
+                            }
+                        });
                     }
 
-                    else{
-                            alert("El equipo ya se encuentra registrado");
-                    }
+                   else{
+                        alert("El equipo ya se encuentra registrado");
+                   }
                 }
-
+            });
 
             /*AJAX request
 
