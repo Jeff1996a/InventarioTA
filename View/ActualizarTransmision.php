@@ -81,7 +81,7 @@ $transmision = $GLOBALS['transmision']
             <div class="mb-2 col-6">
                 <label for="txtEmail" class="col-sm-12 col-form-label">Email:</label>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" id="txtEmail" name="email" value="<?php echo $transmision->movil; ?>">
+                        <input type="text" class="form-control" id="txtEmail" name="email" value="<?php echo $transmision->email; ?>">
                     </div>
             </div>
             <?php
