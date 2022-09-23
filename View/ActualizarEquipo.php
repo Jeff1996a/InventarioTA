@@ -52,13 +52,28 @@ $equipment = $GLOBALS['equipment'];
         </div>
 
         <div class="mb-2 row">
-            <div class="mb-3 col">
-                <label for="dpFechaInst" class="col-sm-3 col-form-label">Fecha instalación:</label>
-                <div class="col-sm-6">
-                    <input type="date" class="form-control" id="dpFechaInst" value="<?php echo $equipment->fecha_inst; ?>" name="fechaInst">
-                </div>
-            </div>
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-3 col">
+                        <label for="dpFechaInst" class="col-sm-3 col-form-label">Fecha instalación:</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" id="dpFechaInst" value="'.$equipment->fecha_inst.'" name="fechaInst">
+                        </div>
+                    </div>';
+                }
 
+                else{
+                    echo '
+                    <div class="mb-3 col">
+                        <label for="dpFechaInst" class="col-sm-3 col-form-label">Fecha instalación:</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" id="dpFechaInst" value="'.$equipment->fecha_inst.'" name="fechaInst" disabled>
+                        </div>
+                    </div>';
+                }
+            
+            ?>
             <div class="mb-2 col">
                 <label for="txtProveedor" class="col-sm-2 col-form-label">Proveedor:</label>
                 <div class="col-sm-6">
