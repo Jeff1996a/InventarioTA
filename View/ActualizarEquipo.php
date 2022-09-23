@@ -91,14 +91,14 @@ $equipment = $GLOBALS['equipment'];
                     <div class="mb-2 col">
                         <label for="txtResponsable" class="col-sm-2 col-form-label">Responsable:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="txtResponsable" name="responsable" value="<?php echo $equipment->responsable; ?>" style="text-transform:uppercase" disabled>
+                            <input type="text" class="form-control" id="txtResponsable" name="responsable" value="'.$equipment->responsable.'" style="text-transform:uppercase" disabled>
                         </div>
                     </div>';
     
                     echo '<div class="mb-2 col">
                         <label for="txtUbicacion" class="col-sm-2 col-form-label">Departamento:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="txtDepartamento" name="ubicacion"  value="<?php echo $equipment->departamento; ?>"  style="text-transform:uppercase">
+                            <input type="text" class="form-control" id="txtDepartamento" name="ubicacion"  value="'.$equipment->departamento.'"  style="text-transform:uppercase">
                         </div>
                     </div>';
 
