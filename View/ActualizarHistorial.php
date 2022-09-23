@@ -1,6 +1,9 @@
-
 <?php
-
+session_start();
+if (!isset($_SESSION['usuario_sesion'])) {
+header('Location: index.php');
+die;
+}
 $historial = $GLOBALS['historial'];
 
 ?>
@@ -18,20 +21,43 @@ $historial = $GLOBALS['historial'];
         </div>
 
         <div class="mb-2 row">
-            <div class="mb-2 col-6">
-                <label for="txtTecnico" class="col-sm-12 col-form-label">Técnico responsable:</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtTecnico" name="tecnico" value="<?php echo $historial->tecnico; ?>" style="text-transform:uppercase">
-                </div>
-            </div>
 
-            <div class="mb-2 col-6">
-                <label for="txtCorreo" class="col-sm-12 col-form-label">Correo:</label>
-                <div class="col-sm-12">
-                    <input type="email" class="form-control" id="txtCorreo" name="correo" value="<?php echo $historial->correo; ?>">
-                </div>
-            </div>
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtTecnico" class="col-sm-12 col-form-label">Técnico responsable:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtTecnico" name="tecnico" value="<?php echo $historial->tecnico; ?>" style="text-transform:uppercase">
+                        </div>
+                    </div>';
 
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtCorreo" class="col-sm-12 col-form-label">Correo:</label>
+                        <div class="col-sm-12">
+                            <input type="email" class="form-control" id="txtCorreo" name="correo" value="'.$historial->correo.'">
+                        </div>
+                    </div>';
+                }
+                else{
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtTecnico" class="col-sm-12 col-form-label">Técnico responsable:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtTecnico" name="tecnico" value="'.$historial->tecnico.'" style="text-transform:uppercase" disabled>
+                        </div>
+                    </div>';
+
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtCorreo" class="col-sm-12 col-form-label">Correo:</label>
+                        <div class="col-sm-12">
+                            <input type="email" class="form-control" id="txtCorreo" name="correo" value="'.$historial->correo.'" disabled>
+                        </div>
+                    </div>';
+                }
+            ?>
         </div>
 
         <div class="mb-2 row">
