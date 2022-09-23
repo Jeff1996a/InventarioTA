@@ -87,7 +87,7 @@ $equipment = $GLOBALS['equipment'];
         <div class="mb-2 row">
 
             <?php
-                if($_SESSION['rol' == 'admin']){
+                if($_SESSION['rol'] == 'admin'){
                     echo '
                     <div class="mb-2 col">
                         <label for="txtResponsable" class="col-sm-2 col-form-label">Responsable:</label>
