@@ -220,6 +220,7 @@
             e.preventDefault();
 
             console.log(JSON.stringify(validation));
+            
             const marca = $('#txtMarca').val();
             const modelo = $('#txtModelo').val();
             const descripcion = $('#txtDescripcion').val();
