@@ -133,74 +133,7 @@
         };
 
         //Validaciones
-        const validation = $("#addEquipmentForm").validate({
-            rules:{
-                marca: {
-                    required: true
-                },
-                modelo:{
-                    required: true
-                },
-                codigoTA: {
-                    required: true
-                },
-                serie: {
-                    required:true
-                },
-                fechaInst: {
-                    required:true,
-                    date: true
-                },
-                proveedor:{
-                    required: true
-                },
-                responsable: {
-                    required: true
-                },
-                ubicacion:{
-                    required: true
-                },
-                estado:{
-                    required: true
-                },
-                descripcion: {
-                    required: true
-                }
-            },
-            messages:{
-                marca: {
-                    required: "Ingrese la marca!"
-                },
-                modelo: {
-                    required: "Ingrese el modelo!"
-                },
-                codigoTA :{
-                    required: "Ingrese el código !"
-                },
-                serie: {
-                    required: "Ingrese el número!"
-                },
-                fechaInst: {
-                    required: "Seleccione la fecha!",
-                    date: "Fecha inválida"
-                },
-                proveedor:{
-                    required: "Ingrese el proveedor!"
-                },
-                responsable:{
-                    required: "Ingrese un responsable!"
-                },
-                ubicacion: {
-                    required: "Ingrese el departamento!"
-                },
-                estado: {
-                    required: "Seleccione el estado del equipo!"
-                },
-                descripcion:{
-                    required: "Ingrese una descripción!"
-                }
-            }
-        });
+        const validation = $("#addEquipmentForm")
 
         $('#btnRegresar').click(function () {
             msg.category = '<?=$GLOBALS['category']?>';
@@ -352,6 +285,73 @@
                 }
             });
             */
+        }).validate({
+            rules:{
+                marca: {
+                    required: true
+                },
+                modelo:{
+                    required: true
+                },
+                codigoTA: {
+                    required: true
+                },
+                serie: {
+                    required:true
+                },
+                fechaInst: {
+                    required:true,
+                    date: true
+                },
+                proveedor:{
+                    required: true
+                },
+                responsable: {
+                    required: true
+                },
+                ubicacion:{
+                    required: true
+                },
+                estado:{
+                    required: true
+                },
+                descripcion: {
+                    required: true
+                }
+            },
+            messages:{
+                marca: {
+                    required: "Ingrese la marca!"
+                },
+                modelo: {
+                    required: "Ingrese el modelo!"
+                },
+                codigoTA :{
+                    required: "Ingrese el código !"
+                },
+                serie: {
+                    required: "Ingrese el número!"
+                },
+                fechaInst: {
+                    required: "Seleccione la fecha!",
+                    date: "Fecha inválida"
+                },
+                proveedor:{
+                    required: "Ingrese el proveedor!"
+                },
+                responsable:{
+                    required: "Ingrese un responsable!"
+                },
+                ubicacion: {
+                    required: "Ingrese el departamento!"
+                },
+                estado: {
+                    required: "Seleccione el estado del equipo!"
+                },
+                descripcion:{
+                    required: "Ingrese una descripción!"
+                }
+            }
         });
     })
 </script>
