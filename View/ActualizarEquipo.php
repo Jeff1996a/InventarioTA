@@ -98,7 +98,7 @@ $equipment = $GLOBALS['equipment'];
                     echo '<div class="mb-2 col">
                         <label for="txtUbicacion" class="col-sm-2 col-form-label">Departamento:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="txtDepartamento" name="ubicacion"  value="'.$equipment->departamento.'"  style="text-transform:uppercase">
+                            <input type="text" class="form-control" id="txtDepartamento" name="ubicacion"  value="'.$equipment->departamento.'"  style="text-transform:uppercase disabled">
                         </div>
                     </div>';
 
