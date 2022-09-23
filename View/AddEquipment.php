@@ -217,10 +217,8 @@
 
         $('#addEquipmentForm').on('submit',function(e){
 
-            e.preventDefault();
-
-            console.log(JSON.stringify(validation));
             
+
             const marca = $('#txtMarca').val();
             const modelo = $('#txtModelo').val();
             const descripcion = $('#txtDescripcion').val();
@@ -289,6 +287,8 @@
                 form_data.append("files[]", files.files[index]);
             }*/
 
+
+            e.preventDefault();
             // AJAX request
             $.ajax({
                 url: 'Controller/EquipoController.php',
