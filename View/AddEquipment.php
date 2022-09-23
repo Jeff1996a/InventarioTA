@@ -215,7 +215,7 @@
             });
         });
 
-        $('#addEquipmentForm').submit(function(event){
+        $('#addEquipmentForm').on('submit',function(event){
 
             event.preventDefault();
 
