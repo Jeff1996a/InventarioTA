@@ -443,10 +443,6 @@ $equipment = $GLOBALS['equipment'];
                     }
                 }
 
-                }
-
-            
-            });
 
             /*AJAX request
 
