@@ -90,12 +90,30 @@ $transmision = $GLOBALS['transmision']
         </div>
 
         <div class="mb-2 row">
-            <div class="mb-2 col-6">
-                <label for="dpInicio" class="col-sm-6 col-form-label">Fecha inicio:</label>
-                <div class="col-sm-6">
-                    <input type="date" class="form-control" id="dpInicio" name="fechaInicio" value="<?php echo $transmision->inicio; ?>" style="text-transform:uppercase">
-                </div>
-            </div>
+
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="dpInicio" class="col-sm-6 col-form-label">Fecha inicio:</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" id="dpInicio" name="fechaInicio" value="'.$transmision->inicio.'">
+                        </div>
+                    </div>';
+                }
+
+                else{
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="dpInicio" class="col-sm-6 col-form-label">Fecha inicio:</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" id="dpInicio" name="fechaInicio" value="'.$transmision->inicio.'" disabled>
+                        </div>
+                    </div>';
+                }
+
+            ?>
+            
 
             <div class="mb-2 col-6">
                 <label for="dpFin" class="col-sm-6 col-form-label">Fecha fin:</label>
