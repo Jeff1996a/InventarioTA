@@ -215,9 +215,9 @@
             });
         });
 
-        $('#addEquipmentForm').on('submit',function(e){
+        $('#addEquipmentForm').on('submit',function(event){
 
-            e.preventDefault();
+            event.preventDefault();
 
             const marca = $('#txtMarca').val();
             const modelo = $('#txtModelo').val();
@@ -232,6 +232,7 @@
             const departamento = $('#txtDepartamento').val();
             const observacion = $('#txtObservacion').val();
 
+            /*
             if(tipoEquipo == 1){
                 msg.category = 'audio';
             }
@@ -256,7 +257,7 @@
             }
 
             console.log("Categoria:" + msg.category);
-
+            */
             const form_data = new FormData();
 
             form_data.append('marca', marca);
