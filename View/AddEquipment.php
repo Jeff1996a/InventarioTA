@@ -219,6 +219,7 @@
 
             e.preventDefault();
 
+            alert(validation);
             const marca = $('#txtMarca').val();
             const modelo = $('#txtModelo').val();
             const descripcion = $('#txtDescripcion').val();
