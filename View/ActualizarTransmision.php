@@ -29,12 +29,28 @@ $transmision = $GLOBALS['transmision']
             </div>
         </div>
         <div class="mb-2 row">
-            <div class="mb-2 col-6">
-                <label for="txtUbicacion" class="col-sm-12 col-form-label">Ubicación:</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtUbicacion" name="ubicacion" value="<?php echo $transmision->ubicacion; ?>" style="text-transform:uppercase">
-                </div>
-            </div>
+
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtUbicacion" class="col-sm-12 col-form-label">Ubicación:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtUbicacion" name="ubicacion" value="'.$transmision->ubicacion.'" style="text-transform:uppercase">
+                        </div>
+                    </div>';
+                }
+                else{
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtUbicacion" class="col-sm-12 col-form-label">Ubicación:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtUbicacion" name="ubicacion" value="'.$transmision->ubicacion.'" style="text-transform:uppercase" disable>
+                        </div>
+                    </div>';
+                }
+            ?>
+            
 
             <?php
                 if($_SESSION['rol'] == 'admin'){
