@@ -45,7 +45,7 @@ $transmision = $GLOBALS['transmision']
                     <div class="mb-2 col-6">
                         <label for="txtUbicacion" class="col-sm-12 col-form-label">Ubicación:</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txtUbicacion" name="ubicacion" value="'.$transmision->ubicacion.'" style="text-transform:uppercase" disable>
+                            <input type="text" class="form-control" id="txtUbicacion" name="ubicacion" value="'.$transmision->ubicacion.'" style="text-transform:uppercase" disabled>
                         </div>
                     </div>';
                 }
