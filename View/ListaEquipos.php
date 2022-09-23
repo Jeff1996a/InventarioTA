@@ -76,7 +76,6 @@ die;
                 <td><strong>Serie</strong></td>
                 <td><strong>Observación</strong></td>
                 <td><strong>Fech_Inst</strong></td>
-                <td><strong>Proveedor</strong></td>
                 <td><strong>Responsable</strong></td>
                 <td><strong>Departamento</strong></td>
                 <td><strong>Estado</strong></td>
@@ -107,7 +106,6 @@ die;
                     <td><?php echo $row["num_serie"]; ?> </td>
                     <td><?php echo $row["observacion"]; ?> </td>
                     <td><?php echo $row["fecha_instalacion"]; ?> </td>
-                    <td><?php echo $row["proveedor"]; ?> </td>
                     <td><?php echo $row["responsable"]; ?> </td>
                     <td><?php echo $row["departamento"]; ?> </td>
                     <td><?php echo $row["estado"]; ?> </td>
