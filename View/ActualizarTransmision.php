@@ -31,22 +31,54 @@ $transmision = $GLOBALS['transmision']
                 </div>
             </div>
 
-            <div class="mb-2 col-6">
-                <label for="txtResponsable" class="col-sm-12 col-form-label">Responsable:</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtTecnico" name="tecnico" value="<?php echo $transmision->tecnico; ?>" style="text-transform:uppercase">
-                </div>
-            </div>
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtResponsable" class="col-sm-12 col-form-label">Responsable:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtTecnico" name="tecnico" value="'.$transmision->tecnico.'" style="text-transform:uppercase">
+                        </div>
+                    </div>';
+                }
+                else{
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtResponsable" class="col-sm-12 col-form-label">Responsable:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtTecnico" name="tecnico" value="'.$transmision->tecnico.'" style="text-transform:uppercase" disabled>
+                        </div>
+                    </div>';
+                }
+
+            ?>
+            
 
         </div>
 
         <div class="mb-2 row">
-            <div class="mb-2 col-6">
-                <label for="txtEmail" class="col-sm-12 col-form-label">Email:</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtEmail" name="email" value="<?php echo $transmision->email; ?>">
-                </div>
-            </div>
+            
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtEmail" class="col-sm-12 col-form-label">Email:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtEmail" name="email" value="'.$transmision->email.'">
+                        </div>
+                    </div>';
+                }
+                else{
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtEmail" class="col-sm-12 col-form-label">Email:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtEmail" name="email" value="'.$transmision->email.'">
+                        </div>
+                    </div>';
+                }
+            ?>
+            
 
             <div class="mb-2 col-6">
                 <label for="txtMovil" class="col-sm-12 col-form-label">Unidad móvil:</label>
