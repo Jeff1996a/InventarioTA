@@ -27,29 +27,70 @@ $incidencia = $GLOBALS['incidencia']
         </div>
 
         <div class="mb-2 row">
-            <div class="mb-2 col-6">
-                <label for="txtReporta" class="col-sm-12 col-form-label">Quien reporta:</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtReporta" name="reporta" value="<?php echo $incidencia->quien_reporta; ?>" style="text-transform:uppercase">
-                </div>
-            </div>
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtReporta" class="col-sm-12 col-form-label">Quien reporta:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtReporta" name="reporta" value="'.$incidencia->quien_reporta.'" style="text-transform:uppercase">
+                        </div>
+                    </div>';
 
-            <div class="mb-2 col-6">
-                <label for="txtResponsable" class="col-sm-12 col-form-label">Responsable:</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="txtResponsable" name="responsable" value="<?php echo $incidencia->responsable; ?>" style="text-transform:uppercase">
-                </div>
-            </div>
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtResponsable" class="col-sm-12 col-form-label">Responsable:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtResponsable" name="responsable" value="'.$incidencia->responsable.'" style="text-transform:uppercase">
+                        </div>
+                    </div>';
+                }
+                else{
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtReporta" class="col-sm-12 col-form-label">Quien reporta:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtReporta" name="reporta" value="'.$incidencia->quien_reporta.'" style="text-transform:uppercase" disabled>
+                        </div>
+                    </div>';
+
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtResponsable" class="col-sm-12 col-form-label">Responsable:</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="txtResponsable" name="responsable" value="'.$incidencia->responsable.'" style="text-transform:uppercase" disabled>
+                        </div>
+                    </div>';
+                }
+            ?>
+            
+
+            
 
         </div>
 
         <div class="mb-2 row">
-            <div class="mb-2 col-6">
-                <label for="dpInicios" class="col-sm-6 col-form-label">Fecha reporte:</label>
-                <div class="col-sm-6">
-                    <input type="date" class="form-control" id="dpInicio" name="fecha_reporte" value="<?php echo $incidencia->fecha_sop; ?>">
-                </div>
-            </div>
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="dpInicios" class="col-sm-6 col-form-label">Fecha reporte:</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" id="dpInicio" name="fecha_reporte" value="'.$incidencia->fecha_sop.'">
+                        </div>
+                    </div>';
+                }
+                else{
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="dpInicios" class="col-sm-6 col-form-label">Fecha reporte:</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" id="dpInicio" name="fecha_reporte" value="'.$incidencia->fecha_sop.'" disabled>
+                        </div>
+                    </div>';
+                }
+            ?>
+            
 
             <div class="mb-2 col-6">
                 <label for="dpFin" class="col-sm-6 col-form-label">Fecha solución:</label>
