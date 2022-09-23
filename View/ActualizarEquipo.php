@@ -336,7 +336,7 @@ $equipment = $GLOBALS['equipment'];
 
         $('#frmActualizarEquipo').on('submit',function(e){
 
-            e.preventDefault();
+                e.preventDefault();
                 const marca = $('#txtMarca').val();
                 const modelo = $('#txtModelo').val();
                 const descripcion = $('#txtDescripcion').val();
@@ -436,12 +436,12 @@ $equipment = $GLOBALS['equipment'];
                                     $('#content').html(response);
                                 }
                             });
-                        }
+                    }
 
                     else{
                             alert("El equipo ya se encuentra registrado");
                     }
-                    }
+                }
 
                 }
 
