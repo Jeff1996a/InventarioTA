@@ -121,7 +121,7 @@
         
 
         <div class="col-auto">
-            <button id="btnAgregarEquipo" type="button" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
+            <button id="btnAgregarEquipo" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
         </div>
     </div>
 </form>
@@ -215,7 +215,7 @@
             });
         });
 
-        $('#addEquipmentForm').on('submit',function(event){
+        $('#addEquipmentForm').submit(function(event){
 
             event.preventDefault();
 
@@ -232,7 +232,7 @@
             const departamento = $('#txtDepartamento').val();
             const observacion = $('#txtObservacion').val();
 
-            /*
+            
             if(tipoEquipo == 1){
                 msg.category = 'audio';
             }
@@ -257,7 +257,7 @@
             }
 
             console.log("Categoria:" + msg.category);
-            */
+            
             const form_data = new FormData();
 
             form_data.append('marca', marca);
