@@ -121,7 +121,7 @@
         
 
         <div class="col-auto">
-            <button id="btnAgregarEquipo" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
+            <button id="btnAgregarEquipo" type="button" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
         </div>
     </div>
 </form>
