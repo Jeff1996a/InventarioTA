@@ -61,21 +61,47 @@ $historial = $GLOBALS['historial'];
         </div>
 
         <div class="mb-2 row">
+             
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="dpIngreso" class="col-sm-6 col-form-label">Fecha ingreso:</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" id="dpIngreso" name="ingreso" value="'.$historial->ingreso.'">
+                        </div>
+                    </div>';
 
-            <div class="mb-2 col-6">
-                <label for="dpIngreso" class="col-sm-6 col-form-label">Fecha ingreso:</label>
-                <div class="col-sm-6">
-                    <input type="date" class="form-control" id="dpIngreso" name="ingreso" value="<?php echo $historial->ingreso; ?>">
-                </div>
-            </div>
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="dpUltMant" class="col-sm-6 col-form-label">Fecha mantenimiento:</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" id="dpUltMant" name="ultMant" value="'.$historial->ultMant.'">
+                        </div>
+                    </div>';
+                }
 
-            <div class="mb-2 col-6">
-                <label for="dpUltMant" class="col-sm-6 col-form-label">Fecha mantenimiento:</label>
-                <div class="col-sm-6">
-                    <input type="date" class="form-control" id="dpUltMant" name="ultMant" value="<?php echo $historial->ultMant; ?>">
-                </div>
-            </div>
+                else{
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="dpIngreso" class="col-sm-6 col-form-label">Fecha ingreso:</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" id="dpIngreso" name="ingreso" value="'.$historial->ingreso.'" disabled>
+                        </div>
+                    </div>';
 
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="dpUltMant" class="col-sm-6 col-form-label">Fecha mantenimiento:</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" id="dpUltMant" name="ultMant" value="'.$historial->ultMant.'">
+                        </div>
+                    </div>'; 
+                }
+            ?>
+            
+
+            
 
         </div>
 
