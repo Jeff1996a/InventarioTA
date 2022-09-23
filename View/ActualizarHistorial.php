@@ -28,7 +28,7 @@ $historial = $GLOBALS['historial'];
                     <div class="mb-2 col-6">
                         <label for="txtTecnico" class="col-sm-12 col-form-label">Técnico responsable:</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txtTecnico" name="tecnico" value="<?php echo $historial->tecnico; ?>" style="text-transform:uppercase">
+                            <input type="text" class="form-control" id="txtTecnico" name="tecnico" value="'.$historial->tecnico.'" style="text-transform:uppercase">
                         </div>
                     </div>';
 
