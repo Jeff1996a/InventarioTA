@@ -83,12 +83,12 @@ $accesorio = $GLOBALS['accesorio'];
 
         </div>
 
+        <!--
         <div class="mb-2">
             <label for="file" class="form-label">Adjuntos:</label>
             <input class="form-control" type="file" id="file" name="image">
         </div>
-
-
+        -->
         <div class="col-auto">
             <button id="btnSaveAccesories" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;"  >Guardar</button>
         </div>
