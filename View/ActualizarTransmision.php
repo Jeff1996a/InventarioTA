@@ -1,4 +1,9 @@
 <?php 
+session_start();
+if (!isset($_SESSION['usuario_sesion'])) {
+header('Location: index.php');
+die;
+}
 $transmision = $GLOBALS['transmision']
 ?>
 
@@ -136,8 +141,6 @@ $transmision = $GLOBALS['transmision']
         </div>
 
         -->
-
-
         <div class="col-auto">
             <button id="btnCrearTransmision" type="submit" class="btn btn-outline-success" style="margin-top: 25px; float: right; margin-bottom:25px;" >Guardar</button>
         </div>
