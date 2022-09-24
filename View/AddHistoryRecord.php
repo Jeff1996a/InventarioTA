@@ -31,6 +31,17 @@
         <div class="mb-2 row">
 
             <div class="mb-2 col-6">
+                <label for="txtCorreo" class="col-sm-12 col-form-label">Correo:</label>
+                <div class="col-sm-12">
+                    <input type="email" class="form-control" id="txtCorreo" name="correo">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mb-2 row">
+
+            <div class="mb-2 col-6">
                 <label for="dpUltMant" class="col-sm-6 col-form-label">Fecha de mantenimiento:</label>
                 <div class="col-sm-6">
                     <input type="date" class="form-control" id="dpUltMant" name="ultMant">
@@ -115,7 +126,7 @@
         };
 
         //Validacion
-        $("#form-history").validate({
+        const validator = $("#form-history").validate({
             rules:{
                 tecnico:{
                     required: true
@@ -242,7 +253,8 @@
             }*/
 
             // AJAX request
-            $.ajax({
+            if(validator.form()){
+                $.ajax({
                 url: 'Controller/EquipoController.php',
                 type: 'POST',
                 data: form_data,
@@ -257,28 +269,29 @@
                         // Add img element in <div id='preview'>
                         $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
                     }*/
-                console.log(response);
-                
-                if(response.result != 0){
-                        alert("Registro exitoso!!");
-                        msg.id = '<?=$GLOBALS['id']?>';
-                        msg.category = '<?=$GLOBALS['category']?>';
+                    console.log(response);
+                    
+                    if(response.result != 0){
+                            alert("Registro exitoso!!");
+                            msg.id = '<?=$GLOBALS['id']?>';
+                            msg.category = '<?=$GLOBALS['category']?>';
 
-                        $.ajax({
-                            type:'GET',
-                            url: 'Controller/EquipoController.php',
-                            data: {data:JSON.stringify(msg), action:'viewHistory'},
-                            success: function(response){
-                                $('#content').html(response);
-                            }
-                        });
-                }
+                            $.ajax({
+                                type:'GET',
+                                url: 'Controller/EquipoController.php',
+                                data: {data:JSON.stringify(msg), action:'viewHistory'},
+                                success: function(response){
+                                    $('#content').html(response);
+                                }
+                            });
+                    }
 
-                else{
-                        alert("El equipo ya se encuentra registrado");
-                }
-                }
-            });
+                    else{
+                            alert("El equipo ya se encuentra registrado");
+                    }
+                    }
+                });
+            }
         });
     })
 </script>
