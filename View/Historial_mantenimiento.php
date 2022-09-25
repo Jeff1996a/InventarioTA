@@ -34,8 +34,7 @@ die;
             <td><strong>Descripción</strong></td>
             <td><strong>Técnico</strong></td>
             <td><strong>Email</strong></td>
-            <td><strong>Ult.Mantenimiento</strong></td>
-            <td><strong>Fecha ingreso</strong></td>
+            <td><strong>Fecha mantenimiento</strong></td>
             <td><strong>Problema</strong></td>
             <td><strong>Solución</strong></td>
             <td><strong>Observación</strong></td>

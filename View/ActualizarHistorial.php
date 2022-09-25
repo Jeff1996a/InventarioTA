@@ -15,8 +15,7 @@ $historial = $GLOBALS['historial'];
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#fa983a " class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
                         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
                     </svg>
-                </div>
-                <h1>Actualizar registro:</h1>
+                </div>Actualizar datos del historial:</h1>
             </div>
         </div>
 
@@ -66,14 +65,6 @@ $historial = $GLOBALS['historial'];
                 if($_SESSION['rol'] == 'admin'){
                     echo '
                     <div class="mb-2 col-6">
-                        <label for="dpIngreso" class="col-sm-6 col-form-label">Fecha ingreso:</label>
-                        <div class="col-sm-6">
-                            <input type="date" class="form-control" id="dpIngreso" name="ingreso" value="'.$historial->ingreso.'">
-                        </div>
-                    </div>';
-
-                    echo '
-                    <div class="mb-2 col-6">
                         <label for="dpUltMant" class="col-sm-6 col-form-label">Fecha mantenimiento:</label>
                         <div class="col-sm-6">
                             <input type="date" class="form-control" id="dpUltMant" name="ultMant" value="'.$historial->ultMant.'">
@@ -82,13 +73,6 @@ $historial = $GLOBALS['historial'];
                 }
 
                 else{
-                    echo '
-                    <div class="mb-2 col-6">
-                        <label for="dpIngreso" class="col-sm-6 col-form-label">Fecha ingreso:</label>
-                        <div class="col-sm-6">
-                            <input type="date" class="form-control" id="dpIngreso" name="ingreso" value="'.$historial->ingreso.'" disabled>
-                        </div>
-                    </div>';
 
                     echo '
                     <div class="mb-2 col-6">
