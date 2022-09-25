@@ -235,7 +235,7 @@ $historial = $GLOBALS['historial'];
         };
 
         //Validacion
-        $("#frmActualizarHistorial").validate({
+        const validator = $("#frmActualizarHistorial").validate({
             rules:{
                 tecnico:{
                     required: true
@@ -364,7 +364,8 @@ $historial = $GLOBALS['historial'];
             }*/
 
             // AJAX request
-            $.ajax({
+            if(validator.form()){
+                $.ajax({
                 url: 'Controller/EquipoController.php',
                 type: 'POST',
                 data: form_data,
@@ -379,28 +380,29 @@ $historial = $GLOBALS['historial'];
                         // Add img element in <div id='preview'>
                         $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
                     }*/
-                console.log(response);
-                
-                if(response.result != 0){
-                        alert("Registro actualizado correctamente!!");
-                        msg.id = <?=$historial->id_equipo?>;
-                        msg.category = '<?=$GLOBALS['category']?>';
+                    console.log(response);
+                    
+                    if(response.result != 0){
+                            alert("Registro actualizado correctamente!!");
+                            msg.id = <?=$historial->id_equipo?>;
+                            msg.category = '<?=$GLOBALS['category']?>';
 
-                        $.ajax({
-                            type:'GET',
-                            url: 'Controller/EquipoController.php',
-                            data: {data:JSON.stringify(msg), action:'viewHistory'},
-                            success: function(response){
-                                $('#content').html(response);
-                            }
-                        });
-                }
+                            $.ajax({
+                                type:'GET',
+                                url: 'Controller/EquipoController.php',
+                                data: {data:JSON.stringify(msg), action:'viewHistory'},
+                                success: function(response){
+                                    $('#content').html(response);
+                                }
+                            });
+                    }
 
-                else{
-                        alert("No se pudo actualizar el registro");
-                }
-                }
-            });
+                    else{
+                            alert("No se pudo actualizar el registro");
+                    }
+                    }
+                });
+            }
         });
     })
 </script>
