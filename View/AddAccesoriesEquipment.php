@@ -75,7 +75,7 @@
         };
 
         //Validacion
-        $("#accesories-form").validate({
+        cont validator = $("#accesories-form").validate({
             rules:{
                 serie:{
                     required: true
@@ -160,7 +160,8 @@
             }*/
 
             // AJAX request
-            $.ajax({
+            if(validator.form()){
+                $.ajax({
                 url: 'Controller/EquipoController.php',
                 type: 'POST',
                 data: form_data,
@@ -196,6 +197,7 @@
                     }
                 }
             });
+        }
 
 
 
