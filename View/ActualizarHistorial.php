@@ -225,6 +225,7 @@ $historial = $GLOBALS['historial'];
 </form>
 <script type="text/javascript">
     $(document).ready(function () {
+        window.location.reload();
         const msg = {
           category: '',
           id: ''
