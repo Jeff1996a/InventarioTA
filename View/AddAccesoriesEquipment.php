@@ -143,7 +143,7 @@
             form_data.append('codigoTA', serieTA);
             form_data.append('descripcion', descripcion);
             form_data.append('disponibilidad', disp);
-            form_data.append('action', 'addAccesorio');
+            form_data.append('action', 'addEquipo');
             form_data.append('id_equipo', id_equipo);
 
             //Mostrar los datos del formulario mediante clave/valor
