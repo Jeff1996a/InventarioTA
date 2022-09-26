@@ -224,10 +224,11 @@ $historial = $GLOBALS['historial'];
     </div>
 </form>
 <script type="text/javascript">
-    $(document).ready(function () {
-        window.onunload = function(){
+    window.onunload = function(){
             alert("unload event detected!");
-        }
+    }
+    $(document).ready(function () {
+        
         const msg = {
           category: '',
           id: ''
