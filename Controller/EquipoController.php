@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
                     $num_filas = mysqli_num_rows($list);
                     break;
 
-                case 'edicion':
+                case 'edición':
                     $title = "Equipos de edición";
                     $list = $equipment->GetEquimentByType($category);
                     $num_filas = mysqli_num_rows($list);
@@ -264,7 +264,7 @@ elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $num_filas = mysqli_num_rows($list);
                     break;
 
-                case "edicion":
+                case "edición":
                     $title = "Equipos de edición";
                     $list = validateFilter($filterType, $equipment, $filter, $category);
                     $num_filas = mysqli_num_rows($list);
