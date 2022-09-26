@@ -75,7 +75,7 @@
         };
 
         //Validacion
-        cont validator =$("#accesories-form").validate({
+        const validator =$("#accesories-form").validate({
             rules:{
                 serie:{
                     required: true
