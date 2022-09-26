@@ -103,7 +103,7 @@ $accesorio = $GLOBALS['accesorio'];
         };
 
         //Validacion
-        $("#accesories-form").validate({
+        const validator = $("#accesories-form").validate({
             rules:{
                 serie:{
                     required: true
@@ -189,42 +189,44 @@ $accesorio = $GLOBALS['accesorio'];
             }*/
 
             // AJAX request
-            $.ajax({
-                url: 'Controller/EquipoController.php',
-                type: 'POST',
-                data: form_data,
-                dataType: 'json',
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    /*
-                    for(var index = 0; index < response.file_array.length; index++) {
-                        var src = response.file_array[index];
-                        console.log(src);
-                        // Add img element in <div id='preview'>
-                        $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
-                    }*/
-                    console.log(response.result);
-                    if(response.result != 0){
-                            alert("Registro actulizado correctamente!!");
+            if(validator.form()){
+                $.ajax({
+                    url: 'Controller/EquipoController.php',
+                    type: 'POST',
+                    data: form_data,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        /*
+                        for(var index = 0; index < response.file_array.length; index++) {
+                            var src = response.file_array[index];
+                            console.log(src);
+                            // Add img element in <div id='preview'>
+                            $('#preview').append('<img src="'+src+'" width="200px;" height="200px">');
+                        }*/
+                        console.log(response.result);
+                        if(response.result != 0){
+                                alert("Registro actulizado correctamente!!");
 
-                            console.log(msg.category);
+                                console.log(msg.category);
 
-                            $.ajax({
-                                type:'GET',
-                                url: 'Controller/EquipoController.php',
-                                data: {data: JSON.stringify(msg), action:'viewAccesories'},
-                                success: function(response){
-                                    $('#content').html(response);
-                                }
-                            });
+                                $.ajax({
+                                    type:'GET',
+                                    url: 'Controller/EquipoController.php',
+                                    data: {data: JSON.stringify(msg), action:'viewAccesories'},
+                                    success: function(response){
+                                        $('#content').html(response);
+                                    }
+                                });
+                            }
+
+                        else{
+                                alert("No se puede actualizar el registro");
                         }
-
-                    else{
-                            alert("No se puede actualizar el registro");
                     }
-                }
-            });
+                });
+            }
 
 
 
