@@ -151,7 +151,7 @@ die;
         });
 
         $("#btnEdicion").click(function () {
-            msg.category = 'edicion';
+            msg.category = 'edición';
             $.ajax({
                 type:'GET',
                 url: 'Controller/EquipoController.php',
