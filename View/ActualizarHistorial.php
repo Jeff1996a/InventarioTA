@@ -31,13 +31,7 @@ $historial = $GLOBALS['historial'];
                         </div>
                     </div>';
 
-                    echo '
-                    <div class="mb-2 col-6">
-                        <label for="txtCorreo" class="col-sm-12 col-form-label">Correo:</label>
-                        <div class="col-sm-12">
-                            <input type="email" class="form-control" id="txtCorreo" name="correo" value="'.$historial->correo.'">
-                        </div>
-                    </div>';
+                
                 }
                 else{
                     echo '
@@ -48,6 +42,23 @@ $historial = $GLOBALS['historial'];
                         </div>
                     </div>';
 
+                 
+                }
+            ?>
+        </div>
+
+        <div class="mb-2 row">
+        <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '
+                    <div class="mb-2 col-6">
+                        <label for="txtCorreo" class="col-sm-12 col-form-label">Correo:</label>
+                        <div class="col-sm-12">
+                            <input type="email" class="form-control" id="txtCorreo" name="correo" value="'.$historial->correo.'">
+                        </div>
+                    </div>';
+                }
+                else{
                     echo '
                     <div class="mb-2 col-6">
                         <label for="txtCorreo" class="col-sm-12 col-form-label">Correo:</label>
