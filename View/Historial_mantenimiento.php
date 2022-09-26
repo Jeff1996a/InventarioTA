@@ -62,7 +62,6 @@ die;
                 <td><?php echo $row["tecnico"]; ?> </td>
                 <td><?php echo $row["email"]; ?> </td>
                 <td><?php echo $row["fecha_ult_mant"]; ?> </td>
-                <td><?php echo $row["fecha_ingreso"]; ?> </td>
                 <td><?php echo $row["problema"]; ?> </td>
                 <td><?php echo $row["solucion"]; ?> </td>
                 <td><?php echo $row["observacion"]; ?> </td>
